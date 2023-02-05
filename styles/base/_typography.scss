@@ -1,0 +1,57 @@
+/**
+ * Basic typography style for copy text
+ */
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: $text-font-stack;
+  font-size: 1.6rem; // 16px
+  color: $color-text-black;
+}
+
+::selection {
+  background-color: $color-primary;
+  color: $color-bg-white;
+}
+
+h1,
+h2,
+h3 {
+  color: $color-text-black;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+h1 {
+  font-size: 7rem;
+}
+
+h2 {
+  font-size: 4rem;
+}
+
+h3 {
+  font-size: 3rem;
+  font-weight: 500;
+}
+
+@media screen and (min-width: 1024px) {
+  body {
+    font-size: 1.8rem;
+  }
+
+  h1 {
+    font-size: 8rem;
+  }
+
+  h2 {
+    font-size: 4rem;
+  }
+
+  h3 {
+    font-size: 2.4rem;
+  }
+}
