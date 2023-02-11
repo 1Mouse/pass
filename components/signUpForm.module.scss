@@ -1,0 +1,63 @@
+@use '../styles/abstracts/variables' as *;
+.pageNoScroll{
+  width: 100%;
+  min-height: 100vh;
+    overflow: hidden;
+}
+
+.signupLeft{
+
+}
+
+.stikyNavbar{
+    display:flex;
+    justify-content: flex-start;
+    width:100%;
+    margin-bottom: 2rem;
+}
+
+.navBrand{
+    padding-left:10px;
+    display:block;
+    background:blue;
+}
+
+.form{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+        align-items:center;
+}
+
+.title{
+    font-size: 3.2rem;
+    font-weight: 700;
+
+}
+
+
+
+.signupRight{
+    background-color: $color-secondary ;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+
+    @media screen and (max-width:768px){
+        display:none;
+    }
+}
+
+.imageContainer{
+    width:70%;
+    position:relative;
+}
+.image{
+  object-fit: contain;
+  width: 100% !important;
+  position: relative !important;
+  height: unset !important;}
+
+.imageContainer > div {
+  position: unset !important;
+}
