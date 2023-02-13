@@ -1,78 +1,74 @@
 import React from "react";
-import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import Style from "../Components/navbarList.module.scss";
-import logo from "../public/frameLogo1X.jpg";
-import icon from "../public/close-circle-fill1X.jpg";
+import logo from "../public/frameLogo.svg";
+import icon from "../public/close-circle-fill.svg";
+import Home from "../pages/Home";
+import "animate.css";
+// import { useRouter } from "next/router";
 
 const NavbarList = () => {
   return (
     <>
-        {/* <!-- Start NavBar --> */}
+      {/* <!-- Start NavBar --> */}
 
-        <div className={Style.header}>
-          <div className={Style.container}>
-            <ul>
-              <li>
-                <Image
-                  src={logo}
-                  alt="Landscape picture"
-                  width={80}
-                  height={50}
-                />
-              </li>
-              <li>
-                <Image
-                  // className={Style.icon}
-                  src={icon}
-                  alt="icon"
-                  width={32}
-                  height={32}
-                />
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        {/* <!-- End NavBar --> */}
-        {/* <!-- Start NavBarList --> */}
-        <div className={Style.NavBarList}>
+      <div className={Style.navbar}>
+        <div className={Style.container}>
           <ul>
             <li>
-              <Link href="/">Home</Link>
+              <Link href="Home">
+                <Image className={Style.logo} src={logo} alt="logo" />
+              </Link>
             </li>
-            <hr/>
             <li>
-              <Link href="/watch interviews">watch interviews</Link>
-            </li>
-            <hr/>
-            <li>
-              <Link href="/Browse">Browse</Link>
-            </li>
-            <hr/>
-            <li>
-              <Link href="/Browse">Profile</Link>
-            </li>
-            <hr/>
-            <li>
-              <Link href="/Browse">About</Link>
-            </li>
-            <hr/>
-            <li>
-              <Link href="/Browse">Pricing</Link>
-            </li>
-            <hr/>
-            <li>
-              <Link href="/Browse">Testimonials</Link>
-            </li>
-            <hr/>
-            <li>
-              <Link href="/Browse">Contact</Link>
+              <Image className={Style.icon} src={icon} alt="icon" />
             </li>
           </ul>
-        </div> 
-        {/* <!-- End NavBarList --> */}
+        </div>
+      </div>
+
+      {/* <!-- End NavBar --> */}
+
+      {/* <!-- Start NavBarList --> */}
+
+      <div className={`${Style.NavBarList} animate__animated animate__shakeX`}>
+        <ul>
+          <li>
+            <Link href="Home">Home</Link>
+          </li>
+          <hr />
+          <li>
+            <Link href="Home">watch interviews</Link>
+          </li>
+          <hr />
+          <li>
+            <Link href="/Browse">Browse</Link>
+          </li>
+          <hr />
+          <li>
+            <Link href="/Profile">Profile</Link>
+          </li>
+          <hr />
+          <li>
+            <Link href="/About">About</Link>
+          </li>
+          <hr />
+          <li>
+            <Link href="/Pricing">Pricing</Link>
+          </li>
+          <hr />
+          <li>
+            <Link href="/Testimonials">Testimonials</Link>
+          </li>
+          <hr />
+          <li>
+            <Link href="/Contact">Contact</Link>
+          </li>
+        </ul>
+      </div>
+
+      {/* <!-- End NavBarList --> */}
     </>
   );
 };
