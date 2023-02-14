@@ -6,8 +6,7 @@
     overflow: hidden;
 }
 
-.signupLeft {
-}
+.signupLeft {}
 
 .stikyNavbar {
     display: flex;
@@ -19,7 +18,6 @@
 .navBrand {
     padding-left: 10px;
     display: block;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .form {
@@ -30,7 +28,7 @@
     background: $color-bg-white;
     height: 100%;
     max-width: 900px;
-    margin:0 auto;
+    margin: 0 auto;
 
 
     input {
@@ -40,25 +38,55 @@
         border-radius: 5px;
         padding: 1rem 2rem;
         margin: 1rem 0;
-        :active{
-                    border: 2px $color-secondary solid;
+        outline: 0;
+
+        &:focus,&:active{
+        border: 2px $color-secondary solid;
         }
     }
 }
-.formItself{
-    display:flex;
-    flex-direction:column;
-    width:50%;
+
+
+.formItself {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
     margin-left: 0;
 
 
-            @media screen and (max-width:390px) {
-                    width: 60%;
-                }
+    @media screen and (max-width:390px) {
+        width: 60%;
+    }
 }
+
+.titleContainer {
+    composes: formItself;
+    margin-bottom: 2rem;
+
+    p {
+        font-weight: 300;
+        font-size: 1.5rem;
+        opacity: 0.9;
+    }
+
+    a {
+        color: $color-text-black;
+        text-decoration: none;
+        border-bottom: 3px $color-secondary solid;
+        border-radius: 3px;
+
+        &:hover {
+            border-width: 5px;
+        }
+    }
+
+}
+
 .title {
     font-size: 3.2rem;
     font-weight: 700;
+    margin-bottom: 0.5rem;
+
 }
 
 .btnGoogle {
@@ -76,13 +104,14 @@
     background-color: $color-bg-white;
     background-repeat: no-repeat;
     background-position: 12px 11px;
-        &:hover {
-                box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25);
-                transform: scale(1.05);
-            }
+
+    &:hover {
+        box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25);
+        transform: scale(1.05);
+    }
 
     @media screen and (max-width:390px) {
-        width:60%;
+        width: 60%;
     }
 }
 
@@ -94,15 +123,15 @@
     width: 50%;
     border-radius: 8px;
     padding: 1rem 2rem;
-    color:$color-bg-white;
+    color: $color-bg-white;
     cursor: pointer;
-    white-space:nowrap;
+    white-space: nowrap;
 
     &:hover {
-            box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25);
-            filter: brightness(120%);
-            transform:scale(1.05);
-        }
+        box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25);
+        filter: brightness(120%);
+        transform: scale(1.05);
+    }
 }
 
 .signupRight {
@@ -112,7 +141,7 @@
     align-items: center;
 
     @media screen and (max-width: 767.98px) {
-        display: none; 
+        display: none;
     }
 }
 

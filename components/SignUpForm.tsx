@@ -23,10 +23,12 @@ const SignUpForm = (props: FormProps) => {
                     </div>
                 </div>
                 <div className={styles.form}>
-                    <h1 className={styles.title}>Sign Up</h1>
-                    <p>
-                        already a member? <span><Link className='link--underlined' href='/login'>Log In</Link></span>
-                    </p>
+                    <div className={styles.titleContainer}>
+                        <h1 className={styles.title}>Sign Up</h1>
+                        <p>
+                            already a member? <span><Link href='/login'>Log In</Link></span>
+                        </p>
+                    </div>
                     <button type="button" className={styles.btnGoogle} >
                         Sign in with Google
                     </button>
