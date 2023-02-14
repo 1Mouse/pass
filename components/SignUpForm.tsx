@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react"
 import styles from './signUpForm.module.scss'
+import OrLine from "./common/OrLine";
 type FormProps = {
 
 }
@@ -29,10 +30,11 @@ const SignUpForm = (props: FormProps) => {
                     <button type="button" className={styles.btnGoogle} >
                         Sign in with Google
                     </button>
-                    <form action="#">
+                    <OrLine/>
+                    <form action="#" className={styles.formItself}>
                         <input type="email" placeholder="Email" />
                         <input type="password" placeholder="Password" />
-                        <button>Sign Up</button>
+                        <button className={styles.btnPrimary}>Sign Up</button>
                     </form>
                 </div>
             </div>
