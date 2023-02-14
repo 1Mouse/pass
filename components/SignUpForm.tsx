@@ -3,6 +3,8 @@ import Image from "next/image";
 import { useState } from "react"
 import styles from './signUpForm.module.scss'
 import OrLine from "./common/OrLine";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 type FormProps = {
 
 }
