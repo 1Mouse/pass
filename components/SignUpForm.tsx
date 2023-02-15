@@ -4,7 +4,7 @@ import { useState } from "react"
 import styles from './signUpForm.module.scss'
 import OrLine from "./common/OrLine";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faLock, faEyeSlash,faEye } from '@fortawesome/free-solid-svg-icons'
 type FormProps = {
 
 }
@@ -13,6 +13,9 @@ const SignUpForm = (props: FormProps) => {
     const [data, setData] = useState({ email: '', password: '' });
     const [errors, setErrors] = useState({});
     const [success, setSuccess] = useState(false);
+    const [showPassword,setShowPassword]=useState(false);
+
+
 
     return (
         <div className={`grid grid--1x2 ${styles.pageNoScroll}`}>
@@ -36,8 +39,20 @@ const SignUpForm = (props: FormProps) => {
                     </button>
                     <OrLine/>
                     <form action="#" className={styles.formItself}>
-                        <input type="email" placeholder="Email" />
-                        <input type="password" placeholder="Password" />
+                        <div className={styles.inputContainer}>
+                            <FontAwesomeIcon icon={faEnvelope} className={styles.icon} />
+                            <input required type="email" placeholder="Email" />
+                        </div>
+                        <div className={styles.inputContainer}>
+                            <FontAwesomeIcon icon={faLock} className={styles.icon} />
+                        <input type={showPassword? 'text':'password'} placeholder="Password"
+                                pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+                        />
+                        <div className={styles.eye}>
+                            <FontAwesomeIcon    icon={showPassword? faEye:faEyeSlash}  onClick={()=>setShowPassword(prev=>!prev)}/>
+                        </div>
+                        </div>
+
                         <button className={styles.btnPrimary}>Sign Up</button>
                     </form>
                 </div>
