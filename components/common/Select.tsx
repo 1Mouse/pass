@@ -2,7 +2,16 @@ import styles from './select.module.scss';
 
 const Select = () => {
     return (
-        <div className={}>or</div>
+        <>
+            <select
+                title='Select role:'
+                id="role"
+                name="role"
+            >
+                <option value="interviewee">Interviewee</option>
+                <option value="interviewer">Interviewer</option>
+            </select>
+        </>
     )
 }
 
