@@ -4,7 +4,7 @@ import { useState } from "react"
 import styles from './signUpForm.module.scss'
 import OrLine from "./common/OrLine";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope, faLock, faEyeSlash,faEye } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faLock, faEyeSlash,faEye, faUser } from '@fortawesome/free-solid-svg-icons'
 type FormProps = {
 
 }
@@ -52,7 +52,17 @@ const SignUpForm = (props: FormProps) => {
                             <FontAwesomeIcon    icon={showPassword? faEye:faEyeSlash}  onClick={()=>setShowPassword(prev=>!prev)}/>
                         </div>
                         </div>
-
+                            <select
+                                required
+                                title='Select role' 
+                                id="role"
+                                name="role"
+                                className={styles.select}
+                            >
+                                <option selected hidden disabled value="" className={styles.d}>Let&apos;s select role:</option>
+                                <option value="interviewee">Interviewee</option>
+                                <option value="interviewer">Interviewer</option>
+                            </select>
                         <button className={styles.btnPrimary}>Sign Up</button>
                     </form>
                 </div>
