@@ -1,0 +1,39 @@
+.Navbar *{
+    margin-right: 5px;
+}
+
+.Navbar {
+    position: fixed;
+    top: 5%;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .logo {
+    width: 124.71px;
+    height: 56.73px;
+    margin-left: 5%;
+
+  }
+
+  .navbar_text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .ul li {
+    margin: 0 10px;
+  }
+
+  .ul li a {
+    color: #fff;
+    text-decoration: none;
+  }

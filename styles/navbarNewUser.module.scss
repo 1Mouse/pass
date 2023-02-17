@@ -1,0 +1,55 @@
+.NavbarNewUser * {
+  margin-right: 5px;
+}
+
+.nav {
+  position: fixed;
+  top: 5%;
+  left: 0%;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+
+}
+
+.logo {
+  width: 124.71px;
+  height: 56.73px;
+  margin-left: 5%;
+}
+
+.ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ul li {
+  margin: 0 10px;
+}
+
+.ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+.JoinNow{
+      // width: 75px;
+      font-family: 'Open Sans';
+      color: #fff;
+font-style: normal;
+      height: 30px;
+      text-align: center;
+    background-color: #51C9FF;
+      border-radius: 0.5cap;
+      justify-content: center;
+      align-items: center;
+      word-break:keep-all;
+  
+     }
+
+  

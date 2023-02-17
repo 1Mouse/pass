@@ -1,0 +1,85 @@
+export default function NavbarNewUser() {
+  return (
+    <>
+          <ul className={styles.NavbarNewUser}>
+             <div className={styles.navbar_text}>
+             <li >    <NavButton href='./about' text="About" /></li>
+             <li >    <NavButton href='./pricing' text="Pricing" /></li>
+             <li >    <NavButton href='./testimoials' text="Testimoials" /></li>
+             <li >    <NavButton href='./contact' text="Contact" /></li>
+             <li >    <NavButton href='./login' text="Log in" /></li>
+             <li className={styles.JoinNow}>    <NavButton href='./JoinNow' text="Join now" /></li>
+      
+             </div>
+          </ul>
+
+    <div/>
+   
+        {/* <style jsx>{`
+        @media (min-width: 1024px) {
+        .navbar_text{
+         display: flex;
+         align-items: center;
+         word-break:keep-all;
+         position: absolute;
+         left: 60%;
+         top: 5%;
+        
+
+         }
+         .JoinNow{
+          width: 75px;
+          height: 30px;
+          text-align: center;
+        background-color: #51C9FF;
+          border-radius: 0.5cap;
+          justify-content: center;
+          align-items: center;
+         }
+        }
+        @media  (min-width: 768px) and (max-width: 1023px) {
+          .navbar_text{
+            display: flex;
+            align-items: center;
+            word-break:keep-all;
+            position: absolute;
+            left: 50%;
+            top: 5%;
+          }
+            .JoinNow{
+              width: 75px;
+              height: 30px;
+              text-align: center;
+            background-color: #51C9FF;
+              border-radius: 0.5cap;
+              justify-content: center;
+              align-items: center;
+             }
+            }
+             @media (max-width: 767px) {
+              .navbar_text{
+                display: flex;
+                align-items: center;
+                word-break:keep-all;
+                position: absolute;
+                left: 30%;
+                top: 6%;
+              }
+                .JoinNow{
+                  width: 75px;
+                  height: 30px;
+                  text-align: center;
+                background-color: #51C9FF;
+                  border-radius: 0.5cap;
+                  justify-content: center;
+                  align-items: center;
+                 }
+  
+             }
+
+        }
+
+        `}</style> */}
+    </>
+  )
+}

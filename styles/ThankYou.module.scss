@@ -1,0 +1,163 @@
+@media (min-width: 1024px) {
+  .LOGO{
+    position: fixed;
+left: 47.5%;
+top: 36.94%;
+
+
+
+ /* Primary  */
+
+  }
+  .ThankYouText{
+    position: fixed;
+width: 557px;
+height: 44px;
+left: 35.5%;
+top: 56.94%;
+width: fit-content;
+
+font-family: 'Open Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 32px;
+line-height: 44px;
+
+display: flex;
+align-items: flex-end;
+text-align: center;
+
+
+color: #313638;
+  }
+
+  .CheckEmailText{
+    position: fixed;
+width: 1285px;
+height: 88px;
+left: 10%;
+top: 65%;
+width: fit-content;
+
+font-family: 'Open Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 32px;
+line-height: 44px;
+display: flex;
+align-items: flex-end;
+text-align: center;
+
+
+color: #313638;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+ 
+  .LOGO{
+    position: fixed;
+left: 47.5%;
+top: 36.94%;
+
+
+ /* Primary  */
+
+  }
+  .ThankYouText{
+    position: absolute;
+width: 557px;
+height: 44px;
+left: 23.5%;
+top: 56.94%;
+width: fit-content;
+font-family: 'Open Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 32px;
+line-height: 44px;
+padding-right: 10%;
+
+display: flex;
+align-items: flex-end;
+text-align: center;
+
+
+color: #313638;
+  }
+
+  .CheckEmailText{
+    position: absolute;
+width: 1285px;
+height: 88px;
+left: 10%;
+top: 70%;
+width: fit-content;
+font-family: 'Open Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 32px;
+line-height: 44px;
+display: flex;
+align-items: flex-end;
+text-align: center;
+padding-right: 5%;
+
+color: #313638;
+  }
+}
+@media (max-width: 767px) {
+ 
+  .LOGO{
+    position: fixed;
+    left: 47.5%;
+    top: 26.94%;
+    
+
+
+ /* Primary  */
+
+  }
+  .ThankYouText{
+    position: absolute;
+width: 557px;
+height: 44px;
+left: 10%;
+top: 55%;
+width: fit-content;
+font-family: 'Open Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 32px;
+line-height: 44px;
+padding-right: 5%;
+display: flex;
+align-items: flex-end;
+text-align: center;
+
+
+color: #313638;
+  }
+
+  .CheckEmailText{
+    position: absolute;
+width: 1285px;
+height: 88px;
+left: 1%;
+top: 80%;
+padding-right: 5%;
+width: fit-content;
+font-family: 'Open Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 32px;
+line-height: 44px;
+display: flex;
+align-items: flex-end;
+text-align: center;
+
+
+color: #313638;
+  }
+}
+
+  
