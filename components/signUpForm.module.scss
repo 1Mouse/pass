@@ -99,6 +99,18 @@
     }
 }
 
+.instructions{
+    font-size:1.2rem;
+    color:darken(red,10%);
+    padding:0 1rem;
+    .pwdIcon{
+        margin-right:1rem;
+    }
+}
+.hidden{
+    display:none;
+}
+
 .titleContainer {
     composes: formItself;
     margin-bottom: 2rem;
@@ -183,10 +195,14 @@
     white-space: nowrap;
     margin-bottom: 10rem;
 
-    &:hover {
+    &:hover:not(:disabled) {
         box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25);
         filter: brightness(120%);
         transform: scale(1.05);
+    }
+    &:disabled{
+        cursor:not-allowed;
+
     }
 }
 
