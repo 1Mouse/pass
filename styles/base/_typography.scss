@@ -2,7 +2,14 @@
  * Basic typography style for copy text
  */
 
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 html {
+  scroll-behavior: smooth;
   font-size: 62.5%;
 }
 
@@ -54,4 +61,14 @@ h3 {
   h3 {
     font-size: 2.4rem;
   }
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
 }

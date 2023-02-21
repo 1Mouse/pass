@@ -1,0 +1,91 @@
+@use "../styles/abstracts/variables" as *; // To use any style from Variable direct - example $color-bg-white.
+
+.navbar {
+  background-color: $color-bg-white;
+  position: relative;
+}
+
+.container {
+  ul {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+  li {
+    list-style-type: none;
+    margin: 2rem;
+    padding: 0;
+    @media (max-width: 320px) {
+      img.logo {
+        width: 70px;
+        height: 70px;
+      }
+      img.icon {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+  li:hover {
+    filter: grayscale(80%);
+  }
+}
+
+.NavBarList {
+  ul {
+    display: block;
+    margin: 1rem;
+    padding: 1rem;
+  }
+  li {
+    list-style-type: none;
+    margin: 5rem;
+    padding: 0;
+    text-align: center;
+    text-transform: capitalize;
+    a:hover {
+      color: #0c84df;
+      text-transform: uppercase;
+    }
+  }
+  a {
+    color: $color-text-black;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    height: 44px;
+    left: 820px;
+    line-height: 16px;
+    text-decoration: none;
+    top: 145px;
+    width: 280px;
+  }
+  hr {
+    box-align: center;
+    color: $color-text-offWhite;
+    width: 100%;
+  }
+  @media (max-width: 768px) {
+  }
+  @media (max-width: 320px) {
+    li {
+      margin: 3rem;
+    }
+    a {
+      color: $color-text-black;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 300;
+      height: 44px;
+      left: 820px;
+      line-height: 8px;
+      text-decoration: none;
+      top: 145px;
+      width: 280px;
+    }
+  }
+}
