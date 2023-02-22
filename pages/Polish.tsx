@@ -52,6 +52,7 @@ export default function Home() {
           </div>
           <div className={styles.text}>
             <div>let's polish your profile to stand out between your peers</div>
+            <button className={styles.button}>lets go</button>
           </div>
         </div>
       </div>

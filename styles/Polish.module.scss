@@ -15,6 +15,10 @@
     justify-content: center;
     height: auto;
   }
+  @media only screen and (max-width: 564px) {
+    margin: left 0rem;
+    padding: 10px;
+  }
 }
 
 .logo {
@@ -43,8 +47,12 @@
     // flex-direction: column;
     margin-top: 2rem;
   }
+  @media only screen and (max-width: 564px) {
+    margin-left: -5rem;
+    font-size: 10px;
+    padding: 10px;
 }
-
+}
 .navLinks li {
   margin: 0 10px;
 margin-left: 2rem;
@@ -84,11 +92,11 @@ margin-left: 2rem;
 }
 
 .image {
-  
   margin-bottom: 1rem; /* reduce margin-bottom to shorten distance */
 }
 .uptext{
-  font-size: 2rem;
+  font-size: 3rem;
+  margin-bottom: 4rem;
 }
 .text {
   padding-top: 2%;
@@ -96,4 +104,21 @@ margin-left: 2rem;
   text-align: center;
   word-break: keep-all;
   width: fit-content;
+}
+.button{
+    padding: 1rem 2rem;
+    background-color: #0C84DF;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: background-color 0.3s ease;
+    width: 16.8rem;
+    height: 3.4rem;
+    &:hover {
+      background-color: darken(#51C9FF, 10%);
+    }
 }
