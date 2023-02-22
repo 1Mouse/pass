@@ -15,7 +15,7 @@ const SearchBox = () => {
   
     return (
       <>
-        <button onClick={handleClick}><img src="/search.png"  className='search_icon'/></button>
+        <div onClick={handleClick}><Image src="/search.png" alt="Logo" width={32}height={32} /></div>
         {showPopup && (
           <div className="search-popup">
             <input type="text" placeholder="Search..." />
@@ -33,10 +33,7 @@ const SearchBox = () => {
             
             
           }
-          .search_icon{
-            background: transparent;
-            border: none;
-          }
+         
         `}</style>
       </>
     );

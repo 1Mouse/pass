@@ -1,64 +1,135 @@
-import Head from 'next/head'
+import Link from 'next/link';
+import styles from '../styles/landing.module.scss';
 import Image from 'next/image'
-import { Inter } from '@next/font/google'
-// import styles from '../styles/Home.module.scss'
-import NavbarNewUser from '@/Components/common/NavbarNewUser'
-import NavButton from '@/Components/common/button'
-import styles from '../styles/landing.module.scss'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-const inter = Inter({ subsets: ['latin'] })
-
-export default function Landing() {
+export default function Navbar() {
   return (
     <>
-<div className={styles.landing_page}>
-{/* logo+navbar */}
-<div className={styles.landing_head}>
-    <NavbarNewUser></NavbarNewUser>
+    <nav className={styles.navbar}>
+      <div className={styles.logo}><Image
+    src="/Frame Logo.png"
+    alt="Interview Image"
+    width={124.71}
+    height={56.73}
+  /></div>
+      <ul className={styles['nav-links']}>
+        <li>
+          <Link href="/">
+            About
+          </Link>
+        </li>
+        <li>
+          <Link href="/about">
+            Pricing
+          </Link>
+        </li>
+        <li>
+          <Link href="/services">
+          Testimonials
+          </Link>
+        </li>
+        <li>
+          <Link href="/contact">
+            Contact
+          </Link>
+        </li>
+        <li>
+          <Link href="/signup">
+            log in
+          </Link>
+        </li>
+        <li>
+          <Link href="/login">
+            join
+          </Link>
+        </li>
+      </ul>
+    </nav>
+
+<div className={styles.main}>
+<div className={styles['left-side']}>
+  <h1>
+  <div>Best</div> 
+  <div>PlatForm To interviews with</div>
+  <div>engineers</div>
+  <div> from Amazon, Google, Facebook,</div> 
+  <div>and other top companies.</div>
+  </h1>
+  <p>
+    Get better at algorithmic and systems design problems, and get
+    detailed feedback on exactly what you need to work on.
+  </p>
+  <button>Get started</button>
 </div>
-
-    {/* right side */}
-    <div className={styles.langing_page_right}>
-      <img src='LandingPage.png'></img>
-    </div>
-
-    {/* left side */}
-    <div className={styles.langing_page_left}>
-           <div className={styles.landing_page_left_contant}>
-            <div className={styles.landing_page_text}>
-             <div>Best</div> 
-               <div> PlatForm To interviews with</div>
-                <div>engineers </div>
-               <div> from Amazon, Google, Facebook,</div> 
-               <div>and other top companies.</div>
-                
-                <div className={styles.algorithmic}>Get better at algorithmic and systems design problems, and get detailed feedback on exactly what you need to work on.</div>
-                
-                <div className= {styles.GetStarted} >    <NavButton href='' text="Get started" /></div>
-                </div>
-              
-           </div> 
-    </div>
-            
-
+<div className={styles['right-side']}>
+  <Image
+    src="/LandingPage.png"
+    alt="Interview Image"
+    width={600}
+    height={400}
+  />
 </div>
-    </>
-  )
+</div>
+</>
+  );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React from 'react';
+// import styles from '../styles/landing.module.scss';
+// import Image from 'next/image'
+// function Landing() {
+//   return (
+//     <div>
+//       <div className={styles.navbar}>
+//         <div className={styles.navbarLogo}><img src="/Frame Logo.png"  /></div>
+//         <ul className={styles.navbarLinks}>
+//           <a href='./about' className={styles.navbarLink}>About</a>
+//           <a href='./pricing' className={styles.navbarLink}>Pricing</a>
+//           <a href='./testimonials' className={styles.navbarLink}>Testimonials</a>
+//           <a href='./contact' className={styles.navbarLink}>Contact</a>
+//           <a href='./login' className={styles.navbarLink}>Log in</a>
+//           <a href='./joinnow' className={styles.navbarLink}>Join now</a>
+
+//         </ul>
+//       </div>
+
+//       <div className={styles.content}>
+//         <div className={styles.text}>
+//           <h2 className={styles.heading}>
+//             <div>Best</div> 
+//                <div> PlatForm To interviews with</div>
+//                 <div>engineers </div>
+//                <div> from Amazon, Google, Facebook,</div> 
+//                <div>and other top companies.</div>
+//           </h2>
+//           <p className={styles.paragraph}>Get better at algorithmic and systems design problems, and get detailed feedback on exactly what you need to work on.</p>
+//           <button className={styles.button}>Get started</button>
+//         </div>
+//         <div className={styles.image}>
+//           <img src="LandingPage.png"  />
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default Landing;

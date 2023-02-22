@@ -1,19 +1,19 @@
-export default function NavbarNewUser() {
-  return (
-    <>
-          <ul className={styles.NavbarNewUser}>
-             <div className={styles.navbar_text}>
-             <li >    <NavButton href='./about' text="About" /></li>
-             <li >    <NavButton href='./pricing' text="Pricing" /></li>
-             <li >    <NavButton href='./testimoials' text="Testimoials" /></li>
-             <li >    <NavButton href='./contact' text="Contact" /></li>
-             <li >    <NavButton href='./login' text="Log in" /></li>
-             <li className={styles.JoinNow}>    <NavButton href='./JoinNow' text="Join now" /></li>
+// export default function NavbarNewUser() {
+//   return (
+//     <>
+//           <ul className={styles.NavbarNewUser}>
+//              <div className={styles.navbar_text}>
+//              <li >    <NavButton href='./about' text="About" /></li>
+//              <li >    <NavButton href='./pricing' text="Pricing" /></li>
+//              <li >    <NavButton href='./testimoials' text="Testimoials" /></li>
+//              <li >    <NavButton href='./contact' text="Contact" /></li>
+//              <li >    <NavButton href='./login' text="Log in" /></li>
+//              <li className={styles.JoinNow}>    <NavButton href='./JoinNow' text="Join now" /></li>
       
-             </div>
-          </ul>
+//              </div>
+//           </ul>
 
-    <div/>
+//     <div/>
    
         {/* <style jsx>{`
         @media (min-width: 1024px) {
@@ -80,6 +80,6 @@ export default function NavbarNewUser() {
         }
 
         `}</style> */}
-    </>
-  )
-}
+    // </>
+//   )
+// }

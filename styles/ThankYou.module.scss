@@ -1,163 +1,96 @@
-@media (min-width: 1024px) {
-  .LOGO{
-    position: fixed;
-left: 47.5%;
-top: 36.94%;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  margin-top: 4rem;
+  margin-left: 2rem;
 
-
-
- /* Primary  */
-
-  }
-  .ThankYouText{
-    position: fixed;
-width: 557px;
-height: 44px;
-left: 35.5%;
-top: 56.94%;
-width: fit-content;
-
-font-family: 'Open Sans';
-font-style: normal;
-font-weight: 600;
-font-size: 32px;
-line-height: 44px;
-
-display: flex;
-align-items: flex-end;
-text-align: center;
-
-
-color: #313638;
-  }
-
-  .CheckEmailText{
-    position: fixed;
-width: 1285px;
-height: 88px;
-left: 10%;
-top: 65%;
-width: fit-content;
-
-font-family: 'Open Sans';
-font-style: normal;
-font-weight: 400;
-font-size: 32px;
-line-height: 44px;
-display: flex;
-align-items: flex-end;
-text-align: center;
-
-
-color: #313638;
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
+    justify-content: center;
+    height: auto;
   }
 }
-@media (min-width: 768px) and (max-width: 1023px) {
+
+.logo {
+  display: flex;
+  align-items: center;
+  width: 124.71px;
+  height:56.73px;
  
-  .LOGO{
-    position: fixed;
-left: 47.5%;
-top: 36.94%;
-
-
- /* Primary  */
-
-  }
-  .ThankYouText{
-    position: absolute;
-width: 557px;
-height: 44px;
-left: 23.5%;
-top: 56.94%;
-width: fit-content;
-font-family: 'Open Sans';
-font-style: normal;
-font-weight: 600;
-font-size: 32px;
-line-height: 44px;
-padding-right: 10%;
-
-display: flex;
-align-items: flex-end;
-text-align: center;
-
-
-color: #313638;
-  }
-
-  .CheckEmailText{
-    position: absolute;
-width: 1285px;
-height: 88px;
-left: 10%;
-top: 70%;
-width: fit-content;
-font-family: 'Open Sans';
-font-style: normal;
-font-weight: 400;
-font-size: 32px;
-line-height: 44px;
-display: flex;
-align-items: flex-end;
-text-align: center;
-padding-right: 5%;
-
-color: #313638;
-  }
 }
-@media (max-width: 767px) {
- 
-  .LOGO{
-    position: fixed;
-    left: 47.5%;
-    top: 26.94%;
-    
 
+.logo img {
+  width: fit-content;
+  height: fit-content;
+  margin-right: 10px;
+}
 
- /* Primary  */
+.navLinks {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  margin: 0;
 
-  }
-  .ThankYouText{
-    position: absolute;
-width: 557px;
-height: 44px;
-left: 10%;
-top: 55%;
-width: fit-content;
-font-family: 'Open Sans';
-font-style: normal;
-font-weight: 600;
-font-size: 32px;
-line-height: 44px;
-padding-right: 5%;
-display: flex;
-align-items: flex-end;
-text-align: center;
-
-
-color: #313638;
-  }
-
-  .CheckEmailText{
-    position: absolute;
-width: 1285px;
-height: 88px;
-left: 1%;
-top: 80%;
-padding-right: 5%;
-width: fit-content;
-font-family: 'Open Sans';
-font-style: normal;
-font-weight: 400;
-font-size: 32px;
-line-height: 44px;
-display: flex;
-align-items: flex-end;
-text-align: center;
-
-
-color: #313638;
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
+    margin-top: 20px;
   }
 }
 
+.navLinks li {
+  margin: 0 10px;
+
+  @media only screen and (max-width: 768px) {
+    margin: 10px 0;
+  }
+}
+
+.navLinks a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color:#51C9FF;
+  }
+}
+
+/* Main content styles */
+.container {
   
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.center {
+  top: 40vh;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem; /* add margin-top to center div */
+}
+
+.image {
+  
+  margin-bottom: 1rem; /* reduce margin-bottom to shorten distance */
+}
+
+.text {
+  padding-top: 2%;
+  font-size: 3rem;
+  text-align: center;
+  word-break: keep-all;
+  width: fit-content;
+}
+
+ 
