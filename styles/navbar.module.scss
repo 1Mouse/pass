@@ -1,39 +1,117 @@
-.Navbar *{
-    margin-right: 5px;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5rem;
+  background-color: #fff;
+  overflow: hidden;
+  font-family: 'Open Sans';
+
+
 }
 
-.Navbar {
-    position: fixed;
-    top: 5%;
-    left: 0;
-    right: 0;
+.logo {
+  width: 125px;
+  height: 57px;
+  overflow: hidden;
+
+}
+
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  border: none;
+  background-color: #fff;
+  overflow: hidden;
+
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin-top: 2rem;
+  margin-right: 2rem;
+  overflow: hidden;
+
+}
+
+.nav-links li {
+  margin-left: 2.5rem;
+  text-decoration: none; 
+  overflow: hidden;
+
+}
+.nav-links li a {
+  text-decoration: none; 
+  color: black;
+  overflow: hidden;
+
+}
+.nav-links li a:hover{
+  color: #51C9FF; 
+  overflow: hidden;
+
+  
+}
+
+
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    margin-right: 20px;
+    overflow: hidden;
+
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 8rem;
+    // left: 0rem;
+    right: 1%;
+    width: 12rem;
+    height: 20rem;
+    background-color: rgb(222, 220, 226);
+    // padding: 0;
+    z-index: 1;
+    overflow: hidden;
+
+
+  }
+
+  .nav-links li {
+    margin: 0%;
+    text-align: center;
+    padding-top: 6%;
+    right:  20%;
+    overflow: hidden;
+
+  }
+  .nav-links li:nth-child(1) {
+    // display: none;
+    position: relative;
+    line-height: 90%;
+    padding-top: 20%;
+    overflow: hidden;
+
+
+  }.nav-links li:nth-child(2) {
+    overflow: hidden;
+
+    // display: none;
+    position: relative;
+    padding-top: 10%;
+  }
+  .nav-links li:nth-child(4) {
+    overflow: hidden;
+
+    display: none;
+  }
+  .nav-links-open {
+    overflow: hidden;
+
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
   }
-
-  .logo {
-    width: 124.71px;
-    height: 56.73px;
-    margin-left: 5%;
-
-  }
-
-  .navbar_text {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .ul li {
-    margin: 0 10px;
-  }
-
-  .ul li a {
-    color: #fff;
-    text-decoration: none;
-  }
+}

@@ -1,95 +1,4 @@
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  background-color: #fff;
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  margin-top: 4rem;
-  margin-left: 3rem;
 
-  @media only screen and (max-width: 768px) {
-    flex-direction: column;
-    justify-content: center;
-    height: auto;
-  }
-  @media only screen and (max-width: 564px) {
-    margin: left 0rem;
-    padding: 10px;
-  }
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  width: 124.71px;
-  height:56.73px;
- 
-}
-
-.logo img {
-  width: fit-content;
-  height: fit-content;
-  margin-right: 10px;
-}
-
-
-
-
-
-
-
-.navLinks {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  list-style: none;
-  margin: 0;
-
-  @media only screen and (max-width: 768px) {
-    // flex-direction: column;
-    margin-top: 2rem;
-  }
-  @media only screen and (max-width: 564px) {
-    margin-left: -5rem;
-    font-size: 10px;
-    padding: 10px;
-}
-}
-
-.navLinks li {
-  margin: 0 10px;
-  margin-left: 2rem;
-
-  @media only screen and (max-width: 768px) {
-    margin-left: 2rem;
-  }
-}
-
-.navLinks a {
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
-  transition: all 0.3s ease;
-
-  &:hover {
-    color:#51C9FF;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-/* Main content styles */
 .container {
   
   display: flex;
@@ -103,12 +12,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 10rem; /* add margin-top to center div */
+  margin-top: 10rem; 
 }
 
 .image {
   
-  margin-bottom: 1rem; /* reduce margin-bottom to shorten distance */
+  margin-bottom: 1rem; 
 }
 
 .text {

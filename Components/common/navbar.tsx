@@ -1,8 +1,157 @@
-// import React from 'react';
-// import styles from './Navbar.module.scss';
+import styles from '../../styles/navbar.module.scss'
+import { useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import SearchBox from './search'
 
-// function Navbar() {
+const Navbarfirst = () => {
+  const [navOpen, setNavOpen] = useState(false);
+
+  const toggleNav = () => {
+    setNavOpen(!navOpen);
+  };
+
+  return (
+    <nav className={styles.navbar}>
+      <div className={styles.logo}>
+        <Image src="/FrameLogo.png" alt="Interview Image" width={124.71} height={56.73} />
+      </div>
+      <button className={styles['menu-toggle']} onClick={toggleNav}>
+        <Image src="/Hamburger.png" alt="Menu" width={20} height={20} />
+      </button>
+      <ul className={`${styles['nav-links']} ${navOpen ? styles['nav-links-open'] : ''}`}>
+                     <li>
+                 <Link href="/" passHref>
+                   watch interview
+                 </Link>
+               </li>
+               <li>
+                 <Link href="/about" passHref>
+                   Brawse
+                 </Link>
+               </li>
+               <li>
+                <Link href="" passHref>
+                 <SearchBox/>
+                 </Link>
+               </li>
+               <li>
+                
+                 <Image src="/Line1.png" alt="Logo" width={1}height={32} />
+                
+               </li>
+               <li>
+                 <Link href="/contact" passHref>
+                 <Image src="/user.png" alt="Logo" width={32}height={32} />
+                 </Link>
+               </li>
+               <li>
+                 <Link href="/contact" passHref>
+                 <Image src="/icon-park-outline_drop-down-list.png" alt="Logo" width={32}height={32} />
+                 </Link>
+               </li>
+      </ul>
+    </nav>
+  );
+};
+
+export default Navbarfirst;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import Head from 'next/head'
+// import Image from 'next/image'
+// import { Inter } from '@next/font/google'
+// import styles from '../../styles/navbar.module.scss'
+// import Link from 'next/link';
+// import SearchBox from './search'
+// import NavButton from './button'
+
+// function Navbarfirst() {
 //   return (
+//     <>
+//           <nav className={styles.navbar}>
+//             <div className={styles.logo}>
+//               <Image src="/Frame Logo.png" alt="Logo" width={124.71}height={56.73} />
+//             </div>
+//             <ul className={styles.navLinks}>
+//               <li>
+//                 <Link href="/" passHref>
+//                   watch interview
+//                 </Link>
+//               </li>
+//               <li>
+//                 <Link href="/about" passHref>
+//                   Brawse
+//                 </Link>
+//               </li>
+//               <li>
+//                <Link href="" passHref>
+//                 <SearchBox/>
+//                 </Link>
+//               </li>
+//               <li>
+                
+//                 <Image src="/Line 1.png" alt="Logo" width={1}height={32} />
+                
+//               </li>
+//               <li>
+//                 <Link href="/contact" passHref>
+//                 <Image src="/user.png" alt="Logo" width={32}height={32} />
+//                 </Link>
+//               </li>
+//               <li>
+//                 <Link href="/contact" passHref>
+//                 <Image src="/icon-park-outline_drop-down-list.png" alt="Logo" width={32}height={32} />
+//                 </Link>
+//               </li>
+//             </ul>
+//           </nav>
+//           </>
+// );}
+// export default Navbarfirst;
+
+
+
+
+
+
+
+
+
+
 //     <nav className={styles.navbar}>
 //       <ul className={styles.links}>
 //         <li>
@@ -29,7 +178,6 @@
 //   );
 // }
 
-// export default Navbar;
 
 
 
@@ -40,13 +188,6 @@
 
 
 
-// import Head from 'next/head'
-// import Image from 'next/image'
-// import { Inter } from '@next/font/google'
-// import styles from '../../styles/navbar.module.scss'
-// import Link from 'next/link';
-// import SearchBox from './search'
-// import NavButton from './button'
 
 
 // const inter = Inter({ subsets: ['latin'] })
