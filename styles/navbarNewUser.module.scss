@@ -3,7 +3,6 @@
   justify-content: space-between;
   align-items: center;
   padding: 5rem;
-  background-color: #fff;
   font-family: 'Open Sans';
 
 }
@@ -23,7 +22,7 @@
 .nav-links {
   display: flex;
   list-style: none;
-  margin-top: 5rem;
+  margin-top: 2rem;
   margin-right: 2rem;
   
 }
@@ -66,7 +65,7 @@
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 5rem;
+    top: 8rem;
     // left: 0rem;
     right: 1%;
     width: 12rem;
