@@ -20,6 +20,7 @@ export default function EmailConfirmatioin() {
 
     if (msg === '')
         return <div>Loading</div>;
+
         
     return (
         <>
