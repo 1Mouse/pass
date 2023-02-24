@@ -1,0 +1,26 @@
+.divider {
+    width: 50%;
+    color:gray;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    margin-top:2rem;
+    margin-bottom: 2rem;
+}
+
+.divider:before,
+.divider:after {
+    content: '';
+    flex: 0 1 100%;
+    border-bottom: 1px solid gray;
+    margin: 0 1rem;
+}
+
+.divider:before {
+    margin-left: 0;
+}
+
+.divider:after {
+    margin-right: 0;
+}
+

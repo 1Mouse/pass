@@ -1,0 +1,233 @@
+@use "../styles/abstracts/variables" as *;
+
+.pageNoScroll {
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.signupLeft {}
+
+.stikyNavbar {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.navBrand {
+    padding-left: 10px;
+    display: block;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: $color-bg-white;
+    height: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+
+    // input {
+    //     display: block;
+    //     color: $color-text-black;
+    //     border: 2px gainsboro solid;
+    //     border-radius: 5px;
+    //     padding: 1rem 2rem;
+    //     margin: 1rem 0;
+    //     outline: 0;
+
+    //     &:focus,&:active{
+    //     border: 2px $color-secondary solid;
+    //     }
+    // }
+}
+
+
+.formItself {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-left: 0;
+
+
+    @media screen and (max-width:390px) {
+        width: 60%;
+    }
+}
+
+.inputContainer {
+    display: grid;
+    grid-template-columns: 15% 75% 15%;
+    margin: 1rem 0;
+    height: 5.5rem;
+    border-radius: 5px;
+    padding: 0 0.4rem;
+    border: 2px gainsboro solid;
+
+    &:focus-within {
+        border: 2px $color-secondary solid;
+    }
+
+    .icon {
+        text-align: center;
+        color: #acacac;
+        justify-self: center;
+        align-self: center;
+        margin-bottom: 0.2rem;
+    }
+
+    input {
+        background: none;
+        outline: none;
+        border: none;
+        color: #333;
+        justify-self: start;
+        align-self: center;
+    }
+
+    .eye {
+        color: #acacac;
+        justify-self: center;
+        align-self: center;
+        margin-right: 3rem;
+        margin-top: 0.2rem;
+        opacity: 0.7;
+        font-size: 1.5rem;
+    }
+}
+
+.instructions{
+    font-size:1.2rem;
+    color:darken(red,10%);
+    padding:0 1rem;
+    .pwdIcon{
+        margin-right:1rem;
+    }
+}
+.hidden{
+    display:none;
+}
+
+.titleContainer {
+    composes: formItself;
+    margin-bottom: 2rem;
+
+    p {
+        font-weight: 300;
+        font-size: 1.5rem;
+        opacity: 0.9;
+    }
+
+    a {
+        color: $color-text-black;
+        text-decoration: none;
+        border-bottom: 3px $color-secondary solid;
+        border-radius: 3px;
+
+        &:hover {
+            border-width: 5px;
+        }
+    }
+
+}
+
+.title {
+    font-size: 3.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+
+}
+
+.select {
+    margin: 1rem 0;
+    height: 5.5rem;
+    border-radius: 5px;
+    padding: 0 2rem;
+    border: 2px gainsboro solid;
+    outline: 0;
+    appearance: none;
+    color: darken(#acacac, 20%);
+
+    &:focus-within {
+        border: 2px $color-secondary solid;
+    }
+}
+
+.btnGoogle {
+    width: 50%;
+    padding: 1.2rem 1.6rem 1.2rem 4.2rem;
+    border: 1px solid $color-secondary;
+    border-radius: 8px;
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 1px 1px rgba(0, 0, 0, .25);
+    margin: 1rem 0;
+    cursor: pointer;
+    color: $color-text-black;
+    font-size: 1.6rem;
+    font-weight: 600;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMiAxMyAxMyAxMiAxMy42djIuMmgzYTguOCA4LjggMCAwIDAgMi42LTYuNnoiIGZpbGw9IiM0Mjg1RjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjxwYXRoIGQ9Ik05IDE4YzIuNCAwIDQuNS0uOCA2LTIuMmwtMy0yLjJhNS40IDUuNCAwIDAgMS04LTIuOUgxVjEzYTkgOSAwIDAgMCA4IDV6IiBmaWxsPSIjMzRBODUzIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNNCAxMC43YTUuNCA1LjQgMCAwIDEgMC0zLjRWNUgxYTkgOSAwIDAgMCAwIDhsMy0yLjN6IiBmaWxsPSIjRkJCQzA1IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNOSAzLjZjMS4zIDAgMi41LjQgMy40IDEuM0wxNSAyLjNBOSA5IDAgMCAwIDEgNWwzIDIuNGE1LjQgNS40IDAgMCAxIDUtMy43eiIgZmlsbD0iI0VBNDMzNSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTAgMGgxOHYxOEgweiIvPjwvZz48L3N2Zz4=);
+    background-color: $color-bg-white;
+    background-repeat: no-repeat;
+    background-position: 1em 14px;
+
+    &:hover {
+        box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25);
+        transform: scale(1.05);
+    }
+
+    @media screen and (max-width:390px) {
+        width: 60%;
+    }
+}
+
+.btnPrimary {
+    border: none;
+    background: $color-primary;
+    margin: 3rem auto;
+    display: block;
+    width: 100%;
+    border-radius: 8px;
+    padding: 1rem 2rem;
+    color: $color-bg-white;
+    cursor: pointer;
+    white-space: nowrap;
+    margin-bottom: 10rem;
+
+    &:hover:not(:disabled) {
+        box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25);
+        filter: brightness(120%);
+        transform: scale(1.05);
+    }
+    &:disabled{
+        cursor:not-allowed;
+
+    }
+}
+
+.signupRight {
+    background-color: $color-secondary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (max-width: 767.98px) {
+        display: none;
+    }
+}
+
+.imageContainer {
+    width: 70%;
+}
+
+.image {
+    object-fit: contain;
+    width: 100% !important;
+    position: relative !important;
+    height: unset !important;
+}
+
+.imageContainer>div {
+    position: unset !important;
+}
