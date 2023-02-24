@@ -1,0 +1,70 @@
+@use "../styles/abstracts/variables" as *;
+
+.nav {
+    background-color: yellow;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0.5rem 1rem;
+}
+
+.navList {
+    width: 100%;
+    margin: 0;
+    list-style: none;
+}
+
+.navItem {
+    padding: 0.5rem 2rem;
+    border-bottom: 1px solid #222222;
+
+    a {
+    color: $color-text-black;
+    text-decoration:none;
+    transition: color 0.3s;
+    
+
+    &:hover{
+    color: $color-secondary;
+}
+    }
+}
+
+
+
+
+.joinNow{
+
+}
+.navToggler {
+    opacity: 0.5;
+    transition: box-shadow 0.15s;
+    cursor: pointer;
+}
+
+.nav.collapsibleExpanded .navToggler {
+    opacity: 1;
+    box-shadow: 0 0 0 3px #666;
+    border-radius: 5px;
+}
+
+
+@media screen and (min-width: 768px) {
+    .navToggler {
+        display: none;
+    }
+
+    .navList {
+        width: auto;
+        display: flex;
+        font-size: 1.6rem;
+        max-height: 100%;
+        /* to make it visible as they are initially hiddedn because of the applied "collapsible__content" class*/
+        opacity: 1;
+    }
+
+    .navItem {
+        border: 0;
+    }
+}

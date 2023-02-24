@@ -2,15 +2,25 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react';
+import axios from 'axios';
+import isEmailConfirmed from '@/lib/axios/isEmailConfirmed';
+import { useState } from 'react';
 
 export default function EmailConfirmatioin() {
-    const router=useRouter();
+    const router = useRouter();
+    const [msg, setMsg] = useState<any>('');
+
     useEffect(
-        ()=>{
-            const token=router.query.emailConfirmationToken;
+        () => {
+            const token = router.query.emailConfirmationToken;
             console.log(token);
-            
-        },[])
+
+            setMsg(isEmailConfirmed(token as string));
+        }, [router.query.emailConfirmationToken])
+
+    if (msg === '')
+        return <div>Loading</div>;
+        
     return (
         <>
             <Head>
@@ -20,7 +30,7 @@ export default function EmailConfirmatioin() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main>
-                <div className=''>Index</div>
+                <div>{msg}</div>
             </main>
         </>
     )

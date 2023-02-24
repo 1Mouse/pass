@@ -36,7 +36,7 @@ const SignUpForm = () => {
 
     const [role,setRole]=useState('');
 
-    const [errMsg, setErrMsg] = useState("Email already taken");
+    const [errMsg, setErrMsg] = useState("");
     const [success, setSuccess] = useState(false);
 
     useEffect(() => {
@@ -61,6 +61,7 @@ const SignUpForm = () => {
         const validateEmail=EMAIL_REGEX.test(email);
         const validatePwd=!PWD_REGEX.test(pwd);
         if(!validateEmail||!validatePwd){
+            console.log('here')
             setErrMsg('Invalid Entries');
             return;
         }
@@ -113,7 +114,7 @@ const SignUpForm = () => {
                         </p>
                     </div>
                     <button type="button" className={styles.btnGoogle}>
-                        Sign in with Google
+                        Sign up with Google
                     </button>
                     <OrLine />
                 <form onSubmit={handleSubmit} className={styles.formItself}>
@@ -183,7 +184,7 @@ const SignUpForm = () => {
                             value={role} 
                             onChange={(e)=>setRole(e.target.value)}
                         >
-                            <option selected hidden disabled value="" className={styles.d}>
+                            <option hidden disabled value="" className={styles.d}>
                                 Let&apos;s select role:
                             </option>
                             <option value="interviewee">Interviewee</option>
