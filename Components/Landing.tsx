@@ -1,42 +1,64 @@
+import Head from "next/head";
 import React from "react";
 import Link from "next/link";
 import Style from "../Components/landing.module.scss";
 import Image from "next/image";
-import img from "../public/image_landing.png";
+import PassLogo from "../public/PassLogo.svg";
+import HeroImage from "../public/HeroImage.png";
 import Home from "../pages/Home";
+import NavbarList from "./NavbarList";
+// import your animation
+import "animate.css";
+
+// import the library
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+// import your icons
+import {} from "@fortawesome/free-solid-svg-icons";
+import {} from "@fortawesome/free-regular-svg-icons";
+
 // import { useRouter } from "next/router";
 
 const Landing = () => {
   return (
-    // start header
     <>
+      {/* <!-- Start NavBar --> */}
+
       <div className={Style.header}>
         <div className={Style.container}>
-          <a href="#Home" className={Style.logo}>
-            Pass
-          </a>
+          <div className={Style.imageContainer}>
+            <Link href="Home">
+              <Image src={PassLogo} alt="PassLogo" className={Style.PassLogo} />
+            </Link>
+          </div>
           <ul className={Style.main_nav}>
             <li>
-              <a href="#About">About</a>
+              <Link href="#About">About</Link>
             </li>
             <li>
-              <a href="#Pricing">Pricing</a>
+              <Link href="#Pricing">Pricing</Link>
             </li>
             <li>
-              <a href="#Testmonials">Testmonials</a>
+              <Link href="#Testmonials">Testmonials</Link>
             </li>
             <li>
-              <a href="#Contact">Contact</a>
+              <Link href="#Contact">Contact</Link>
             </li>
             <li>
-              <a href="#Log In">Log In</a>
+              <Link href="#Log In">Log In</Link>
             </li>
             <li className={Style.bt}>
-              <a href="#Join Now">Join Now</a>
+              <Link href="#Join Now">Join Now</Link>
             </li>
           </ul>
         </div>
       </div>
+
+      {/* <!-- End NavBar --> */}
+
+      {/* <!-- Start landing --> */}
+
       <div className={Style.landing}>
         <div className={Style.container}>
           <div className={Style.text}>
@@ -49,11 +71,17 @@ const Landing = () => {
               detailed feedback on exactly what you need to work on.
             </p>
           </div>
-          <div className={Style.image}>
-            <Image src={img} alt="img" />
+          <div className={Style.HeroImage}>
+            <Image
+              src={HeroImage}
+              alt="HeroImage"
+              className={Style.HeroImage}
+            />
           </div>
         </div>
       </div>
+
+      {/* <!-- End landing --> */}
     </>
   );
 };

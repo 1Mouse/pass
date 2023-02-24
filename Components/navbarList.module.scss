@@ -1,91 +1,165 @@
 @use "../styles/abstracts/variables" as *; // To use any style from Variable direct - example $color-bg-white.
 
-.navbar {
-  background-color: $color-bg-white;
+.header {
+  background-color: white;
   position: relative;
+  -webkit-box-shadow: 0 0 10px #ddd;
+  -moz-box-shadow: 0 0 10px #ddd;
+  box-shadow: 0 0 10px #ddd;
 }
 
 .container {
-  ul {
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 0;
-    padding: 0;
-    position: relative;
-  }
-  li {
-    list-style-type: none;
-    margin: 2rem;
-    padding: 0;
-    @media (max-width: 320px) {
-      img.logo {
-        width: 70px;
-        height: 70px;
-      }
-      img.icon {
-        width: 20px;
-        height: 20px;
-      }
-    }
-  }
-  li:hover {
-    filter: grayscale(80%);
+  max-width: $max-width; /* 1 */
+  margin-left: auto; /* 2 */
+  margin-right: auto; /* 2 */
+  padding-left: 15px; /* 3 */
+  padding-right: 15px; /* 3 */
+  width: 100%; /* 1 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.header .PassLogo {
+  height: 72px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .header .PassLogo {
+    margin: auto;
   }
 }
 
-.NavBarList {
-  ul {
-    display: block;
-    margin: 1rem;
-    padding: 1rem;
+.header .main_nav {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .header .main_nav {
   }
-  li {
-    list-style-type: none;
-    margin: 5rem;
-    padding: 0;
-    text-align: center;
-    text-transform: capitalize;
-    a:hover {
-      color: #0c84df;
-      text-transform: uppercase;
-    }
+}
+
+.header .main_nav > li:hover .mega_menu {
+  opacity: 1;
+  z-index: 100;
+  top: calc(100% + 1px);
+}
+
+.header .main_nav > li > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 72px;
+  position: relative;
+  color: $color-text-black;
+  padding: 0 30px;
+  overflow: hidden;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+@media (max-width: 768px) {
+  .header .main_nav > li > a {
+    padding: 10px;
+    font-size: 14px;
+    height: 40px;
   }
-  a {
-    color: $color-text-black;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 700;
-    height: 44px;
-    left: 820px;
-    line-height: 16px;
-    text-decoration: none;
-    top: 145px;
-    width: 280px;
+}
+
+.header .main_nav > li > a::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background-color: $color-primary;
+  top: 0;
+  left: -100%;
+  transition: 0.3s;
+}
+
+.header .main_nav > li > a:hover {
+  color: $color-primary;
+  background-color: #fafafa;
+}
+
+.header .main_nav > li > a:hover::before {
+  left: 0;
+}
+
+.header .mega_menu {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  padding: 30px;
+  background-color: white;
+  border-bottom: 3px solid $color-primary;
+  z-index: -1;
+  display: flex;
+  gap: 40px;
+  top: calc(100% + 50px);
+  opacity: 0;
+  transition: top 0.3s, opacity 0.3s;
+}
+
+@media (max-width: 768px) {
+  .header .mega_menu {
+    flex-direction: column;
+    gap: 0;
+    padding: 5px;
   }
-  hr {
-    box-align: center;
-    color: $color-text-offWhite;
-    width: 100%;
+}
+
+.header .mega_menu .links {
+  min-width: 250px;
+  flex: 1;
+}
+
+.header .mega_menu .links li {
+  position: relative;
+}
+
+.header .mega_menu .links li:not(:last-child) {
+  border-bottom: 1px solid #e9e6e6;
+}
+
+@media (max-width: 768px) {
+  .header .mega_menu .links:first-of-type li:last-child {
+    border-bottom: 1px solid #e9e6e6;
   }
-  @media (max-width: 768px) {
-  }
-  @media (max-width: 320px) {
-    li {
-      margin: 3rem;
-    }
-    a {
-      color: $color-text-black;
-      font-size: 16px;
-      font-style: normal;
-      font-weight: 300;
-      height: 44px;
-      left: 820px;
-      line-height: 8px;
-      text-decoration: none;
-      top: 145px;
-      width: 280px;
-    }
-  }
+}
+
+.header .mega_menu .links li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background-color: #fafafa;
+  z-index: -1;
+  transition: 0.3s;
+}
+
+.header .mega_menu .links li:hover::before {
+  width: 100%;
+}
+
+.header .mega_menu .links li a {
+  color: $color-primary;
+  padding: 15px;
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.FontAwesomeIcon {
+  color: $color-primary;
+  width: 25px;
+  height: 25px;
 }

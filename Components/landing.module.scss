@@ -10,7 +10,13 @@
   box-shadow: 0 0 10px #ddd;
 }
 
-.header .container {
+.container {
+  max-width: $max-width; /* 1 */
+  margin-left: auto; /* 2 */
+  margin-right: auto; /* 2 */
+  padding-left: 15px; /* 3 */
+  padding-right: 15px; /* 3 */
+  width: 100%; /* 1 */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,10 +24,7 @@
   position: relative;
 }
 
-.header .logo {
-  color: $color-primary;
-  font-size: 26px;
-  font-weight: bold;
+.header .PassLogo {
   height: 72px;
   display: flex;
   justify-content: center;
@@ -29,7 +32,7 @@
 }
 
 @media (max-width: 768px) {
-  .header .logo {
+  .header .PassLogo {
     width: 100%;
     height: 50px;
   }
@@ -39,11 +42,6 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
 }
 
 @media (max-width: 768px) {
@@ -53,7 +51,6 @@
 }
 
 .header .main_nav > li > a {
-  text-decoration: none;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,6 +59,7 @@
   color: $color-text-black;
   padding: 0 20px;
   overflow: hidden;
+  font-size: 18px;
   transition: 0.3s;
 }
 
@@ -100,35 +98,23 @@
 .header .main_nav > li > a:hover::before {
   left: 0;
 }
-.container {
-  max-width: $max-width; /* 1 */
-  margin-left: auto; /* 2 */
-  margin-right: auto; /* 2 */
-  padding-left: 15px; /* 3 */
-  padding-right: 15px; /* 3 */
-  width: 100%; /* 1 */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
 
 /* small */
-@media (min-width: 768px) {
+@media (min-width: 320px) {
   .container {
     width: 750px;
   }
 }
 
 /* medium */
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .container {
     width: 970px;
   }
 }
 
 /* large */
-@media (min-width: 1200px) {
+@media (min-width: 1024px) {
   .container {
     width: 1170px;
   }
@@ -142,10 +128,31 @@
   position: relative;
 }
 
+.landing::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: $color-primary;
+  transform: skewY(6deg);
+  transform-origin: top right;
+}
+
+.landing .container {
+  min-height: calc(100vh - 72px);
+  display: flex;
+  align-items: center;
+  padding-bottom: 120px;
+}
+
 .landing .text {
   flex: 1;
 }
-@media (max-width: 991px) {
+
+@media (max-width: 1024px) {
   .landing .text {
     text-align: center;
   }
@@ -177,43 +184,28 @@
   }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1024px) {
   .landing .text p {
     margin: 10px auto;
   }
 }
-.landing::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background-color: $color-primary;
-  transform: skewY(6deg);
-  transform-origin: top right;
-}
 
-.landing .container {
-  min-height: calc(100vh - 72px);
-  display: flex;
-  align-items: center;
-  padding-bottom: 120px;
-}
-
-.landing .image img {
+.landing .HeroImage img {
   position: relative;
   width: 500px;
   height: 350px;
   animation: up-and-down 5s linear infinite;
 }
 
-@media (max-width: 991px) {
-  .landing .image {
+@media (max-width: 1024px) {
+  .landing .HeroImage {
     display: none;
   }
 }
+
+/* End Landing */
+
+/* Start Animation */
 
 @keyframes up-and-down {
   0%,
@@ -224,3 +216,20 @@
     top: -50px;
   }
 }
+
+/* End Animation */
+
+// .HeroImageContainer {
+//   width: 70%;
+// }
+
+// .HeroImage {
+//   object-fit: contain;
+//   width: 100%;
+//   position: relative;
+//   height: unset;
+// }
+
+// .HeroImageContainer > div {
+//   position: unset;
+// }
