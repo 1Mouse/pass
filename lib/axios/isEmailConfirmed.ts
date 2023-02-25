@@ -20,4 +20,5 @@ export default async function isEmailConfirmed(token:string){
             return 'something wrong happened';
         }
     }
+    
 }
