@@ -13,10 +13,10 @@ const Navbarnew = () => {
   return (
     <nav className={styles.navbar}>
       <div className={styles.logo}>
-        <Image src="/FrameLogo.png" alt="Interview Image" width={124.71} height={56.73} />
+        <Image src="/FrameLogo.svg" alt="Interview Image" width={124.71} height={56.73} />
       </div>
       <button className={styles['menu-toggle']} onClick={toggleNav}>
-        <Image src="/icon-park-outline_drop-down-list.png" alt="Menu" width={20} height={20} />
+        <Image src="/icon-park-outline_drop-down-list.svg" alt="Menu" width={20} height={20} />
       </button>
       <ul className={`${styles['nav-links']} ${navOpen ? styles['nav-links-open'] : ''}`}>
         <li>

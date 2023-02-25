@@ -15,7 +15,7 @@ export default function Polish() {
         <div className={styles.center}>
           <div className={styles.uptext}>Your account has successfully activated</div>
           <div className={styles.imageContainer}>
-            <Image src="/groupSignuoDoneImage.png" alt="Example Image" width={300} height={300} />
+            <Image src="/groupSignuoDoneImage.svg" alt="Example Image" width={300} height={300} />
           </div>
           <div className={styles.text}>
             <div>let's polish your profile to stand out between your peers</div>

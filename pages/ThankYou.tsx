@@ -13,7 +13,7 @@ export default function thankyou() {
       <div className={styles.container}>
         <div className={styles.center}>
           <div className={styles.imageContainer}>
-            <Image src="/LOGO.png" alt="Example Image" width={50} height={50} />
+            <Image src="/LOGO.svg" alt="Example Image" width={50} height={50} />
           </div>
           <div className={styles.text}>
             <div>Thank you! Please check your email.</div>
