@@ -8,7 +8,6 @@ import {
 
 const Navbar = () => {
 
-
     return (
         <>
             <nav className={`${styles.nav} ${styles.collapsible} container`}>
