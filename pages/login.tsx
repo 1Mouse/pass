@@ -1,6 +1,5 @@
-import Head from 'next/head'
-import LogInForm from '../components/LogInForm'
-
+import Head from 'next/head';
+import LogInForm from '../components/LogInForm';
 
 export default function Login() {
     return (
