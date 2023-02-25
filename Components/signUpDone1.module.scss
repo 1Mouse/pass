@@ -33,21 +33,24 @@
 
 @media (max-width: 768px) {
   .header .PassLogo {
-    width: 100%;
-    height: 50px;
+    margin: auto;
   }
 }
 
 .header .main_nav {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
 }
 
 @media (max-width: 768px) {
   .header .main_nav {
-    margin: auto;
   }
+}
+
+.header .main_nav > li:hover .mega_menu {
+  opacity: 1;
+  z-index: 100;
+  top: calc(100% + 1px);
 }
 
 .header .main_nav > li > a {
@@ -57,10 +60,8 @@
   height: 72px;
   position: relative;
   color: $color-text-black;
-  padding: 0 20px;
+  padding: 0 30px;
   overflow: hidden;
-  font-style: normal;
-  font-weight: 400;
   font-size: 18px;
   transition: 0.3s;
 }
@@ -71,14 +72,6 @@
     font-size: 14px;
     height: 40px;
   }
-}
-
-.header .main_nav > li:last-child {
-  height: 50px;
-  background-color: $color-primary;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
 }
 
 .header .main_nav > li > a::before {
@@ -101,60 +94,95 @@
   left: 0;
 }
 
-/* small */
-@media (min-width: 320px) {
-  .container {
-    width: 750px;
+.header .mega_menu {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  padding: 30px;
+  background-color: white;
+  border-bottom: 3px solid $color-primary;
+  z-index: -1;
+  display: flex;
+  gap: 40px;
+  top: calc(100% + 50px);
+  opacity: 0;
+  transition: top 0.3s, opacity 0.3s;
+}
+
+@media (max-width: 768px) {
+  .header .mega_menu {
+    flex-direction: column;
+    gap: 0;
+    padding: 5px;
   }
 }
 
-/* medium */
-@media (min-width: 768px) {
-  .container {
-    width: 970px;
+.header .mega_menu .links {
+  min-width: 250px;
+  flex: 1;
+}
+
+.header .mega_menu .links li {
+  position: relative;
+}
+
+.header .mega_menu .links li:not(:last-child) {
+  border-bottom: 1px solid #e9e6e6;
+}
+
+@media (max-width: 768px) {
+  .header .mega_menu .links:first-of-type li:last-child {
+    border-bottom: 1px solid #e9e6e6;
   }
 }
 
-/* large */
-@media (min-width: 1024px) {
-  .container {
-    width: 1170px;
-  }
+.header .mega_menu .links li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background-color: #fafafa;
+  z-index: -1;
+  transition: 0.3s;
 }
 
-// end header
+.header .mega_menu .links li:hover::before {
+  width: 100%;
+}
+
+.header .mega_menu .links li a {
+  color: $color-primary;
+  padding: 15px;
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.FontAwesomeIcon {
+  color: $color-primary;
+  width: 25px;
+  height: 25px;
+}
+
+//end header
 
 // start landing
 
 .landing {
   position: relative;
-  background-color: $color-primary;
-}
-
-.landing::before {
-  content: "";
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 5% 95%);
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: $color-bg-white;
-  border-bottom-left-radius: 182px;
-  //z-index: -1;
-  //transform: skewY(6deg);
-  //transform-origin: top right;
 }
 
 .landing .container {
   min-height: calc(100vh - 72px);
   display: flex;
   align-items: center;
-  padding-bottom: 120px;
+  justify-content: center;
+  align-content: center;
 }
 
 .landing .text {
-  flex: 1;
 }
 
 @media (max-width: 1024px) {
@@ -167,10 +195,12 @@
   margin: 0;
   letter-spacing: -2px;
   color: $color-text-black;
+
   font-style: normal;
   font-weight: 600;
-  font-size: 40px;
-  line-height: 120%;
+  font-size: 32px;
+  line-height: 44px;
+  text-align: center;
 }
 
 @media (max-width: 768px) {
@@ -182,11 +212,12 @@
 .landing .text p {
   margin: 5px 0 0;
   color: $color-text-black;
+
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 120%;
-  opacity: 0.5;
+  font-size: 32px;
+  line-height: 44px;
+  text-align: center;
 }
 
 @media (max-width: 768px) {
@@ -201,46 +232,16 @@
   }
 }
 
-.landing .HeroImage img {
+.landing .Logo img {
   position: relative;
-  width: 500px;
-  height: 350px;
-  animation: up-and-down 5s linear infinite;
+  width: 100px;
+  height: 100px;
 }
 
 @media (max-width: 1024px) {
-  .landing .HeroImage {
+  .landing .Logo {
     display: none;
   }
 }
 
-/* End Landing */
-
-/* Start Animation */
-
-@keyframes up-and-down {
-  0%,
-  100% {
-    top: 0;
-  }
-  50% {
-    top: -50px;
-  }
-}
-
-/* End Animation */
-
-// .HeroImageContainer {
-//   width: 70%;
-// }
-
-// .HeroImage {
-//   object-fit: contain;
-//   width: 100%;
-//   position: relative;
-//   height: unset;
-// }
-
-// .HeroImageContainer > div {
-//   position: unset;
-// }
+// End Landing
