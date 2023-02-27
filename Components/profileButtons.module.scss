@@ -1,0 +1,78 @@
+@use "../styles/abstracts/variables" as *; // To use any style from Variable direct - example $color-bg-white.
+
+/* Buttons */
+
+.btn {
+  border-radius: 10px;
+  border: 0;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  display: flex;
+  font-size: 1.8rem;
+  font-weight: 600;
+  justify-content: center;
+  padding: 1rem 2rem;
+  transition: 0.3s;
+  white-space: nowrap;
+  width: 15%;
+}
+
+.btn_sections {
+  background-color: $color-text-black;
+  color: $color-bg-white;
+}
+
+.btn_sections:hover {
+  background-color: $color-bg-button-offWhite;
+  color: $color-text-black;
+}
+
+.btn_Delete {
+  background-color: $color-bg-button-offWhite;
+  color: $color-text-black;
+  gap: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn_Delete:hover {
+  background-color: $color-text-black;
+  color: $color-bg-white;
+  gap: 10px;
+}
+
+.FontAwesomeIcon {
+  color: $color-primary;
+  width: 25px;
+  height: 25px;
+}
+
+/* Input */
+
+.input {
+  border: 1px solid $color-primary;
+  border-radius: 15px;
+  outline: 0;
+}
+
+.input_group {
+  position: relative;
+  border: 1px solid $color-primary;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+}
+
+.input_group .input {
+  border: 0;
+  flex-grow: 1;
+  padding: 1rem 1.5rem;
+}
+
+.input_group .FontAwesomeIcon {
+  margin: 0 16px;
+  width: 15px;
+  height: 15px;
+}
