@@ -6,6 +6,7 @@ import Landing from "../Components/Landing";
 import SignUpDone from "../Components/SignUpDone2";
 import { Inter } from "@next/font/google";
 import ProfileButtons from "@/Components/ProfileButtons";
+import ResetPassword from "../Components/ResetPassword";
 
 // const inter = Inter({ subsets: ['latin'] })
 
@@ -19,7 +20,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <ProfileButtons />
+        <ResetPassword />
       </main>
     </>
   );
