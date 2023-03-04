@@ -1,0 +1,35 @@
+
+.profile_head{
+    display: grid;
+    justify-content: center;
+    width: 100%;
+    background-color: #040B24;
+}
+.text{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-size: 2.5rem;
+    padding: 2.5rem ;
+    border-bottom: white 2px solid;
+
+}
+.profile_head_contant{
+    display: flex;
+    justify-content: space-between;
+
+}
+.profileimage{
+    display: flex;
+}
+.button{
+    display: grid;
+    height: 55px;
+    width: 192px;
+    
+}
+@media (max-width: 768px) {
+
+    
+  }
