@@ -15,47 +15,37 @@ export default function Profile() {
   return (
     <>
       <main>
-        <div className={styles.profile}>
+        <div className={styles.profile} style={{ background: "#040B24" }}>
           <div className={styles.profile_head}>
             <Profiletop></Profiletop>
           </div>
-          <hr></hr>
           <div className={styles.profile_container1}>
             <Container1></Container1>
           </div>
-          <hr></hr>
           <div className={styles.profile_container2}>
             <Container2></Container2>
           </div>
-          <hr></hr>
           <div className={styles.container3}>
             <Container3></Container3>
           </div>
-          <hr></hr>
           <div>
             <Changeusename></Changeusename>
           </div>
-          <hr></hr>
           <div>
             <Changeemail></Changeemail>
           </div>
-          <hr></hr>
           <div>
             <Changepassword></Changepassword>
           </div>
-          <hr></hr>
           <div>
             <Pricing></Pricing>
           </div>
-          <hr></hr>
           <div>
             <Dateandtime></Dateandtime>
           </div>
-          <hr></hr>
           <div>
             <Social></Social>
           </div>
-          <hr></hr>
         </div>
       </main>
     </>

@@ -1,14 +1,14 @@
 import Head from "next/head";
 import Image from "next/image";
-import styles from "../../styles/profile.module.scss";
+import styles from "./interst.module.scss";
 import Skill from "./skills";
 
 function Container3() {
   return (
     <>
       <main>
-        <h5>Skills:</h5>
-        <div>
+        <h5 className={styles.title}>Skills:</h5>
+        <div className={styles.parent}>
           <Skill name="Java Script" />
           <Skill name="C" />
           <Skill name="PHP" />

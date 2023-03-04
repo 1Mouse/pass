@@ -1,35 +1,43 @@
-
-.profile_head{
+.profile_head {
     display: grid;
-    justify-content: center;
+    align-items: center;
     width: 100%;
-    background-color: #040B24;
-}
-.text{
-    display: flex;
-    justify-content: center;
+    background-color: #040b24;
+  }
+  .text1 {
     text-align: center;
+    border-bottom: white 1px solid;
+  }
+  .text {
     color: white;
     font-size: 2.5rem;
-    padding: 2.5rem ;
-    border-bottom: white 2px solid;
-
-}
-.profile_head_contant{
+    padding: 2.5rem;
+  }
+  .profile_head_contant {
     display: flex;
     justify-content: space-between;
-
-}
-.profileimage{
-    display: flex;
-}
-.button{
-    display: grid;
-    height: 55px;
-    width: 192px;
-    
-}
-@media (max-width: 768px) {
-
-    
+    padding: 5rem;
+    align-items: center;
+    border-bottom: white 1px solid;
   }
+  .profileimage {
+    display: flex;
+    border: 5px solid white;
+    border-radius: 50%;
+  }
+  .button {
+    display: grid;
+    height: 10rem;
+    width: 16rem;
+  }
+  .button > button {
+    padding: 5px 8px;
+    margin: 4px;
+    font-weight: 600;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    color: #313638;
+  }
+  @media (max-width: 768px) {
+  }
+  

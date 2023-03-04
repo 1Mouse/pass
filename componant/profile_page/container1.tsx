@@ -1,43 +1,55 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../../styles/profile.module.scss'
+import Head from "next/head";
+import Image from "next/image";
+import styles from "./container1.module.scss";
 
- function Container1() {
-    return (
-      <>
-        
-        <main>
+function Container1() {
+  return (
+    <>
+      <main>
         <div className={styles.general_info}>
+          <div className={styles.parentText}>
             <h4 className={styles.text}>General Information</h4>
-            <div className={styles.general_info_contant}>
-              
-              <div className={styles.bio}>
+          </div>
+          <div className={styles.general_info_contant}>
+            <div className={styles.bio}>
               <form action="" className={styles.form}>
-             <div className={styles.formFirstSection}>
-               <input type="text" placeholder="First name" />
-               <input type="text" placeholder="Last name" />
-               <div className={styles.level}>
-                 <h4>Level of experience</h4>
-                 <select name="level" id="level">
-                   <option value="junior">Junior</option>
-                   <option value="senior">Senior</option>
-                 </select>
-               </div>
-             </div>
-             
-             <textarea placeholder="Bio..." id="" cols={30} rows={7}></textarea>
-             <div>
-                <button className={styles.save}>save</button>
-             </div>
-            </form>
-             </div>
-             </div>
-             </div>
-             
+                <div className={styles.formFirstSection}>
+                  <div className={styles.inputName}>
+                    <label htmlFor="FirstName">First Name *</label>
+                    <input
+                      id="FirstName"
+                      type="text"
+                      placeholder="First name"
+                    />
+                  </div>
+                  <div className={styles.inputName}>
+                    <label htmlFor="">Last Name *</label>
+                    <input id="LastName" type="text" placeholder="Last name" />
+                  </div>
+                  <div className={styles.level}>
+                    <h4>Level of experience *</h4>
+                    <select name="level" id="level">
+                      <option value="junior">Junior</option>
+                      <option value="senior">Senior</option>
+                    </select>
+                  </div>
+                </div>
+                <div className={styles.textarea}>
+                  <label htmlFor="bio">Bio *</label>
+                  <textarea
+                    placeholder="Bio..."
+                    id="bio"
+                    cols={30}
+                    rows={7}
+                  ></textarea>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </main>
+    </>
+  );
+}
 
-        </main>
-      </>
-   )
-   }
-
-  export default Container1;
+export default Container1;
