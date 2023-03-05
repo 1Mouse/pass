@@ -41,6 +41,7 @@ function Container1() {
                     id="bio"
                     cols={30}
                     rows={7}
+                    style={{ resize: "none" }}
                   ></textarea>
                 </div>
               </form>

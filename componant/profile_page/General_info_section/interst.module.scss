@@ -1,0 +1,59 @@
+$primary-color: #0C84DF;
+$secondary-color: #040b24;
+
+
+
+
+
+.interst{
+  border-bottom: $primary-color 1px solid;
+  padding-bottom: 20px;
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.parent > div {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border: 1px solid $primary-color;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+.button{
+  display: flex;
+  justify-content: end;
+  padding-top: 20px;
+  padding-right: 30px;
+}
+
+/* Medium screens */
+@media only screen and (max-width: 768px) {
+  .parent {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-content: center;
+  }
+  
+  .parent > div {
+    padding: 10px 15px;
+    width: 100%;
+  }
+}
+
+// For small screens
+@media only screen and (max-width: 480px) {
+  .parent {
+    grid-template-columns: minmax(0, 1fr);
+    justify-content: center;
+  }
+  
+  .parent > div {
+    padding: 10px;
+    width: 100%;
+  }
+}

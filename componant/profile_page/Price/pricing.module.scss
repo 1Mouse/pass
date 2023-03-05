@@ -1,0 +1,44 @@
+$primary-color: #0C84DF;
+$secondary-color: #040b24;
+
+
+.changeprice{
+    border-bottom: $primary-color 1px solid;
+    padding-top: 2rem ;
+    
+}
+
+.setprice{
+    display: grid;
+}
+.price{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 2rem;
+    
+    
+}
+.input{
+    border-color: $primary-color; 
+
+}
+
+.button{
+    padding: 5px 8px;
+    width: 15rem;
+    margin: 4px;
+    font-weight: 600;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    color: #313638;
+}
+@media only screen and (max-width: 768px) {
+    .price{
+        display: grid;
+    }
+
+  
+    .button {
+      margin-top: 1.5rem;
+    }
+  }

@@ -1,14 +1,14 @@
 import Head from "next/head";
 import Image from "next/image";
-import styles from "../../styles/profile.module.scss";
-import Skill from "./skills";
+import styles from "./social.module.scss";
+import Skill from "../Choose";
 
 function Social() {
   return (
     <>
       <main>
         <h4>Socials:</h4>
-        <div>
+        <div className={styles.icons}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"

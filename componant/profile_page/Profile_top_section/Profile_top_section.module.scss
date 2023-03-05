@@ -1,43 +1,83 @@
+$primary-color: #0C84DF;
+$secondry-color:  #040b24;
+
 .profile_head {
-    display: grid;
-    align-items: center;
-    width: 100%;
-    background-color: #040b24;
-  }
-  .text1 {
-    text-align: center;
-    border-bottom: white 1px solid;
-  }
-  .text {
-    color: white;
-    font-size: 2.5rem;
-    padding: 2.5rem;
-  }
-  .profile_head_contant {
-    display: flex;
-    justify-content: space-between;
-    padding: 5rem;
-    align-items: center;
-    border-bottom: white 1px solid;
-  }
-  .profileimage {
-    display: flex;
-    border: 5px solid white;
-    border-radius: 50%;
-  }
-  .button {
-    display: grid;
-    height: 10rem;
-    width: 16rem;
-  }
-  .button > button {
+  display: grid;
+  align-items: center;
+  width: 100%;
+}
+
+.text1 {
+  text-align: center;
+  border-bottom: $primary-color 1px solid;
+}
+
+.text {
+  color: $primary-color;
+  font-size: 2.5rem;
+  padding: 2.5rem;
+}
+
+.profile_head_contant {
+  display: flex;
+  justify-content: space-between;
+  padding: 5rem;
+  align-items: center;
+  border-bottom: $primary-color 1px solid;
+}
+
+.profileimage {
+  display: flex;
+  border: 5px solid gray;
+  border-radius: 50%;
+}
+
+.button {
+  display: grid;
+  height: 10rem;
+  width: 16rem;
+
+  > button {
     padding: 5px 8px;
     margin: 4px;
     font-weight: 600;
     border-radius: 5px;
     font-size: 1.2rem;
-    color: #313638;
+    color: $secondry-color;
   }
-  @media (max-width: 768px) {
+}
+
+@media screen and (max-width: 768px) {
+  .profile_head_contant {
+    flex-direction: column;
+    padding: 2rem;
   }
-  
+
+  .text {
+    font-size: 2rem;
+    padding: 1.5rem;
+  }
+
+  .button {
+    grid-template-rows: 1fr 1fr;
+    height: 8rem;
+    width: 16rem;
+
+    > button {
+      margin: 2px;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .text {
+    font-size: 1.8rem;
+    padding: 1rem;
+  }
+
+  .button {
+    grid-template-columns: 1fr;
+    height: 6rem;
+    width: 16rem;
+  }
+}

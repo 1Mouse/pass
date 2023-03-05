@@ -1,21 +1,21 @@
 import React from "react";
 import styles from "../styles/profile.module.scss";
-import Profiletop from "../componant/profile_page/Profile_top_section/profiletop";
-import Container1 from "@/componant/profile_page/container1";
-import Skill from "@/componant/profile_page/skills";
-import Container2 from "@/componant/profile_page/container2";
-import Container3 from "@/componant/profile_page/interst";
-import Changeusename from "@/componant/profile_page/changeusename";
-import Changeemail from "@/componant/profile_page/changeemail";
-import Changepassword from "@/componant/profile_page/changepassword";
-import Pricing from "@/componant/profile_page/pricing";
-import Dateandtime from "@/componant/profile_page/dateandtime";
-import Social from "@/componant/profile_page/socials";
+import Profiletop from "../componant/profile_page/Profile_top_section/Profiletop";
+import Container1 from "@/componant/profile_page/General_info_section/Container1";
+import Skill from "@/componant/profile_page/Choose";
+import Container2 from "@/componant/profile_page/General_info_section/Container2";
+import Container3 from "@/componant/profile_page/General_info_section/Interst";
+import Changeusename from "@/componant/profile_page/User_section/Changeusename";
+import Changeemail from "@/componant/profile_page/Email_section/Changeemail";
+import Changepassword from "@/componant/profile_page/Password_section/Changepassword";
+import Pricing from "@/componant/profile_page/Price/Pricing";
+import Dateandtime from "@/componant/profile_page/DateAndTime/Dateandtime";
+import Social from "@/componant/profile_page/Social_info/Socials";
 export default function Profile() {
   return (
     <>
       <main>
-        <div className={styles.profile} style={{ background: "#040B24" }}>
+        <div className={styles.profile}>
           <div className={styles.profile_head}>
             <Profiletop></Profiletop>
           </div>

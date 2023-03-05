@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
-import styles from "../../styles/profile.module.scss";
-import Skill from "./skills";
+import styles from "./dateandtime.module.scss";
+import Skill from "../Choose";
 
 function Dateandtime() {
   return (
