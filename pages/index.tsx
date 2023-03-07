@@ -8,6 +8,7 @@ import { Inter } from "@next/font/google";
 import ProfileButtons from "@/Components/ProfileButtons";
 import ResetPassword1 from "../Components/ResetPassword1";
 import ResetPassword2 from "../Components/ResetPassword2";
+import PolishForm from "../Components/PolishForm"
 
 // const inter = Inter({ subsets: ['latin'] })
 
@@ -21,7 +22,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <ResetPassword2 />
+        <PolishForm/>
       </main>
     </>
   );

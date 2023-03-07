@@ -128,22 +128,6 @@
 
 .landing {
   position: relative;
-  background-color: $color-primary;
-}
-
-.landing::before {
-  content: "";
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 5% 95%);
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: $color-bg-white;
-  border-bottom-left-radius: 182px;
-  //z-index: -1;
-  //transform: skewY(6deg);
-  //transform-origin: top right;
 }
 
 .landing .container {
@@ -225,6 +209,39 @@
   }
   50% {
     top: -50px;
+  }
+}
+
+// animation: animate 4s ease-in-out infinite;
+
+@keyframes animate {
+  0%,
+  100% {
+    clip-path: polygon(
+      0% 45%,
+      15% 44%,
+      32% 50%,
+      54% 60%,
+      70% 61%,
+      84% 59%,
+      100% 57%,
+      100% 100%,
+      0% 100%
+    );
+  }
+
+  50% {
+    clip-path: polygon(
+      0% 60%,
+      16% 65%,
+      34% 66%,
+      51% 62%,
+      67% 50%,
+      84% 45%,
+      100% 46%,
+      100% 100%,
+      0% 100%
+    );
   }
 }
 
