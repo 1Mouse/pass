@@ -1,0 +1,150 @@
+@use "../styles/abstracts/variables" as *;
+
+.block {
+    padding: 13rem 1rem;
+    // border: 1px red solid;
+    background: $color-bg-button-offWhite;
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 85%);
+}
+
+.heroContent {
+    background-color: rgb(106, 219, 250);
+    // border-radius: 14% 86% 76% 24% / 25% 44% 56% 75%;
+    margin-bottom: 4rem;
+    padding-top: 3rem;
+    padding-left: 1rem;
+    animation: blob 8s ease-in-out infinite;
+}
+
+@keyframes blob {
+    0% {
+        border-radius: 14% 86% 76% 24% / 25% 44% 56% 75%;
+    }
+
+    100% {
+        border-radius: 14% 86% 76% 24% / 25% 44% 56% 75%;
+    }
+
+    25% {
+        border-radius: 79% 21% 61% 39% / 43% 30% 70% 57%;
+    }
+}
+
+.heading {
+    font-weight: 800;
+    font-size: 5rem;
+    line-height: 1.2;
+}
+
+.tagLine {
+    margin-top: 2rem;
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 1.1;
+    opacity: 0.8;
+}
+
+.getStarted {
+    border: 3px $color-text-black solid;
+    background: $color-bg-white;
+    font-weight: 600;
+    display: block;
+    width: 40%;
+    margin: 0 auto;
+    border-radius: 8px;
+    padding: 1rem 2rem;
+    color: $color-text-black;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    box-shadow: inset 0 0 0 0 $color-text-black;
+    transition: ease-out 0.4s;
+
+    &:hover {
+        box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25);
+        filter: brightness(120%);
+        transform: scale(1.05);
+        box-shadow: inset 400px 0 0 0 $color-text-black;
+        color: $color-bg-white;
+    }
+}
+
+
+
+
+
+
+
+.heroImage {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.imageContainer {
+    width: 90%;
+    animation: float 6s ease-in-out infinite;
+    border-radius: 5px;
+}
+
+.image {
+    object-fit: contain;
+    width: 100% !important;
+    position: relative !important;
+    height: unset !important;
+}
+
+.imageContainer>div {
+    position: unset !important;
+}
+
+@keyframes float {
+    0% {
+        box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+        transform: translatey(0px);
+    }
+
+    50% {
+        box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2);
+        transform: translatey(-20px);
+    }
+
+    100% {
+        box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+        transform: translatey(0px);
+    }
+}
+
+@media screen and (max-width:767.98px) {
+    .imageContainer {
+        width: 100%;
+    }
+
+    .block {
+        padding: 6rem 0;
+        clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 95%);
+    }
+
+    .getStarted {
+        width: 80%;
+        font-size: 1.5rem;
+    }
+
+    .heading {
+        font-size: 2.6rem;
+    }
+
+    .tagLine {
+        font-size: 1.4rem;
+    }
+}
+
+@media screen and (max-width:1000px) {
+    .getStarted {
+        width: 60%;
+    }
+}

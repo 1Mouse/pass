@@ -1,54 +1,110 @@
 @use "../styles/abstracts/variables" as *;
 
 .nav {
-    background-color: yellow;
+    background-color: $color-bg-white;
+    // background: yellow;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     padding: 0.5rem 1rem;
+    font-weight: 600;
 }
 
 .navList {
     width: 100%;
     margin: 0;
     list-style: none;
+    padding: 0;
 }
 
 .navItem {
-    padding: 0.5rem 2rem;
-    border-bottom: 1px solid #222222;
+    padding: 0.7rem 2rem;
+    text-align: center;
+    cursor: pointer;
 
-    a {
-    color: $color-text-black;
-    text-decoration:none;
-    transition: color 0.3s;
-    
+    a:not(.logIn) {
+        text-decoration: none;
+        color: $color-text-black;
 
-    &:hover{
-    color: $color-secondary;
-}
+        background-image: linear-gradient(to right,
+                $color-primary,
+                $color-primary 50%,
+                $color-text-black 50%);
+        background-size: 200% 100%;
+        background-position: -100%;
+        display: inline-block;
+        padding: 5px 0;
+        position: relative;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        transition: all 0.3s ease-in-out;
+
+        &:before {
+            content: '';
+            background: $color-primary;
+            display: block;
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        &:hover {
+            background-position: 0;
+        }
+
+        &:hover:before {
+            width: 100%;
+        }
+    }
+
+
+
+    a.logIn {
+        border: none;
+        background: $color-primary;
+        display: block;
+        width: 50%;
+        margin: 0 auto;
+        border-radius: 8px;
+        padding: 0.7rem 2rem;
+        color: $color-bg-white;
+        cursor: pointer;
+        white-space: nowrap;
+        text-decoration: none;
+
+        &:hover {
+            box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25);
+            filter: brightness(120%);
+            transform: scale(1.05);
+
+        }
     }
 }
 
 
 
-
-.joinNow{
-
-}
 .navToggler {
-    opacity: 0.5;
-    transition: box-shadow 0.15s;
     cursor: pointer;
+    width: 40px;
+    height: 40px;
+    opacity: 0.7;
 }
 
-.nav.collapsibleExpanded .navToggler {
-    opacity: 1;
-    box-shadow: 0 0 0 3px #666;
-    border-radius: 5px;
-}
 
+
+// .collapsible__content {
+//     max-height: 0;
+//     overflow: hidden;
+//     opacity: 0;
+// }
+
+.hidden {
+    display: none;
+}
 
 @media screen and (min-width: 768px) {
     .navToggler {
@@ -58,7 +114,8 @@
     .navList {
         width: auto;
         display: flex;
-        font-size: 1.6rem;
+        align-items: center;
+        font-size: 1.8rem;
         max-height: 100%;
         /* to make it visible as they are initially hiddedn because of the applied "collapsible__content" class*/
         opacity: 1;
@@ -66,5 +123,9 @@
 
     .navItem {
         border: 0;
+
+        a.logIn {
+            width: 100%;
+        }
     }
 }
