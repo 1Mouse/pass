@@ -8,12 +8,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
+
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
     return (
         <>
-            <nav className={`${styles.nav} container`}>
+            <nav 
+            className={`${styles.nav} container`}>
                 <Link href="/" className={styles.navBrand}>
                     <Image
                         className={styles.navBrand}
