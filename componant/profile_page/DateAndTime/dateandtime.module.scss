@@ -1,0 +1,136 @@
+$select-color: #2e8bc0;
+$background-color: #f0f0f0;
+
+.selectContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.selectLabel {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.selectWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+}
+
+.weekDaysContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+
+  @media screen and (max-width: 768px) {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+.weekDayButton {
+  padding: 10px 20px;
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: $select-color;
+    color: #fff;
+    border-color: $select-color;
+  }
+
+  &.selected {
+    background-color: $select-color;
+    color: #fff;
+    border-color: $select-color;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: calc(33.33% - 10px);
+    margin-bottom: 10px;
+  }
+
+  @media screen and (max-width: 480px) {
+    width: calc(50% - 10px);
+    margin-bottom: 10px;
+  }
+
+  @media screen and (max-width: 320px) {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+.optionsContainer {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .optionButton {
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  
+    &:hover {
+      background-color: $select-color;
+      color: #fff;
+      border-color: $select-color;
+    }
+  
+    &.selected {
+      background-color: $select-color;
+      color: #fff;
+      border-color: $select-color;
+    }
+  }
+  
+  
+  
+  @media screen and (max-width: 768px) {
+    .optionsContainer {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .optionsContainer {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+
+
+
+.saveButton {
+    padding: 5px 8px;
+    height: 3.4375rem;
+    width: 12rem;
+    margin: 4px;
+    font-weight: 600;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    color: white;
+    background-color: #313638;
+
+  &:hover {
+    color: #313638;
+    background-color: white;
+  }
+}

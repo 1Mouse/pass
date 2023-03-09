@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "./changeusername.module.scss";
-import Skill from "../Choose";
+import Skill from "../choose/Choose";
 
 function Changeusename() {
   return (

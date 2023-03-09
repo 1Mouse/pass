@@ -31,19 +31,50 @@ $secondry-color:  #040b24;
   border: 5px solid gray;
   border-radius: 50%;
 }
+.Upload {
+  background-color: #040b24;
+  color: white;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #0C84DF;
+  }
+}
+
+.Delete {
+  background-color: #E8E9EB;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.Delete:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
 
 .button {
   display: grid;
   height: 10rem;
   width: 16rem;
-
+  
+  
   > button {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     padding: 5px 8px;
     margin: 4px;
     font-weight: 600;
     border-radius: 5px;
     font-size: 1.2rem;
-    color: $secondry-color;
+    border-color: transparent;
+  }
+  .button__icon{
+    color: #0C84DF;
   }
 }
 

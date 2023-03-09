@@ -1,59 +1,79 @@
-$primary-color: #0C84DF;
-$secondary-color: #040b24;
-
-
-
-
-
-.interst{
-  border-bottom: $primary-color 1px solid;
-  padding-bottom: 20px;
-}
-
-.parent {
+.button-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   gap: 10px;
+  padding: 10px;
+
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+  }
+
+  @media screen and (max-width: 480px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+  }
+
+  @media screen and (max-width: 320px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(12, 1fr);
+  }
 }
 
-.parent > div {
+.button {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
-  border: 1px solid $primary-color;
+  padding: 10px 30px 10px 10px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: left;
   border-radius: 10px;
-  font-size: 1.5rem;
-  font-weight: bolder;
-}
-.button{
-  display: flex;
-  justify-content: end;
-  padding-top: 20px;
-  padding-right: 30px;
-}
+  background-color: #fff;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  position: relative;
 
-/* Medium screens */
-@media only screen and (max-width: 768px) {
-  .parent {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    justify-content: center;
+  &::after {
+    content: "+";
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: #007bff;
+    font-size: 30px;
+    font-weight: 10;
+    transition: transform 0.2s ease-in-out;
   }
-  
-  .parent > div {
-    padding: 10px 15px;
-    width: 100%;
+
+  &:hover {
+    background-color: #f0f0f0;
+    border-color: #000;
+  }
+
+  &.selected {
+    background-color: #fff;
+    border-color: #007bff;
+    color: #000;
+
+    &::after {
+      content: "☑";
+      color: #007bff;
+
+    }
+  }
+
+  &.selected:hover {
+    background-color: #fff;
+    border-color: #007bff;
+    color: #000;
   }
 }
-
-// For small screens
-@media only screen and (max-width: 480px) {
-  .parent {
-    grid-template-columns: minmax(0, 1fr);
-    justify-content: center;
-  }
-  
-  .parent > div {
-    padding: 10px;
-    width: 100%;
-  }
+.saveButton {
+  font-size: 14px;
+  padding: 5px 10px;
+  width: 10rem;
 }

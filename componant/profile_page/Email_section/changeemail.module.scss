@@ -3,7 +3,6 @@ $secondary-color: #040b24;
 
 
 .changeemail{
-    display: flex;
     justify-content: space-between;
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -11,8 +10,11 @@ $secondary-color: #040b24;
 
 }
 
+
 .email{
-    display: grid;
+    display: flex;
+    justify-content: space-between;
+  
 
 }
 
@@ -21,19 +23,37 @@ $secondary-color: #040b24;
 padding: 4px 8px;
 outline: none;
 border: 1px solid $primary-color;
+border-radius: 5px;
+}
+.input:focus {
+    border-color: #000000;
 }
 
 
-.button{
+.button {
     padding: 5px 8px;
-    width: 15rem;
+    height: 3.4375rem;
+    width: 12rem;
     margin: 4px;
     font-weight: 600;
     border-radius: 5px;
     font-size: 1.2rem;
-    color: #313638;
+    color: white;
+    background-color: #313638;
 }
+
+.button:hover {
+    color: #313638;
+    background-color: white;
+}
+.error{
+    color: red;
+}
+
 @media only screen and (max-width: 768px) {
+    .email{
+        display: grid;
+    }
     .changeemail{
         display: grid;
     }

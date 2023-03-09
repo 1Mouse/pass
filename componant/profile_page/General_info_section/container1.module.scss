@@ -24,6 +24,11 @@ $secondary-color: #040b24;
     color: $secondary-color;
     outline: none;
     border: 1px solid $primary-color;
+    border-radius: 5px;
+    
+    &:focus {
+      border-color: black;
+    }
   }
   
   label {
@@ -33,24 +38,35 @@ $secondary-color: #040b24;
 
 .level {
   padding: 10px 0 0;
-  
+
   select {
     padding: 6px 10px;
     width: 100%;
     color: $secondary-color;
     outline: none;
     border: 1px solid $primary-color;
+    border-radius: 5px;
+
+    &:focus {
+      border-color: black;
+    }
   }
+
   
   h4 {
     font-size: 1rem;
   }
 }
+.textareafield{
+  border: $primary-color 1px solid;
+  border-radius: 10px;
 
+}
 .textarea {
   display: grid;
   grid-column-start: 2;
   grid-column-end: 5;
+  border-radius: 5px;
   
   label {
     font-size: 1rem;
@@ -71,4 +87,7 @@ $secondary-color: #040b24;
     grid-column-start: 1;
     grid-column-end: 3;
   }
+}
+.error{
+  color: red;
 }

@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "./social.module.scss";
-import Skill from "../Choose";
+import Skill from "../choose/Choose";
 
 function Social() {
   return (

@@ -14,6 +14,7 @@ $secondary-color: #040b24;
 .price{
     display: flex;
     justify-content: space-between;
+    align-items: end;
     padding-bottom: 2rem;
     
     
@@ -23,14 +24,21 @@ $secondary-color: #040b24;
 
 }
 
-.button{
+.button {
     padding: 5px 8px;
-    width: 15rem;
+    height: 3.4375rem;
+    width: 12rem;
     margin: 4px;
     font-weight: 600;
     border-radius: 5px;
     font-size: 1.2rem;
+    color: white;
+    background-color: #313638;
+}
+
+.button:hover {
     color: #313638;
+    background-color: white;
 }
 @media only screen and (max-width: 768px) {
     .price{

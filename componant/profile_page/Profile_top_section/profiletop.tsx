@@ -1,5 +1,8 @@
 import Head from "next/head";
 import Image from "next/image";
+import { FaTrash } from 'react-icons/fa';
+
+
 import styles from "../Profile_top_section/Profile_top_section.module.scss";
 function Profiletop() {
   return (
@@ -19,8 +22,13 @@ function Profiletop() {
               ></Image>
             </div>
             <div className={styles.button}>
-              <button>Upload</button>
-              <button>Delete Photo</button>
+              <button className={styles.Upload}>
+                Upload
+              </button>
+              <button className={styles.Delete}>
+              <FaTrash className={styles.button__icon} />
+                Delete Photo
+              </button>
             </div>
           </div>
         </div>
