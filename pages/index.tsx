@@ -22,7 +22,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <PolishForm/>
+        <ResetPassword2/>
       </main>
     </>
   );

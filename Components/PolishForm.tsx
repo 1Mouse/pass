@@ -4,7 +4,6 @@ import Link from "next/link";
 import Style from "../Components/polishForm.module.scss";
 import Image from "next/image";
 import PassLogo from "../public/PassLogo.svg";
-import HeroImage from "../public/HeroImage.png";
 import Home from "../pages/Home";
 // import your animation
 import "animate.css";
@@ -14,13 +13,8 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // import your icons
-import {
-  faSearch,
-  faChevronCircleDown,
-  faCircleXmark,
-  faPlus,
-} from "@fortawesome/free-solid-svg-icons";
-import { faUser } from "@fortawesome/free-regular-svg-icons";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import {} from "@fortawesome/free-regular-svg-icons";
 
 // import { useRouter } from "next/router";
 
@@ -34,15 +28,16 @@ const PolishForm = () => {
       </div>
 
       <div className={Style.container}>
-        <div className={Style.header}>
+        <div className={Style.headerPage}>
           <h3>
             Your account has successfully activated,
             <br />
             let's polish your profile to stand out between your peers
           </h3>
+        </div>
+        <div className={Style.headerForm}>
           <h1>General Information</h1>
         </div>
-
         <div className={Style.grid}>
           <div className={`${Style.g1} ${Style.g1g}`}>
             <h5>First Name *</h5>
@@ -74,7 +69,7 @@ const PolishForm = () => {
             ></textarea>
           </div>
           <div className={`${Style.g1} ${Style.g5g}`}>
-            <h5>Skill *</h5>
+          <h5>Interest *</h5>
             <button className={Style.btn}>
               Front End
               <FontAwesomeIcon
@@ -316,6 +311,7 @@ const PolishForm = () => {
             </button>
           </div>
         </div>
+        <button className={Style.btnPrimary}>Save</button>
       </div>
     </>
   );
