@@ -1,27 +1,44 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { useEffect } from 'react';
-import axios from 'axios';
+import { useLayoutEffect } from 'react';
 import isEmailConfirmed from '@/lib/axios/isEmailConfirmed';
 import { useState } from 'react';
 
-export default function EmailConfirmatioin() {
+
+import axios, { AxiosError } from "axios";
+import config from '@/config.json';
+import EmailConfirmatioin from './[emailConfirmationToken]';
+
+const API_ENDPOINT = config.apiEndpoint;
+
+export default function EmailConfirmation() {
     const router = useRouter();
-    const [msg, setMsg] = useState<any>('');
-
-    useEffect(
+    const [msg, setMsg] = useState<string>('');
+    console.log('router here', router);
+    useLayoutEffect(
         () => {
-            const token = router.query.emailConfirmationToken;
-            console.log(token);
+            let token = router.query.emailConfirmationToken;
+            console.log('token here', token);
 
-            setMsg(isEmailConfirmed(token as string));
+            const isConfirmed = async() => {
+                try {
+                    const response = await axios.post(`${API_ENDPOINT}/users/email/confirmation/${token}`);
+                    console.log(JSON.stringify(response?.data));
+
+                    setMsg('Email is confirmed successfully')
+                } catch(err) {
+                    setMsg('something wrong happened')
+                }
+            }
+
+            isConfirmed();
         }, [router.query.emailConfirmationToken])
 
     if (msg === '')
         return <div>Loading</div>;
 
-        
+
     return (
         <>
             <Head>
@@ -36,3 +53,5 @@ export default function EmailConfirmatioin() {
         </>
     )
 }
+
+
