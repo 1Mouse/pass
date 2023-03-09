@@ -3,20 +3,19 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "./dateandtime.module.scss";
 import MultipleSelect from "../choose/Choose";
-import _ from "lodash";
 
 function Dateandtime() {
   const [selectedDay, setSelectedDay] = useState<string | null>(null);
-  const [selectedTimes, setSelectedTimes] = useState<Record<string, string[]>>({});
+  const [selectedTimes, setSelectedTimes] = useState<Record<string, number[]>>({});
 
   const handleDayClick = (day: string) => {
     setSelectedDay(selectedDay === day ? null : day);
   };
 
-  const handleTimeClick = (day: string, time: string) => {
+  const handleTimeClick = (day: string, time: number) => {
     const dayTimes = selectedTimes[day] || [];
     if (dayTimes.includes(time)) {
-      const updatedTimes = dayTimes.filter((t: string) => t !== time);
+      const updatedTimes = dayTimes.filter((t: number) => t !== time);
       setSelectedTimes({ ...selectedTimes, [day]: updatedTimes });
     } else {
       const updatedTimes = [...dayTimes, time];
@@ -48,17 +47,14 @@ function Dateandtime() {
             {selectedDay && (
               <div className={styles.optionsContainer}>
                 {[...Array(24)].map((_, index) => {
-                  const hour = index === 0 ? 12 : index > 12 ? index - 12 : index;
-                  const amPm = index >= 12 ? "pm" : "am";
-                  const formattedTime = `${hour}:00 ${amPm}`;
-                  const isSelected = selectedDay && Array.isArray(selectedTimes[selectedDay]) && selectedTimes[selectedDay].includes(formattedTime);
+                  const isSelected = selectedDay && Array.isArray(selectedTimes[selectedDay]) && selectedTimes[selectedDay].includes(index);
                   return (
                     <button
                       key={index}
                       className={`${styles.optionButton} ${isSelected ? styles.selected : ""}`}
-                      onClick={() => handleTimeClick(selectedDay, formattedTime)}
+                      onClick={() => handleTimeClick(selectedDay, index)}
                     >
-                      {formattedTime}
+                      {index}:00
                     </button>
                   );
                 })}
