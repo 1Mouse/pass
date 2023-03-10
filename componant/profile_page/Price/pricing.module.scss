@@ -1,15 +1,22 @@
+
 $primary-color: #0C84DF;
 $secondary-color: #040b24;
-
 
 .changeprice{
     border-bottom: $primary-color 1px solid;
     padding-top: 2rem ;
+     
+    
     
 }
 
 .setprice{
     display: grid;
+
+
+    label{
+        font-size: 1.2rem;
+    }
 }
 .price{
     display: flex;
@@ -19,9 +26,14 @@ $secondary-color: #040b24;
     
     
 }
-.input{
-    border-color: $primary-color; 
-
+.input {
+    padding: 4px 8px;
+    outline: none;
+    border: 1px solid #0c84df;
+    border-radius: 5px;
+}
+.input:focus {
+    border-color: #000000;
 }
 
 .button {
@@ -34,11 +46,31 @@ $secondary-color: #040b24;
     font-size: 1.2rem;
     color: white;
     background-color: #313638;
-}
-
-.button:hover {
+    cursor: pointer;
+  
+    @media only screen and (max-width: 768px) {
+      animation: fadeIn 0.5s ease-in-out forwards;
+    }
+  }
+  
+  .button:hover {
     color: #313638;
     background-color: white;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+.error{
+    color: red;
 }
 @media only screen and (max-width: 768px) {
     .price{

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./container2.module.scss";
+import styles from "./interst.module.scss";
 
 const options = [
   "Java Script",
@@ -35,22 +35,26 @@ export default function Container3() {
 
   return (
     <>
-      <div className={styles["button-grid"]}>
+        
+
+      <div className={styles["interst"]}>
         {options.map((option) => (
           <button
-            key={option}
-            className={`${styles["button"]} ${
-              selectedOptions.includes(option) ? styles["selected"] : ""
-            }`}
-            onClick={() => handleOptionClick(option)}
+          key={option}
+          className={`${styles["button"]} ${
+            selectedOptions.includes(option) ? styles["selected"] : ""
+          }`}
+          onClick={() => handleOptionClick(option)}
           >
             {option}
           </button>
         ))}
       </div>
+            
       <button className={styles.saveButton} onClick={handleSave}>
         Save
       </button>
+        
     </>
   );
 }

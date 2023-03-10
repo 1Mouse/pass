@@ -3,7 +3,6 @@ import { useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "./changeemail.module.scss";
-import Skill from "../choose/Choose";
 
 function Changeemail() {
   const [email, setEmail] = useState("");
@@ -32,6 +31,8 @@ function Changeemail() {
           <form onSubmit={handleSubmit}>
               <h4>Change Email:</h4>
             <div className={styles.email}>
+              <div className={styles.labelandinput}>
+            <label>set email*</label>
               <input
                 className={styles.input}
                 type="text"
@@ -39,7 +40,7 @@ function Changeemail() {
                 value={email}
                 onChange={handleEmailChange}
               />
-              
+              </div>
               {!isValidEmail && (
                 <span className={styles.error}>
                   Please enter a valid email address

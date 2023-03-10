@@ -9,6 +9,7 @@ $secondary-color: #040b24;
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(4, minmax(0, 1fr));
+  transition: all 0.5s ease-in-out;
 }
 
 .parentText {
@@ -18,19 +19,19 @@ $secondary-color: #040b24;
 .inputName {
   display: grid;
   padding: 10px 0;
-  
+
   input {
     padding: 4px 8px;
     color: $secondary-color;
     outline: none;
     border: 1px solid $primary-color;
     border-radius: 5px;
-    
+
     &:focus {
       border-color: black;
     }
   }
-  
+
   label {
     font-size: 1rem;
   }
@@ -52,22 +53,29 @@ $secondary-color: #040b24;
     }
   }
 
-  
+
   h4 {
     font-size: 1rem;
+    font-weight: 100;
   }
 }
-.textareafield{
+
+.textareafield {
   border: $primary-color 1px solid;
   border-radius: 10px;
+  outline: none;
 
+  &:focus {
+    border-color: black;
+  }
 }
+
 .textarea {
   display: grid;
   grid-column-start: 2;
   grid-column-end: 5;
   border-radius: 5px;
-  
+
   label {
     font-size: 1rem;
   }
@@ -75,19 +83,27 @@ $secondary-color: #040b24;
 
 // Media Query for Mobile Devices
 @media (max-width: 769px) {
-  .general_info{
+  .general_info {
     display: grid;
     justify-content: center;
   }
   .form {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    transform: scale(0.9);
+    opacity: 2;
+    transition: all 0.5s ease-in-out;
   }
-  
+  .form.show {
+    transform: scale(1);
+    opacity: 1;
+  }
+
   .textarea {
     grid-column-start: 1;
     grid-column-end: 3;
   }
 }
-.error{
+
+.error {
   color: red;
 }

@@ -1,9 +1,10 @@
 import Head from "next/head";
 import Image from "next/image";
-import { FaTrash } from 'react-icons/fa';
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "../Profile_top_section/Profile_top_section.module.scss";
+
 function Profiletop() {
   return (
     <>
@@ -26,7 +27,10 @@ function Profiletop() {
                 Upload
               </button>
               <button className={styles.Delete}>
-              <FaTrash className={styles.button__icon} />
+                <FontAwesomeIcon
+                  icon={faTrash}
+                  className={styles.button__icon}
+                />
                 Delete Photo
               </button>
             </div>

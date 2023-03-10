@@ -24,6 +24,7 @@ $secondry-color:  #040b24;
   padding: 5rem;
   align-items: center;
   border-bottom: $primary-color 1px solid;
+  transition: padding 0.5s ease;
 }
 
 .profileimage {
@@ -31,6 +32,7 @@ $secondry-color:  #040b24;
   border: 5px solid gray;
   border-radius: 50%;
 }
+
 .Upload {
   background-color: #040b24;
   color: white;
@@ -55,12 +57,10 @@ $secondry-color:  #040b24;
   cursor: pointer;
 }
 
-
 .button {
   display: grid;
   height: 10rem;
   width: 16rem;
-  
   
   > button {
     display: flex;
@@ -101,6 +101,10 @@ $secondry-color:  #040b24;
 }
 
 @media screen and (max-width: 480px) {
+  .profile_head_contant {
+    padding: 1rem;
+  }
+
   .text {
     font-size: 1.8rem;
     padding: 1rem;

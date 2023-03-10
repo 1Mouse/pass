@@ -35,7 +35,7 @@ export default function Container2() {
 
   return (
     <>
-      <div className={styles['button-grid']}>
+      <div className={styles['skills']}>
         {options.map((option) => (
           <button
             key={option}

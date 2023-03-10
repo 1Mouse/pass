@@ -16,8 +16,16 @@ $secondary-color: #040b24;
     justify-content: space-between;
   
 
+    
 }
+.labelandinput{
+    display: grid;
 
+
+    label{
+    font-size: 1.2rem;
+}
+}
 
 .input{ 
 padding: 4px 8px;
@@ -40,12 +48,28 @@ border-radius: 5px;
     font-size: 1.2rem;
     color: white;
     background-color: #313638;
-}
-
-.button:hover {
+    cursor: pointer;
+  
+    @media only screen and (max-width: 768px) {
+      animation: fadeIn 0.5s ease-in-out forwards;
+    }
+  }
+  
+  .button:hover {
     color: #313638;
     background-color: white;
-}
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 .error{
     color: red;
 }

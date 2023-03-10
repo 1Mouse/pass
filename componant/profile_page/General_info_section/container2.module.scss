@@ -1,4 +1,4 @@
-.button-grid {
+.skills {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 1fr);
@@ -6,19 +6,23 @@
   padding: 10px;
 
 
+
   @media screen and (max-width: 768px) {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(4, 1fr);
+    animation: resize-grid 0.5s ease-in-out;
   }
 
   @media screen and (max-width: 480px) {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(6, 1fr);
+    animation: resize-grid 0.5s ease-in-out;
   }
 
   @media screen and (max-width: 320px) {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(12, 1fr);
+    animation: resize-grid 0.5s ease-in-out;
   }
 }
 
@@ -34,7 +38,7 @@
   background-color: #fff;
   color: #000;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   position: relative;
 
   &::after {
@@ -46,12 +50,12 @@
     color: #007bff;
     font-size: 30px;
     font-weight: 10;
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
   }
 
   &:hover {
-    background-color: #f0f0f0;
-    border-color: #000;
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   }
 
   &.selected {
@@ -62,7 +66,7 @@
     &::after {
       content: "☑";
       color: #007bff;
-
+      transform: translate(-50%, -50%);
     }
   }
 
@@ -71,12 +75,43 @@
     border-color: #007bff;
     color: #000;
   }
+
+  /* Apply the button size animation */
+  @media screen and (max-width: 768px) {
+    font-size: 14px;
+    padding: 8px 24px 8px 8px;
+
+    &::after {
+      font-size: 24px;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 12px;
+    padding: 6px 20px 6px 6px;
+
+    &::after {
+      font-size: 18px;
+    }
+  }
+
+  @media screen and (max-width: 320px) {
+    font-size: 10px;
+    padding: 4px 16px 4px 4px;
+
+    &::after {
+      font-size: 14px;
+    }
+  }
 }
+
 .saveButton {
   font-size: 14px;
   padding: 5px 10px;
   width: 10rem;
 }
+
+
 
 
 

@@ -2,30 +2,58 @@ import { useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "./dateandtime.module.scss";
-import MultipleSelect from "../choose/Choose";
 
 function Dateandtime() {
-  const [selectedDay, setSelectedDay] = useState<string | null>(null);
-  const [selectedTimes, setSelectedTimes] = useState<Record<string, number[]>>({});
+  const [selectedDay, setSelectedDay] = useState<number | null>(null);
+  const [selectedTimes, setSelectedTimes] = useState<Record<number, number[]>>({});
 
-  const handleDayClick = (day: string) => {
-    setSelectedDay(selectedDay === day ? null : day);
+  const handleDayClick = (dayIndex: number) => {
+    setSelectedDay(selectedDay === dayIndex ? null : dayIndex);
   };
 
-  const handleTimeClick = (day: string, time: number) => {
-    const dayTimes = selectedTimes[day] || [];
+  const handleTimeClick = (dayIndex: number, time: number) => {
+    const dayTimes = selectedTimes[dayIndex] || [];
     if (dayTimes.includes(time)) {
       const updatedTimes = dayTimes.filter((t: number) => t !== time);
-      setSelectedTimes({ ...selectedTimes, [day]: updatedTimes });
+      setSelectedTimes({ ...selectedTimes, [dayIndex]: updatedTimes });
     } else {
       const updatedTimes = [...dayTimes, time];
-      setSelectedTimes({ ...selectedTimes, [day]: updatedTimes });
+      setSelectedTimes({ ...selectedTimes, [dayIndex]: updatedTimes });
     }
   };
 
   const handleSaveClick = () => {
-    console.log(selectedTimes);
+    for (const day of Object.keys(selectedTimes)) {
+      const selectedDayTimes = selectedTimes[day as unknown as number];
+      if (selectedDayTimes.length > 0) {
+        console.log(`day:${day}, hours:${selectedDayTimes.map(formatTimeForConsole).join(", ")}`);
+      }
+    }
   };
+
+  const formatTime = (time: number) => {
+    const hour = (time + 11) % 12 + 1;
+    const amPm = time >= 12 ? "PM" : "AM";
+    const formattedHour = hour.toString().padStart(2, "0");
+    const formattedMinute = "00";
+    return `${formattedHour}:${formattedMinute} ${amPm}`;
+  };
+
+  const formatTimeForConsole = (time: number) => {
+    const formattedHour = time.toString().padStart(2, "0");
+    const formattedMinute = "00";
+    return `${formattedHour}:${formattedMinute}`;
+  };
+
+  const days = [
+    { name: "Sunday", index: 0 },
+    { name: "Monday", index: 1 },
+    { name: "Tuesday", index: 2 },
+    { name: "Wednesday", index: 3 },
+    { name: "Thursday", index: 4 },
+    { name: "Friday", index: 5 },
+    { name: "Saturday", index: 6 },
+  ];
 
   return (
     <>
@@ -34,27 +62,27 @@ function Dateandtime() {
           <label className={styles.selectLabel}>Select date and time:</label>
           <div className={styles.selectWrapper}>
             <div className={styles.weekDaysContainer}>
-              {["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"].map((day) => (
+              {days.map((day) => (
                 <button
-                  key={day}
-                  className={`${styles.weekDayButton} ${selectedDay === day ? styles.selected : ""}`}
-                  onClick={() => handleDayClick(day)}
+                  key={day.index}
+                  className={`${styles.weekDayButton} ${selectedDay === day.index ? styles.selected : ""}`}
+                  onClick={() => handleDayClick(day.index)}
                 >
-                  {day}
+                  {day.name}
                 </button>
               ))}
             </div>
-            {selectedDay && (
+            {selectedDay !== null && (
               <div className={styles.optionsContainer}>
                 {[...Array(24)].map((_, index) => {
-                  const isSelected = selectedDay && Array.isArray(selectedTimes[selectedDay]) && selectedTimes[selectedDay].includes(index);
+                  const isSelected = selectedDay !== null && Array.isArray(selectedTimes[selectedDay]) && selectedTimes[selectedDay].includes(index);
                   return (
                     <button
                       key={index}
                       className={`${styles.optionButton} ${isSelected ? styles.selected : ""}`}
-                      onClick={() => handleTimeClick(selectedDay, index)}
+                      onClick={() => handleTimeClick(selectedDay as number, index)}
                     >
-                      {index}:00
+                      {formatTime(index)}
                     </button>
                   );
                 })}
