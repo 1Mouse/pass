@@ -1,42 +1,51 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { useLayoutEffect } from 'react';
-import isEmailConfirmed from '@/lib/axios/isEmailConfirmed';
 import { useState } from 'react';
 
 
 import axios, { AxiosError } from "axios";
 import config from '@/config.json';
-import EmailConfirmatioin from './[emailConfirmationToken]';
+
+import { InferGetServerSidePropsType, GetServerSideProps, GetServerSidePropsContext } from 'next'
+import { ParsedUrlQuery } from 'querystring';
 
 const API_ENDPOINT = config.apiEndpoint;
 
-export default function EmailConfirmation() {
+type Props = {
+    isEmailConfirmed: boolean,
+}
+interface IParams extends ParsedUrlQuery {
+    EmailConfirmationToken: string
+}
+
+export default function EmailConfirmation(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
     const router = useRouter();
     const [msg, setMsg] = useState<string>('');
-    console.log('router here', router);
-    useLayoutEffect(
-        () => {
-            let token = router.query.emailConfirmationToken;
-            console.log('token here', token);
+    // console.log('router here', router);
+    // console.log('context here', props.first);
 
-            const isConfirmed = async() => {
-                try {
-                    const response = await axios.post(`${API_ENDPOINT}/users/email/confirmation/${token}`);
-                    console.log(JSON.stringify(response?.data));
+    // useLayoutEffect(
+    //     () => {
+    //         let token = router.query.emailConfirmationToken;
+    //         console.log('token here', token);
 
-                    setMsg('Email is confirmed successfully')
-                } catch(err) {
-                    setMsg('something wrong happened')
-                }
-            }
+    //         const isConfirmed = async() => {
+    //             try {
+    //                 const response = await axios.post(`${API_ENDPOINT}/users/email/confirmation/${token}`);
+    //                 console.log(JSON.stringify(response?.data));
 
-            isConfirmed();
-        }, [router.query.emailConfirmationToken])
+    //                 setMsg('Email is confirmed successfully')
+    //             } catch(err) {
+    //                 setMsg('something wrong happened')
+    //             }
+    //         }
 
-    if (msg === '')
-        return <div>Loading</div>;
+    //         isConfirmed();
+    //     }, [router.query.emailConfirmationToken])
+
+
+    console.log(props.isEmailConfirmed)
 
 
     return (
@@ -48,10 +57,28 @@ export default function EmailConfirmation() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main>
-                <div>{msg}</div>
+                {/* <div>{isEmailConfirmed}</div> */}
+                <div>holy god</div>
             </main>
         </>
     )
 }
 
+export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
+    const { emailConfirmationToken } = ctx.params as IParams;
+    let checkConfirmation=false;
 
+    try {
+        const response = await axios.post(`${API_ENDPOINT}/users/email/confirmation/${emailConfirmationToken}`);
+        // console.log(JSON.stringify(response?.data));
+        checkConfirmation=true;
+    } catch (err) {
+        checkConfirmation=false;
+    }
+
+    return {
+        props: {
+            isEmailConfirmed: checkConfirmation,
+        },
+    }
+}

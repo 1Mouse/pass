@@ -85,6 +85,7 @@ const LogInForm = () => {
             }
         }
     }
+    
     return (
         <div className={`grid grid--1x2 ${styles.pageNoScroll}`}>
             <div className={styles.signupLeft}>
@@ -93,7 +94,7 @@ const LogInForm = () => {
                         <Link href="/">
                             <Image
                                 className={styles.navBrand}
-                                src="assets/passLogo.svg"
+                                src="/assets/passLogo.svg"
                                 alt=""
                                 width={125}
                                 height={57}

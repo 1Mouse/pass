@@ -15,6 +15,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import axios,{AxiosError} from 'axios';
 import config from '../config.json';
+import { useRouter } from "next/router";
 
 const API_ENDPOINT=config.apiEndpoint;
 const EMAIL_REGEX =
@@ -22,6 +23,8 @@ const EMAIL_REGEX =
 const PWD_REGEX = /^(.{0,7}|[^0-9]*|[^A-Z]*|[^a-z]*|[a-zA-Z0-9]*)$/;
 
 const SignUpForm = () => {
+    const router=useRouter();
+
     const emailRef = useRef<HTMLInputElement>(null);
     const errRef = useRef<HTMLInputElement>(null);
 
@@ -87,6 +90,12 @@ const SignUpForm = () => {
             }
         }
     }
+
+    if(success)
+    {
+        router.push('users/email/confirmation/')
+    }
+
     return (
         <div className={`grid grid--1x2 ${styles.pageNoScroll}`}>
             <div className={styles.signupLeft}>
@@ -95,7 +104,7 @@ const SignUpForm = () => {
                         <Link href="/">
                             <Image
                                 className={styles.navBrand}
-                                src="assets/passLogo.svg"
+                                src="/assets/passLogo.svg"
                                 alt=""
                                 width={125}
                                 height={57}

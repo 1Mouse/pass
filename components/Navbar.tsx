@@ -19,7 +19,7 @@ const Navbar = () => {
                 <Link href="/" className={styles.navBrand}>
                     <Image
                         className={styles.navBrand}
-                        src="assets/passLogo.svg"
+                        src="/assets/passLogo.svg"
                         alt=""
                         width={125}
                         height={57}
