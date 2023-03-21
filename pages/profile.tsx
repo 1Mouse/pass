@@ -11,41 +11,46 @@ import Changepassword from "@/componant/profile_page/Password_section/Changepass
 import Pricing from "@/componant/profile_page/Price/Pricing";
 import Dateandtime from "@/componant/profile_page/DateAndTime/Dateandtime";
 import Social from "@/componant/profile_page/Social_info/Socials";
+// import Navbar from "@/componant/navbar";
 import Head from "next/head";
+// import Navbar from "@/componant/navbar";
+
+
+
+
+
 export default function Profile() {
   return (
     <>
       <Head>
         <title>Profile</title>
       </Head>
-      {/* <main> */}
-        <div className={styles.profile}>
-          {/* <div className={styles.profile_head}> */}
-          <Profiletop></Profiletop>
-          {/* </div> */}
-          {/* <div className={styles.profile_container1}> */}
-          <Container1></Container1>
-          {/* </div> */}
-          {/* <div className={styles.profile_container2}> */}
-          <Container2></Container2>
-          {/* </div> */}
-          {/* <div className={styles.container3}> */}
-          <Container3></Container3>
-          {/* </div> */}
 
-          <Changeusename></Changeusename>
 
-          <Changeemail></Changeemail>
+      <div className={styles.profile}>
+     
+      {/* <Navbar></Navbar> */}
 
-          <Changepassword></Changepassword>
+        <Profiletop></Profiletop>
 
-          <Pricing></Pricing>
+        <Container1></Container1>
 
-          <Dateandtime></Dateandtime>
+        <Container2></Container2>
 
-          <Social></Social>
-        </div>
-      {/* </main> */}
+        {/* <Container3></Container3> */}
+
+        <Social></Social>
+        <Changeusename></Changeusename>
+
+        <Changeemail></Changeemail>
+
+        <Changepassword></Changepassword>
+
+        <Pricing></Pricing>
+
+        <Dateandtime></Dateandtime>
+
+      </div>
     </>
   );
 }

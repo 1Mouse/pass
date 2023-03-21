@@ -1,9 +1,14 @@
+@use "../../../styles/abstracts/variables" as *;
+$background-color:gray;
+
+
 .skills {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 1fr);
   gap: 10px;
   padding: 10px;
+  padding-left: 1%;
 
 
 
@@ -36,10 +41,12 @@
   text-align: left;
   border-radius: 10px;
   background-color: #fff;
-  color: #000;
+  color: $color-text-black;
   cursor: pointer;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   position: relative;
+  border-color: $background-color;
+
 
   &::after {
     content: "+";
@@ -47,7 +54,7 @@
     top: 50%;
     right: 10px;
     transform: translateY(-50%);
-    color: #007bff;
+    color: $color-primary;
     font-size: 30px;
     font-weight: 10;
     transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
@@ -60,19 +67,19 @@
 
   &.selected {
     background-color: #fff;
-    border-color: #007bff;
-    color: #000;
+    border-color: $color-primary;
+    color: $color-text-black;
 
     &::after {
       content: "☑";
-      color: #007bff;
+      color: $color-primary;
       transform: translate(-50%, -50%);
     }
   }
 
   &.selected:hover {
     background-color: #fff;
-    border-color: #007bff;
+    border-color: $color-primary;
     color: #000;
   }
 

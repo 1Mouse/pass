@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import styles from "./container2.module.scss";
+import { useFormDataStore } from "../datastore";
+
 
 const options = [
   "Front End",
@@ -18,7 +20,7 @@ const options = [
 
 export default function Container2() {
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
-
+  
   const handleOptionClick = (option: string) => {
     setSelectedOptions((prevSelected) => {
       if (prevSelected.includes(option)) {
@@ -28,13 +30,15 @@ export default function Container2() {
       }
     });
   };
-
+  
   const handleSave = () => {
     console.log(selectedOptions);
   }
-
+  
+  
   return (
     <>
+    
       <div className={styles['skills']}>
         {options.map((option) => (
           <button

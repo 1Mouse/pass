@@ -18,6 +18,16 @@ function Changepassword() {
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleSave = () => {
+    if (!oldPassword.trim()) {
+      setErrorMessage("Old password cannot be empty");
+      return;
+    }
+    
+    if (!newPassword.trim()) {
+      setErrorMessage("New password cannot be empty");
+      return;
+    }
+
     if (!validatePassword(newPassword)) {
       setErrorMessage(
         "New password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number"
@@ -67,7 +77,6 @@ function Changepassword() {
   const toggleConfirmPasswordVisibility = () => {
     setShowConfirmPassword(!showConfirmPassword);
   };
-
   return (
     <>
       <main>
@@ -76,9 +85,10 @@ function Changepassword() {
           <div className={styles.inputsendbutton}>
             <div className={styles.inputs}>
               <div className={styles.input}>
-                <label>set old password*</label>
+                <label htmlFor="oldpassword">set old password*</label>
                 <div className={styles.passwordInput}>
                   <input
+                  id="oldpassword"
                     type={showOldPassword ? "text" : "password"}
                     placeholder="old password"
                     name="oldPassword"
@@ -93,9 +103,10 @@ function Changepassword() {
                 </div>
               </div>
               <div className={styles.input}>
-                <label>set new password*</label>
+                <label htmlFor="newpassword">set new password*</label>
                 <div className={styles.passwordInput}>
                   <input
+                  id="newpassword"
                     type={showNewPassword ? "text" : "password"}
                     placeholder="new password"
                     name="newPassword"
@@ -110,9 +121,10 @@ function Changepassword() {
                 </div>
               </div>
               <div className={styles.input}>
-                <label>set confirm password*</label>
+                <label htmlFor="confirmpassword">set confirm password*</label>
                 <div className={styles.passwordInput}>
                   <input
+                  id="confirmpassword"
                     type={showConfirmPassword ? "text" : "password"}
                     placeholder="confirm password"
                     name="confirmPassword"

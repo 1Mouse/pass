@@ -1,8 +1,11 @@
-$primary-color: #0C84DF;
-$secondary-color: #040b24;
+@use "../../../styles/abstracts/variables" as *;
+
+
+$background-color: gray;
 
 .general_info {
-  color: $secondary-color;
+  color: $color-text-black;
+  padding-left: 1%;
 }
 
 .form {
@@ -22,13 +25,13 @@ $secondary-color: #040b24;
 
   input {
     padding: 4px 8px;
-    color: $secondary-color;
+    color: $color-text-black;
     outline: none;
-    border: 1px solid $primary-color;
+    border: 1px solid $color-text-black;
     border-radius: 5px;
 
     &:focus {
-      border-color: black;
+      border-color: $color-primary;
     }
   }
 
@@ -43,13 +46,13 @@ $secondary-color: #040b24;
   select {
     padding: 6px 10px;
     width: 100%;
-    color: $secondary-color;
+    color: $color-text-black;
     outline: none;
-    border: 1px solid $primary-color;
+    border: 1px solid $color-text-black;
     border-radius: 5px;
 
     &:focus {
-      border-color: black;
+      border-color: $color-primary;
     }
   }
 
@@ -61,12 +64,12 @@ $secondary-color: #040b24;
 }
 
 .textareafield {
-  border: $primary-color 1px solid;
+  border: $color-text-black 1px solid;
   border-radius: 10px;
   outline: none;
 
   &:focus {
-    border-color: black;
+    border-color: $color-primary;
   }
 }
 

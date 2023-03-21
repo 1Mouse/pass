@@ -1,3 +1,6 @@
+
+
+
 import { useState } from "react";
 import Head from "next/head";
 import styles from "./container1.module.scss";
@@ -25,6 +28,16 @@ function Container1() {
       setBioError("Please enter your bio");
       return;
     }
+
+    if (!firstName) {
+      setFirstNameError(true);
+      return;
+    }
+
+    if (!lastName) {
+      setLastNameError(true);
+      return;
+    }
   };
 
   const handleFirstNameChange = (event: { target: { value: any; }; }) => {
@@ -45,30 +58,37 @@ function Container1() {
     setLastNameError(!isValid);
   };
 
-const handleBioChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-  const value = event.target.value;
-  setBio(value);
-  setBioError("");
-};
-
-const handleLevelChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-  const value = event.target.value;
-  setLevel(value);
-  setLevelError("");
-};
-
-  const handleSaveButtonClick = () => {
-    if (!firstNameError && !lastNameError && !levelError && !bioError) {
-      console.log({
-        firstName,
-        lastName,
-        level,
-        bio,
-      });
-    }
+  const handleBioChange = (event: { target: { value: any; }; }) => {
+    const value = event.target.value;
+    setBio(value);
+    setBioError("");
   };
 
+  const handleLevelChange = (event: { target: { value: any; }; }) => {
+    const value = event.target.value;
+    setLevel(value);
+    setLevelError("");
+  };
 
+  const handleSaveButtonClick = () => {
+    // Check if any required fields are empty
+    if (!firstName || !lastName || !level || !bio) {
+      return;
+    }
+  
+    // Check if there are any errors with the inputs
+    if (firstNameError || lastNameError || levelError || bioError) {
+      return;
+    }
+  
+    // If all checks pass, log the inputs
+    console.log({
+      firstName,
+      lastName,
+      level,
+      bio,
+    });
+  };
   return (
     <>
       <main>
@@ -127,7 +147,7 @@ const handleLevelChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
                 <div className={styles.textarea}>
                   <label htmlFor="bio">Bio *</label>
                   <textarea
-                  className={styles.textareafield}
+                    className={styles.textareafield}
                     placeholder="Bio..."
                     id="bio"
                     cols={30}
@@ -141,14 +161,19 @@ const handleLevelChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
                     <span className={styles.error}>Please enter a bio</span>
                   )}
                 </div>
+                <div className={styles.formButtons}>
+                  <button  onClick={handleSaveButtonClick}  className={styles.button}>
+                    Save
+                  </button>
+                </div>
               </form>
             </div>
           </div>
         </div>
-        <button onClick={handleSaveButtonClick}>Save</button>
       </main>
     </>
   );
+  
 }
 
 export default Container1;

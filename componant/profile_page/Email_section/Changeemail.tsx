@@ -31,10 +31,12 @@ function Changeemail() {
           <form onSubmit={handleSubmit}>
               <h4>Change Email:</h4>
             <div className={styles.email}>
+            <div>
               <div className={styles.labelandinput}>
-            <label>set email*</label>
+            <label htmlFor="Email">set email*</label>
               <input
                 className={styles.input}
+                id="Email"
                 type="text"
                 placeholder="Email"
                 value={email}
@@ -46,6 +48,8 @@ function Changeemail() {
                   Please enter a valid email address
                 </span>
               )}
+          
+              </div>
             <button className={styles.button} type="submit">
               save
             </button>

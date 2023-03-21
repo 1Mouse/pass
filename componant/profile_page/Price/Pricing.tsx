@@ -4,22 +4,22 @@ import Image from "next/image";
 import styles from "./pricing.module.scss";
 
 function Pricing() {
-  const [price, setPrice] = useState<number>(0);
+  const [price, setPrice] = useState<string>('');
   const [error, setError] = useState<string>('');
 
   const handlePriceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newPrice = Number(event.target.value);
     if (!isNaN(newPrice) && newPrice >= 5) {
-      setPrice(newPrice);
+      setPrice(String(newPrice));
       setError('');
     } else {
-      setPrice(Number(event.target.value));
+      setPrice(event.target.value);
       setError('Price must be at least 5');
     }
   };
 
   const handleSave = () => {
-    if (price >= 5) {
+    if (Number(price) >= 5) {
       console.log(`Price is ${price}`);
     } else {
       setError('Price must be at least 5');
@@ -28,31 +28,27 @@ function Pricing() {
 
   return (
     <>
-    
       <main className={styles.changeprice}>
         <div>
           <h4>Pricing:</h4>
           <div className={styles.price}>
-          <div
-  className={styles.setprice}
-
->
-  <label>set price*</label>
-  <input
-    className={styles.input}
-    type="number"
-    placeholder="price"
-    value={price}
-    min={0}
-    onChange={handlePriceChange}
-    onMouseEnter={() => document.body.style.overflow = 'hidden'}
-    onMouseLeave={() => document.body.style.overflow = 'auto'}
-    onFocus={() => document.body.style.overflow = 'hidden'}
-    onBlur={() => document.body.style.overflow = 'auto'}
-  />
-  {error && <div className={styles.error}>{error}</div>}
-</div>
-
+            <div className={styles.setprice}>
+              <label htmlFor="price">set price*</label>
+              <input
+                className={styles.input}
+                id="price"
+                type="number"
+                placeholder="price"
+                value={price || ''}
+                min={0}
+                onChange={handlePriceChange}
+                onMouseEnter={() => (document.body.style.overflow = "hidden")}
+                onMouseLeave={() => (document.body.style.overflow = "auto")}
+                onFocus={() => (document.body.style.overflow = "hidden")}
+                onBlur={() => (document.body.style.overflow = "auto")}
+              />
+              {error && <div className={styles.error}>{error}</div>}
+            </div>
             <button className={styles.button} onClick={handleSave}>
               save
             </button>

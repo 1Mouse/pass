@@ -1,11 +1,13 @@
+@use "../../../styles/abstracts/variables" as *;
+$background-color:gray;
 
-$primary-color: #0C84DF;
-$secondary-color: #040b24;
+
 
 .changeprice{
-    border-bottom: $primary-color 1px solid;
+    border-bottom: $color-primary 1px solid;
     padding-top: 2rem ;
-     
+    padding-left: 1%;
+
     
     
 }
@@ -29,11 +31,11 @@ $secondary-color: #040b24;
 .input {
     padding: 4px 8px;
     outline: none;
-    border: 1px solid #0c84df;
+    border: 1px solid $color-text-black;
     border-radius: 5px;
 }
 .input:focus {
-    border-color: #000000;
+    border-color: $color-primary;
 }
 
 .button {
@@ -45,7 +47,7 @@ $secondary-color: #040b24;
     border-radius: 5px;
     font-size: 1.2rem;
     color: white;
-    background-color: #313638;
+    background-color: $color-text-black;
     cursor: pointer;
   
     @media only screen and (max-width: 768px) {
@@ -54,7 +56,7 @@ $secondary-color: #040b24;
   }
   
   .button:hover {
-    color: #313638;
+    color: $color-text-black;
     background-color: white;
   }
   

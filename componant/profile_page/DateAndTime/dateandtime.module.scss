@@ -1,5 +1,7 @@
-$select-color: #2e8bc0;
-$background-color: #f0f0f0;
+@use "../../../styles/abstracts/variables" as *;
+
+$background-color: gray;
+
 
 .selectContainer {
   display: flex;
@@ -7,7 +9,7 @@ $background-color: #f0f0f0;
   align-items: center;
   padding-top: 20px;
   padding-bottom: 20px;
-  border-bottom: #2e8bc0 1px solid;
+  border-bottom: $color-primary 1px solid;
 }
 
 .selectLabel {
@@ -43,7 +45,7 @@ $background-color: #f0f0f0;
   padding: 10px 20px;
   background-color: #fff;
   color: #333;
-  border: 1px solid #ccc;
+  border: 1px solid $background-color;
   border-radius: 5px;
   font-size: 1rem;
   cursor: pointer;
@@ -51,7 +53,7 @@ $background-color: #f0f0f0;
   transform: rotate(0deg);
 
   &:hover {
-    background-color: #2e8bc0;
+    background-color: $color-secondary;
     animation: bounce 1s ease-in-out;
   }
   
@@ -75,9 +77,9 @@ $background-color: #f0f0f0;
   
 
   &.selected {
-    background-color: $select-color;
+    background-color: $color-primary;
     color: #fff;
-    border-color: $select-color;
+    border-color: $background-color;
   }
 
   @media screen and (max-width: 768px) {
@@ -107,7 +109,7 @@ $background-color: #f0f0f0;
   padding: 10px 20px;
   background-color: #fff;
   color: #333;
-  border: 1px solid #ccc;
+  border: 1px solid $background-color;
   border-radius: 5px;
   font-size: 1rem;
   cursor: pointer;
@@ -115,7 +117,7 @@ $background-color: #f0f0f0;
   transform: rotate(0deg);
 
   &:hover {
-    background-color: #2e8bc0;
+    background-color: $color-secondary;
     animation: bounce 1s ease-in-out;
   }
   
@@ -139,9 +141,9 @@ $background-color: #f0f0f0;
   
 
   &.selected {
-    background-color: $select-color;
+    background-color: $color-primary;
     color: #fff;
-    border-color: $select-color;
+    border-color: $background-color;
   }
 }
 
@@ -166,7 +168,7 @@ $background-color: #f0f0f0;
   border-radius: 5px;
   font-size: 1.2rem;
   color: white;
-  background-color: #313638;
+  background-color: $color-text-black;
   cursor: pointer;
 
   @media only screen and (max-width: 768px) {
@@ -175,7 +177,7 @@ $background-color: #f0f0f0;
 }
 
 .saveButton:hover {
-  color: #313638;
+  color: $color-text-black;
   background-color: white;
 }
 
