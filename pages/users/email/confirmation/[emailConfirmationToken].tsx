@@ -1,27 +1,40 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { useRouter } from 'next/router'
-import { useState } from 'react';
-
+import Head from "next/head";
+import Image from "next/image";
+import Navbar from "@/components/Navbar";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import styles from "@/styles/pages/pleaseConfirmEmail.module.scss";
 
 import axios, { AxiosError } from "axios";
-import config from '@/config.json';
+import config from "@/config.json";
 
-import { InferGetServerSidePropsType, GetServerSideProps, GetServerSidePropsContext } from 'next'
-import { ParsedUrlQuery } from 'querystring';
+import {
+    InferGetServerSidePropsType,
+    GetServerSideProps,
+    GetServerSidePropsContext,
+} from "next";
+import { ParsedUrlQuery } from "querystring";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faSquareCheck,
+    faSquareXmark,
+} from "@fortawesome/free-solid-svg-icons";
 
 const API_ENDPOINT = config.apiEndpoint;
 
 type Props = {
-    isEmailConfirmed: boolean,
-}
+    isEmailConfirmed: boolean;
+};
 interface IParams extends ParsedUrlQuery {
-    EmailConfirmationToken: string
+    EmailConfirmationToken: string;
 }
 
-export default function EmailConfirmation(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function EmailConfirmation(
+    props: InferGetServerSidePropsType<typeof getServerSideProps>
+) {
     const router = useRouter();
-    const [msg, setMsg] = useState<string>('');
+    const [msg, setMsg] = useState<string>("");
     // console.log('router here', router);
     // console.log('context here', props.first);
 
@@ -44,9 +57,7 @@ export default function EmailConfirmation(props: InferGetServerSidePropsType<typ
     //         isConfirmed();
     //     }, [router.query.emailConfirmationToken])
 
-
-    console.log(props.isEmailConfirmed)
-
+    console.log(props.isEmailConfirmed);
 
     return (
         <>
@@ -57,28 +68,45 @@ export default function EmailConfirmation(props: InferGetServerSidePropsType<typ
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main>
-                {/* <div>{isEmailConfirmed}</div> */}
-                <div>holy god</div>
+                <Navbar />
+                <section className={styles.block}>
+                    <div className={`container ${styles.center}`}>
+                        <FontAwesomeIcon
+                            icon={props.isEmailConfirmed ? faSquareCheck : faSquareXmark}
+                            style={{
+                                color: `${props.isEmailConfirmed ? "limegreen" : "red"}`,
+                                fontSize: "12rem",
+                            }}
+                        />
+                        <p className={styles.text}>
+                            {props.isEmailConfirmed
+                                ? "Email is Successfully activated, now log in and enjoy your experience"
+                                : "Something went wrong, please try again"}
+                        </p>
+                    </div>
+                </section>
             </main>
         </>
-    )
+    );
 }
 
 export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
     const { emailConfirmationToken } = ctx.params as IParams;
-    let checkConfirmation=false;
+    let checkConfirmation = false;
 
     try {
-        const response = await axios.post(`${API_ENDPOINT}/users/email/confirmation/${emailConfirmationToken}`);
+        const response = await axios.post(
+            `${API_ENDPOINT}/users/email/confirmation/${emailConfirmationToken}`
+        );
         // console.log(JSON.stringify(response?.data));
-        checkConfirmation=true;
+        checkConfirmation = true;
     } catch (err) {
-        checkConfirmation=false;
+        checkConfirmation = false;
     }
 
     return {
         props: {
             isEmailConfirmed: checkConfirmation,
         },
-    }
-}
+    };
+};
