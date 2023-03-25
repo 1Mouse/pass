@@ -3,7 +3,7 @@
 .slide_container {
   width: 100%;
   padding: 40px 0;
-  //   background-color: #333;
+  //   background-color: $color-text-black;
 }
 .slide_content {
   display: flex;
@@ -16,7 +16,7 @@
 }
 .card {
   border-radius: 30px;
-  background-color: #fff;
+  background-color: $color-bg-white;
   flex: 0 0 calc(33.33% - 10px);
   max-width: calc(33.33% - 10px);
   width: 100%;
@@ -24,7 +24,7 @@
 }
 
 .card:hover {
-  border-color: $color-primary;
+  border-color: $color-secondary;
 }
 
 .image_content,
@@ -45,7 +45,7 @@
   top: 0;
   height: 100%;
   width: 100%;
-  background-color: #4070f4;
+  background-color: $color-primary;
   border-radius: 25px 25px 0 25px;
 }
 .overlay::before,
@@ -56,32 +56,49 @@
   bottom: -40px;
   height: 40px;
   width: 40px;
-  background-color: #4070f4;
+  background-color: $color-primary;
 }
 .overlay::after {
   border-radius: 0 25px 0 0;
-  background-color: #fff;
+  background-color: $color-bg-white;
 }
+
+
 .card_image {
   position: relative;
   height: 150px;
   width: 150px;
   border-radius: 50%;
-  background: #fff;
+  background: $color-bg-white;
   padding: 3px;
+  transition: transform 300ms ease-in-out;
 }
 .card_image .card_img {
   height: 100%;
   width: 100%;
   object-fit: cover;
   border-radius: 50%;
-  border: 4px solid #4070f4;
+  border: 4px solid $color-primary;
 }
+.card_image:hover {
+  transform: scale(1.2);
+}
+
+.card_image .card_img:hover{
+  border-color:$color-secondary ;
+
+}
+
 .name {
   font-size: 18px;
-  font-weight: 500;
-  color: #333;
+  font-weight: 600;
+  color: $color-text-black;
+  transition: transform 100ms ease-in-out;
 }
+.name:hover {
+  transform: scale(1.2);
+}
+
 .description {
   font-size: 14px;
   color: #707070;
@@ -90,16 +107,16 @@
 .button {
   border: none;
   font-size: 16px;
-  color: #fff;
+  color: $color-bg-white;
   padding: 8px 16px;
-  background-color: #4070f4;
+  background-color: $color-primary;
   border-radius: 6px;
   margin: 14px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 .button:hover {
-  background: #265df2;
+  background: $color-secondary;
 }
 
 @media screen and (max-width: 768px) {
@@ -111,4 +128,15 @@
     flex: 0 0 100%;
     max-width: 100%;
   }
+}
+
+.FontAwesomeIcon {
+  width: 20px;
+  height: 20px;
+  color: $color-primary;
+}
+
+.card_price_rate {
+  display: flex;
+  align-self: center;
 }

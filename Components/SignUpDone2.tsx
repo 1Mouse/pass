@@ -19,7 +19,7 @@ import {
   faChevronCircleDown,
   faCircleXmark,
 } from "@fortawesome/free-solid-svg-icons";
-import { faUser } from "@fortawesome/free-regular-svg-icons";
+import { faGrinStars } from "@fortawesome/free-regular-svg-icons";
 
 // import { useRouter } from "next/router";
 
@@ -54,7 +54,7 @@ const SignUpDone = () => {
             <li>
               <Link href="#faUser">
                 <FontAwesomeIcon
-                  icon={faUser}
+                  icon={faGrinStars}
                   className={Style.FontAwesomeIcon}
                 />
               </Link>

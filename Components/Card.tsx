@@ -11,16 +11,16 @@ import amico from "../public/amico.svg";
 import "animate.css";
 
 // import the library
-import { library } from "@fortawesome/fontawesome_svg_core";
-import { FontAwesomeIcon } from "@fortawesome/react_fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // import your icons
 import {
   faSearch,
   faChevronCircleDown,
   faCircleXmark,
-} from "@fortawesome/free_solid_svg_icons";
-import { faUser } from "@fortawesome/free_regular_svg_icons";
+} from "@fortawesome/free-solid-svg-icons";
+import { faStar } from "@fortawesome/free-regular-svg-icons";
 
 // import { useRouter } from "next/router";
 
@@ -44,75 +44,15 @@ const Card = () => {
               The lorem text the section that contains header with having open
               functionality. Lorem dolor sit amet consectetur adipisicing elit.
             </p>
-            <button className={Style.button}>View More</button>
-          </div>
-        </div>
-
-        <div className={Style.card}>
-          <div className={Style.image_content}>
-            <span className={Style.overlay}></span>
-            <div className={Style.card_image}>
-              <Image src={amico} alt="amico" className={Style.card_img} />
-            </div>
-          </div>
-          <div className={Style.card_content}>
-            <h2 className={Style.name}>David Dell</h2>
-            <p className={Style.description}>
-              The lorem text the section that contains header with having open
-              functionality. Lorem dolor sit amet consectetur adipisicing elit.
+            <p className={Style.card_price_rate}>
+              4
+              <FontAwesomeIcon
+                icon={faStar}
+                className={Style.FontAwesomeIcon}
+              />
+              From $20 / person
             </p>
-            <button className={Style.button}>View More</button>
-          </div>
-        </div>
-
-        <div className={Style.card}>
-          <div className={Style.image_content}>
-            <span className={Style.overlay}></span>
-            <div className={Style.card_image}>
-              <Image src={amico} alt="amico" className={Style.card_img} />
-            </div>
-          </div>
-          <div className={Style.card_content}>
-            <h2 className={Style.name}>David Dell</h2>
-            <p className={Style.description}>
-              The lorem text the section that contains header with having open
-              functionality. Lorem dolor sit amet consectetur adipisicing elit.
-            </p>
-            <button className={Style.button}>View More</button>
-          </div>
-        </div>
-
-        <div className={Style.card}>
-          <div className={Style.image_content}>
-            <span className={Style.overlay}></span>
-            <div className={Style.card_image}>
-              <Image src={amico} alt="amico" className={Style.card_img} />
-            </div>
-          </div>
-          <div className={Style.card_content}>
-            <h2 className={Style.name}>David Dell</h2>
-            <p className={Style.description}>
-              The lorem text the section that contains header with having open
-              functionality. Lorem dolor sit amet consectetur adipisicing elit.
-            </p>
-            <button className={Style.button}>View More</button>
-          </div>
-        </div>
-
-        <div className={Style.card}>
-          <div className={Style.image_content}>
-            <span className={Style.overlay}></span>
-            <div className={Style.card_image}>
-              <Image src={amico} alt="amico" className={Style.card_img} />
-            </div>
-          </div>
-          <div className={Style.card_content}>
-            <h2 className={Style.name}>David Dell</h2>
-            <p className={Style.description}>
-              The lorem text the section that contains header with having open
-              functionality. Lorem dolor sit amet consectetur adipisicing elit.
-            </p>
-            <button className={Style.button}>View More</button>
+            <button className={Style.button}>Book Now</button>
           </div>
         </div>
       </div>
