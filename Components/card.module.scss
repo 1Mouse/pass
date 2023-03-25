@@ -1,0 +1,114 @@
+@use "../styles/abstracts/variables" as *; // To use any style from Variable direct - example $color-bg-white.
+
+.slide_container {
+  width: 100%;
+  padding: 40px 0;
+  //   background-color: #333;
+}
+.slide_content {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 40px;
+  gap: 15px;
+  //   overflow: scroll;
+  border-radius: 25px;
+  //   background-color: #707070;
+}
+.card {
+  border-radius: 30px;
+  background-color: #fff;
+  flex: 0 0 calc(33.33% - 10px);
+  max-width: calc(33.33% - 10px);
+  width: 100%;
+  border: solid transparent;
+}
+
+.card:hover {
+  border-color: $color-primary;
+}
+
+.image_content,
+.card_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 14px;
+}
+.image_content {
+  position: relative;
+  row-gap: 5px;
+  padding: 25px 0;
+}
+.overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #4070f4;
+  border-radius: 25px 25px 0 25px;
+}
+.overlay::before,
+.overlay::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -40px;
+  height: 40px;
+  width: 40px;
+  background-color: #4070f4;
+}
+.overlay::after {
+  border-radius: 0 25px 0 0;
+  background-color: #fff;
+}
+.card_image {
+  position: relative;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  background: #fff;
+  padding: 3px;
+}
+.card_image .card_img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #4070f4;
+}
+.name {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+}
+.description {
+  font-size: 14px;
+  color: #707070;
+  text-align: center;
+}
+.button {
+  border: none;
+  font-size: 16px;
+  color: #fff;
+  padding: 8px 16px;
+  background-color: #4070f4;
+  border-radius: 6px;
+  margin: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.button:hover {
+  background: #265df2;
+}
+
+@media screen and (max-width: 768px) {
+  .slide_content {
+    flex-direction: column;
+  }
+
+  .card {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
