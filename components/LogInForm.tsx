@@ -16,6 +16,10 @@ import axios, { AxiosError } from 'axios';
 import config from '../config.json';
 import { useRouter } from "next/router";
 
+import useAuthStore from '../lib/zustand/stores/useAuthStore';
+import IUser from "@/lib/types/IUser";
+import omit from './../lib/utils/omit';
+
 const API_ENDPOINT = config.apiEndpoint;
 const EMAIL_REGEX =
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -38,6 +42,18 @@ const LogInForm = () => {
 
     const [errMsg, setErrMsg] = useState("");
     const [success, setSuccess] = useState(false);
+
+    const {setUser,setAccessToken,setRefreshToken}=useAuthStore(
+        (state)=>({
+            setUser:state.setUser,
+            setAccessToken:state.setAccessToken,
+            setRefreshToken:state.setRefreshToken,
+        })
+    );
+    
+    // const user=useAuthStore((state)=>state.user);
+    // const accessToken=useAuthStore((state)=>state.accessToken);
+    // const refreshToken=useAuthStore((state)=>state.refreshToken);
 
     useEffect(() => {
         emailRef.current?.focus();
@@ -66,11 +82,20 @@ const LogInForm = () => {
         }
 
         try {
-            const response = await axios.post(`${API_ENDPOINT}/login`, {
+            const response = await axios.post(`${API_ENDPOINT}/signin`, {
                 "email": email.toLowerCase(),
                 "password": pwd,
             });
-            console.log(JSON.stringify(response?.data));
+            // console.log(JSON.stringify(response?.data));
+            const u=omit(['password'],response?.data?.user) as IUser;
+            // console.log(u);
+            setUser(u);
+            setAccessToken(response?.data?.accessToken);
+            setRefreshToken(response?.data?.refreshToken);
+            // console.log("user ",user);
+            // console.log("at ",accessToken);
+            // console.log("rt ", refreshToken);
+
             setEmail('');
             setPwd('');
             setSuccess(true);
@@ -86,6 +111,12 @@ const LogInForm = () => {
         }
     }
     
+    if (success) {
+        router.push('users/polish')
+    }
+
+    
+
     return (
         <div className={`grid grid--1x2 ${styles.pageNoScroll}`}>
             <div className={styles.signupLeft}>
