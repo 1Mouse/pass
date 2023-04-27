@@ -1,0 +1,11 @@
+.image {
+  margin-right: 50rem; 
+  z-index: 99;
+
+}
+
+@media (max-width: 700px) {
+  .image {
+    margin-right: 0rem; 
+  }
+}

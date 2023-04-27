@@ -1,0 +1,14 @@
+@use "../../styles/abstracts/variables" as *;
+
+.profile {
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 100%;
+    min-height: 100vh;
+    position: relative;
+    flex-direction: column;
+    z-index: -1;
+
+  }
+  

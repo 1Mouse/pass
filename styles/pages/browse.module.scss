@@ -1,0 +1,84 @@
+@use "../../styles/abstracts/variables" as *;
+.filter {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        gap: 10px;
+      
+        label {
+          font-size: 18px;
+        }
+      
+        select {
+          font-size: 16px;
+          padding: 8px;
+          border-radius: 5px;
+          border: 1px solid #ccc;
+        }
+      
+        @media screen and (max-width: 599px) {
+          flex-direction: column;
+                align-items: flex-start;
+      
+          label {
+            margin-bottom: 10px;
+            font-size: 16px;
+          }
+      
+          select {
+            font-size: 14px;
+            margin-bottom: 10px;
+          }
+        }
+      }
+.browes{
+        display: grid;
+        justify-content: center;
+        min-width: 50%;
+        min-height: 100vh;
+        position: relative;
+        top: 50px;
+}
+.IntroText{
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        
+        h4{
+                font-size: 2rem;
+                font-weight: 600;
+                color: $color-secondary;
+                text-align: center;
+                margin-bottom: 1rem;
+        }
+        h2{
+                font-size: 4rem;
+                font-weight: 600;
+                text-align: center;
+                margin-bottom: 1rem;
+        }
+        hr{
+                width: 50%;
+                // margin: 0 auto;
+        }
+        p{
+                font-size: 2rem;
+                font-weight: 600;
+                text-align: center;
+                margin-bottom: 1rem;
+        }
+}
+.Cards{
+        display: grid;
+        margin-top: 50px;
+        grid-auto-rows: auto;
+        justify-content: center;
+        align-content: center;
+        max-width: 1260px;
+        
+        h2{
+                font-size: 3rem;
+                font-weight: 600;
+                margin-bottom: 1rem;
+        }
+}
