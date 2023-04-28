@@ -3,8 +3,8 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react';
 import axios from 'axios';
-import GeneralInfo from '@/components/GeneralInfo';
 import styles from '@/styles/pages/polish.module.scss';
+import Skills from '@/components/Skills';
 
 export default function EmailConfirmatioin() {
 
@@ -18,7 +18,7 @@ export default function EmailConfirmatioin() {
             </Head>
             <div className={styles.bgWrapper}>
                 <main className={`container ${styles.block}`}>
-                    <GeneralInfo/>
+                    <Skills />
                 </main>
             </div>
         </>
