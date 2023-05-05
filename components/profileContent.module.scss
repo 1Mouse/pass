@@ -1,0 +1,57 @@
+@use "../styles/abstracts/variables" as *;
+
+.userProfile {
+    background-color: $color-bg-white;
+    padding: 20px;
+    // border-radius: 10px;
+    // box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    margin-top: 20px;
+    min-width: 50vw;
+    // background-color: rgba(216, 210, 210, 0.76);
+
+    .leftSide,
+    .rightSide {
+        width: 100%;
+    }
+
+    .field {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+    }
+
+    .label {
+        font-weight: bold;
+        font-size: 25px;
+        color: $color-secondary;
+        margin-bottom: 5px;
+    }
+
+    .value {
+        font-size: 25px;
+        max-width: 60ch;
+        word-break: normal;
+    }
+}
+
+.iconContainer {
+    display: flex;
+
+    .icon {
+        padding: 3px;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+    .userProfile {
+        flex-direction: column;
+    }
+
+    .leftSide,
+    .rightSide {
+        width: 80%;
+        margin: 10px auto;
+    }
+}

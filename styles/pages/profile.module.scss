@@ -1,0 +1,23 @@
+@use "../abstracts/variables" as *;
+
+.profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 100%;
+    min-height: 100vh;
+    position: relative;
+    flex-direction: column;
+
+}
+
+
+.block {
+    min-height: 100vh;
+    // border: 1px red solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // border:1px solid red;
+}
+
