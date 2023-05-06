@@ -1,5 +1,7 @@
 {
     "apiEndpoint": "http://localhost:8080/api/v1",
     "apiEndpointV1": "https://pass-interviews.onrender.com/v1",
-    "apiEndpointV2": "https://pass-interviews.onrender.com/v2"
+    "apiEndpointV2": "https://pass-interviews.onrender.com/v2",
+
+    "frontEndHostDev": "http://localhost:3000"
 }

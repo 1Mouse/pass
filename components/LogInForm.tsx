@@ -19,6 +19,7 @@ import { useRouter } from "next/router";
 import useAuthStore from '../lib/zustand/stores/useAuthStore';
 import IUser from "@/lib/types/IUser";
 import omit from './../lib/utils/omit';
+import setCookie from './../lib/utils/setCookie';
 
 const API_ENDPOINT = config.apiEndpoint;
 const EMAIL_REGEX =
@@ -98,6 +99,9 @@ const LogInForm = () => {
 
             setEmail('');
             setPwd('');
+            //setCookie('loggedIn', 'true', 365);
+            // setCookie('username',u.username ,365);
+            setCookie('session',JSON.stringify(response?.data.user),365)
             setSuccess(true);
         } catch (err) {
             const error = err as AxiosError;
