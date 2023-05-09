@@ -6,7 +6,7 @@ import { useState } from "react";
 import styles from "@/styles/pages/pleaseConfirmEmail.module.scss";
 
 import axios, { AxiosError } from "axios";
-import config from "@/config.json";
+import { API_URL } from "@/lib/utils/urls";
 
 import {
     InferGetServerSidePropsType,
@@ -21,7 +21,6 @@ import {
     faSquareXmark,
 } from "@fortawesome/free-solid-svg-icons";
 
-const API_ENDPOINT = config.apiEndpoint;
 
 type Props = {
     isEmailConfirmed: boolean;
@@ -96,7 +95,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
 
     try {
         const response = await axios.post(
-            `${API_ENDPOINT}/users/email/confirmation/${emailConfirmationToken}`
+            `${API_URL}/users/email/confirmation/${emailConfirmationToken}`
         );
         // console.log(JSON.stringify(response?.data));
         checkConfirmation = true;

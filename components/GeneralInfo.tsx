@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import Line from "./common/Line";
 import axios, { AxiosError, AxiosResponse } from "axios";
-import config from "../config.json";
+import { API_URL } from "@/lib/utils/urls";
 import { useRouter } from "next/router";
 import useAuthStore from "../lib/zustand/stores/useAuthStore";
 import useUserStore from "@/lib/zustand/stores/useUserStore";
@@ -13,7 +13,6 @@ import useHasMounted from "@/lib/hooks/useHasMounted";
 import { InfinitySpin } from 'react-loader-spinner'
 import Error from "./common/Error";
 
-const API_ENDPOINT = config.apiEndpoint;
 
 function GeneralInfo() {
     const hasMounted = useHasMounted();
@@ -54,7 +53,7 @@ function GeneralInfo() {
         setLoading(true);
         // console.log(accessToken);
         try {
-            const response = await axios.put(`${API_ENDPOINT}/users`, {
+            const response = await axios.put(`${API_URL}/users`, {
                 "firstName": firstName,
                 "lastName": lastName,
                 "levelOfExperience": levelOfExperience,

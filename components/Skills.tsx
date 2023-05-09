@@ -3,7 +3,6 @@ import styles from "./skills.module.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import axios, { AxiosError } from "axios";
-import config from "../config.json";
 import { useRouter } from "next/router";
 import useAuthStore from "../lib/zustand/stores/useAuthStore";
 import useUserStore from "@/lib/zustand/stores/useUserStore";
@@ -11,7 +10,7 @@ import { InfinitySpin } from "react-loader-spinner";
 import useHasMounted from "@/lib/hooks/useHasMounted";
 import Error from "./common/Error";
 
-const API_ENDPOINT = config.apiEndpoint;
+import { API_URL } from "@/lib/utils/urls";
 
 const options = [
     "Frontend",
@@ -61,7 +60,7 @@ function Skills() {
         console.log(selectedOptions);
         console.log(accessToken);
         try {
-            const response = await axios.put(`${API_ENDPOINT}/users/skills`, {
+            const response = await axios.put(`${API_URL}/users/skills`, {
                 "skills": selectedOptions,
             },
                 {

@@ -7,7 +7,7 @@ import { useState } from "react";
 import styles from "@/styles/pages/profile.module.scss"
 
 import axios, { AxiosError } from "axios";
-import config from "@/config.json";
+import { API_URL } from "@/lib/utils/urls";
 
 import {
     InferGetServerSidePropsType,
@@ -26,7 +26,6 @@ import IUser from '@/lib/types/IUser';
 import ProfileContent from "@/components/ProfileContent";
 import ProfilePic from "@/components/ProfilePic";
 
-const API_ENDPOINT = config.apiEndpoint;
 
 type Props = {
     userData?: IUser|null;
@@ -94,7 +93,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
 
     try {
         const response = await axios.get(
-            `${API_ENDPOINT}/users/${username}`
+            `${API_URL}/users/${username}`
         );
         console.log(JSON.stringify(response?.data));
         userData = response?.data as IUser;
