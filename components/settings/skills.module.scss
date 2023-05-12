@@ -1,0 +1,247 @@
+@use "@/styles/abstracts/variables" as *;
+$background-color: gray;
+
+.wrapper {
+    flex: 1;
+}
+
+.skills {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+    padding: 10px;
+    padding-left: 1%;
+    
+
+
+    @media screen and (max-width: 768px) {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        animation: resize-grid 0.5s ease-in-out;
+    }
+
+    @media screen and (max-width: 480px) {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+        animation: resize-grid 0.5s ease-in-out;
+    }
+
+    @media screen and (max-width: 320px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(12, 1fr);
+        animation: resize-grid 0.5s ease-in-out;
+        justify-items:center;
+
+    }
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 30px 10px 10px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left;
+    border-radius: 10px;
+    background-color: #fff;
+    color: $color-text-black;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    position: relative;
+    border-color: $background-color;
+
+
+    &::after {
+        content: "+";
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        color: $color-primary;
+        font-size: 30px;
+        font-weight: 10;
+        transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+    }
+
+    &:hover {
+        z-index: 1;
+        transform: scale(1.1);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    &.selectedOption {
+        background-color: #fff;
+        border-color: $color-primary;
+        color: $color-text-black;
+
+        &::after {
+            content: "☑";
+            color: $color-primary;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    &.selectedOption:hover {
+        background-color: #fff;
+        border-color: $color-primary;
+        color: #000;
+    }
+
+    /* Apply the button size animation */
+    @media screen and (max-width: 768px) {
+        font-size: 1.4rem;
+        padding: 8px 24px 8px 8px;
+
+        &::after {
+            font-size: 2.4rem;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        font-size: 1.2rem;
+        padding: 6px 20px 6px 6px;
+
+        &::after {
+            font-size: 1.8rem;
+        }
+    }
+
+    @media screen and (max-width: 320px) {
+        font-size: 1rem;
+        padding: 4px 16px 4px 4px;
+
+        &::after {
+            font-size: 1.4rem;
+        }
+    }
+    @media screen and (max-width:375px) {
+        max-width:130px;
+        width:80%;
+    }
+}
+
+.finish {
+    border: 3px $color-text-black solid;
+    background: $color-text-black;
+    font-weight: 600;
+    display: block;
+    width: 30%;
+    margin: 0 auto;
+    border-radius: 8px;
+    padding: 1rem 2rem;
+    color: $color-bg-white;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    box-shadow: inset 0 0 0 0 $color-bg-white;
+    transition: ease-out 0.4s;
+
+    &:hover:not(:disabled) {
+        box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25);
+        filter: brightness(120%);
+        transform: scale(1.05);
+        box-shadow: inset 400px 0 0 0 $color-text-black;
+        color: $color-bg-white;
+    }
+
+    @media screen and (max-width:425.98px) {
+        width: 50%;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// $primary-color: #0C84DF;
+// $secondary-color: #040b24;
+
+
+// .skillsContainer {
+//   display: grid;
+//   grid-template-columns: repeat(4, minmax(0, 1fr));
+//   gap: 10px;
+// }
+
+// .skillsContainer > div {
+//   display: flex;
+//   justify-content: space-between;
+//   padding: 10px 20px;
+//   border: 1px solid black;
+//   border-radius: 10px;
+//   font-size: 1.5rem;
+//   font-weight: bolder;
+//   transition: border-color 0.3s ease-in-out;
+// }
+
+// .skillsContainer > div:hover {
+//   border-color: $primary-color;
+//   background-color: #e4faff;
+// }
+
+// // .skillsContainer > div:active {
+// //   border-color: $primary-color;
+// //   background-color: #00d0ff;
+// // }
+// .skills{
+//   width: 200px;
+//   height: 120px;
+//   border: 2px solid #ccc;
+//   padding: 10px;
+//   font-size: 16px;
+
+//   option {
+//     padding: 5px;
+//     font-size: 14px;
+//   }
+// }
+
+
+// /* Medium screens */
+// @media only screen and (max-width: 768px) {
+//   .skillsContainer {
+//     grid-template-columns: repeat(2, minmax(0, 1fr));
+//     justify-content: center;
+//   }
+
+//   .skillsContainer > div {
+//     padding: 10px 15px;
+//     width: 100%;
+//   }
+// }
+
+// // For small screens
+// @media only screen and (max-width: 480px) {
+//   .skillsContainer {
+//     grid-template-columns: minmax(0, 1fr);
+//     justify-content: center;
+//   }
+
+//   .skillsContainer > div {
+//     padding: 10px;
+//     width: 100%;
+//   }
+// }

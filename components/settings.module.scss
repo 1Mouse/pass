@@ -1,0 +1,128 @@
+@use "../styles/abstracts/variables" as *;
+
+.contentBox {
+    margin-top: 1rem;
+    // background: $color-bg-button-offWhite;
+    background:white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.mainHeading{
+    color:black;
+    font-size: 3rem;
+    font-weight: 600;
+    text-align:center;
+    font-family:roboto;
+}
+.heading {
+    color:black;
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-top: 3rem;
+}
+
+.photoSection{
+    display:grid;
+    grid-template-columns:1fr 3fr;
+    justify-items:center;
+    @media screen and (max-width:1023.98px) {
+        grid-gap:2rem;
+    }
+    @media screen and (max-width:425.98px) {
+        grid-template-columns:unset;
+    }
+}
+.actions{
+    align-self:center;
+    justify-self:start;
+    @media screen and (max-width:425.98px) {
+        align-self:center;
+        justify-self:center;
+        .upload,.delete{
+            display:inline-block;
+        }
+    }
+}
+
+.imageContainer {
+    justify-self:start;
+    width: 200px;
+    height: 200px;
+
+    @media screen and (max-width:767.98px) {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.image {
+    object-fit: cover;
+    border-radius: 10%;
+    object-position: center;
+    border-style: none;
+    width: 100% !important;
+    position: relative !important;
+    height: unset !important;
+}
+
+.imageContainer>div {
+    position: unset !important;
+}
+
+.upload {
+    border: 5px solid black;
+    background: $color-primary;
+    // display: block;
+    min-width: 100px;
+    margin: 0 auto;
+    border-radius: 8px;
+    padding: 0.7rem 2rem;
+    color: $color-bg-white;
+    cursor: pointer;
+    white-space: nowrap;
+    // transition-property: transform, box-shadow, filter;
+    // transition-duration: 0.25s;
+    // transition-timing-function: ease-in-out;
+    // transition-delay: 0.1s;
+    display:block;
+    margin-bottom:2rem;
+    &:hover {
+        box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25);
+        filter: brightness(120%);
+        transform: scale(1.05);
+    }
+
+        @media screen and (max-width:1023.98px) {
+            width:50%;
+        }
+}
+
+.delete {
+    border: 5px solid black;
+    background: lighten(red,10%);
+    // display: block;
+    min-width: 100px;
+    margin: 0 auto;
+    border-radius: 8px;
+    padding: 0.7rem 2rem;
+    color: $color-bg-white;
+    cursor: pointer;
+    white-space: nowrap;
+    // transition-property: transform, box-shadow, filter;
+    // transition-duration: 0.25s;
+    // transition-timing-function: ease-in-out;
+    // transition-delay: 0.1s;
+    display: block;
+
+    &:hover {
+        box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25);
+        filter: brightness(120%);
+        transform: scale(1.05);
+    }
+
+    @media screen and (max-width:1023.98px) {
+        width: 50%;
+    }
+}

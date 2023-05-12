@@ -20,6 +20,7 @@ import useAuthStore from '../lib/zustand/stores/useAuthStore';
 import IUser from "@/lib/types/IUser";
 import omit from './../lib/utils/omit';
 import setCookie from './../lib/utils/setCookie';
+import useUserStore  from '@/lib/zustand/stores/useUserStore';
 
 const EMAIL_REGEX =
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -54,6 +55,8 @@ const LogInForm = () => {
     const user = useAuthStore((state) => state.user);
     const accessToken = useAuthStore((state) => state.accessToken);
     const refreshToken = useAuthStore((state) => state.refreshToken);
+    
+    const updateInfo=useUserStore((state)=>state.updateInfo);
 
     useEffect(() => {
         emailRef.current?.focus();
@@ -88,11 +91,13 @@ const LogInForm = () => {
                 "password": pwd,
             });
             console.log(JSON.stringify(response?.data));
-            const u = omit(['password', 'info', 'imageKey', 'imageUrl'], response?.data?.user) as IUser;
+            const u = omit(['password', 'info'], response?.data?.user) as IUser;
             console.log(u);
             setUser(u);
             setAccessToken(response?.data?.accessToken);
             setRefreshToken(response?.data?.refreshToken);
+            updateInfo(response?.data?.user?.info);
+
             console.log("user ", user);
             console.log("at ", accessToken);
             console.log("rt ", refreshToken);
@@ -125,6 +130,7 @@ const LogInForm = () => {
 
     if (success) {
         router.push('/users/polish');
+        return null;
     }
     else {
         return (

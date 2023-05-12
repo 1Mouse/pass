@@ -27,6 +27,9 @@ export default function middleware(req: NextRequest) {
         return NextResponse.redirect(profile);
     }
 
+    if(!username && (url === `${FRONT_URL}/users/polish` || url === `${FRONT_URL}/users/polish-skills`)){
+        return NextResponse.redirect(`${FRONT_URL}/login`);
+    }
 
 
 }
