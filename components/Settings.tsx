@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import Image from "next/image";
 import styles from "./settings.module.scss";
 import GeneralInfo from './settings/GeneralInfo'
@@ -29,15 +29,47 @@ const bio = "We are alwayes ready to face any challenging projects.";
 const Settings: React.FC = () => {
     const hasMounted = useHasMounted();
 
-    const [accessToken, deleteImage, updateAuth] = useAuthStore(state => [state.accessToken, state.deleteImage, state.updateAuth]);
-    const imageUrl = useAuthStore(state => state.user.imageUrl);
+    const [accessToken, setUser, imageUrl] = useAuthStore(state => [state.accessToken, state.setUser, state.user.imageUrl]);
 
-    const image = (imageUrl && imageUrl !== '') ? imageUrl : '/assets/default_profile_photo.svg';
+    const [image, setImage] = useState<string>(imageUrl);
+
+
+    // const image = (imageUrl && imageUrl !== '') ? imageUrl : '/assets/default_profile_photo.svg';
 
     console.log("final", image);
     console.log("state", imageUrl);
 
     if (!hasMounted) return null;
+
+    const deleteImage = async () => {
+        try {
+            const response = await axios.delete(`${API_URL}/users/image`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                    }
+                }
+            );
+            console.log(JSON.stringify(response?.data));
+            let u = omit(['password', 'info'], response?.data) as IUser;
+            u={...u,imageUrl:"/assets/default_profile_photo.svg",imageKey:""}
+            setUser(u);
+            setImage(u.imageUrl)
+        } catch (err) {
+            const error = err as AxiosError;
+            console.log(error)
+            //@ts-ignore
+            // setError(error.response.data.message || "Something went wrong");
+            // if (error?.response) {
+            //     //@ts-ignore
+            //     setErrMsg(error.response?.data?.message);
+            // }
+            // else {
+            //     setErrMsg('Log in failed');
+            // }
+        }
+
+    }
 
     const uploadImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
         if (!e.target.files) return;
@@ -56,13 +88,9 @@ const Settings: React.FC = () => {
                 }
             );
             console.log(JSON.stringify(response?.data));
-            const u = omit(['password', 'info'], response?.data?.user) as IUser;
-            updateAuth(u, response?.data?.accessToken, response?.data?.refreshToken,response?.data?.user?.imageUrl,response?.data?.user?.imageKey);
-            // setFirstName(response?.data?.info.firstName);
-            // setLastName(response?.data?.info.lastName);
-            // setLevelOfExperience(response?.data?.info.levelOfExperience);
-            // setBio(response?.data?.info.bio)
-            // setLoading(false)
+            const u = omit(['password', 'info'], response?.data) as IUser;
+            setUser(u);
+            setImage(u.imageUrl)
 
             // setSuccess(true);
         } catch (err) {
@@ -88,10 +116,11 @@ const Settings: React.FC = () => {
                 <div className={styles.imageContainer}>
                     <Image
                         src={image}
-                        alt=""
+                        alt="profile picture"
                         width={200}
                         height={200}
-                    // className={styles.image}
+                        style={{ objectFit: "cover", borderRadius:'10%'}}
+                        className={styles.image}
                     />
                 </div>
                 <div className={styles.actions}>

@@ -5,8 +5,8 @@ export default interface IUser {
     confirmed: boolean
     active: boolean
     role: string
-    imageKey?: string
-    imageUrl?: string
+    imageKey: string
+    imageUrl: string
     // info:{
     //     _id: string
     //     firstName: string

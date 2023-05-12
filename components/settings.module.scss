@@ -33,6 +33,9 @@
     @media screen and (max-width:425.98px) {
         grid-template-columns:unset;
     }
+    @media screen and (max-width:767.98px) and (min-width:426px) {
+            grid-template-columns: 1fr 1fr;
+        }
 }
 .actions{
     align-self:center;
@@ -50,25 +53,16 @@
     justify-self:start;
     width: 200px;
     height: 200px;
-
+    
     @media screen and (max-width:767.98px) {
+        justify-self:center;
+        align-self: center;
         width: 100%;
         height: 100%;
+        .image{
+            margin:0 auto;
+        }
     }
-}
-
-.image {
-    object-fit: cover;
-    border-radius: 10%;
-    object-position: center;
-    border-style: none;
-    width: 100% !important;
-    position: relative !important;
-    height: unset !important;
-}
-
-.imageContainer>div {
-    position: unset !important;
 }
 
 .upload {

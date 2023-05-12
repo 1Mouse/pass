@@ -17,7 +17,7 @@ const useAuthStore = create<IAuthState>()(
                     confirmed: false,
                     active: false,
                     role: "",
-                    imageUrl: "",
+                    imageUrl: "/assets/default_profile_photo.svg",
                     imageKey: "",
                 },
                 accessToken: "",
@@ -27,38 +27,6 @@ const useAuthStore = create<IAuthState>()(
                 setRefreshToken: (refreshToken) =>
                     set(() => ({ refreshToken: refreshToken })),
                 setUser: (user) => set(() => ({ user: user })),
-                deleteImage: async() =>{
-                    try {
-                        const response = await axios.delete(`${API_URL}/users/image`,
-                            {
-                                headers: {
-                                    Authorization: `Bearer ${get().accessToken}`,
-                                }
-                            }
-                        );
-                        console.log(JSON.stringify(response?.data));
-                        set(() => ({
-                            user: {
-                                ...get().user,
-                                imageUrl: "",
-                                imageKey: "",
-                            },
-                        }))
-                    } catch (err) {
-                        const error = err as AxiosError;
-                        console.log(error)
-                        //@ts-ignore
-                        // setError(error.response.data.message || "Something went wrong");
-                        // if (error?.response) {
-                        //     //@ts-ignore
-                        //     setErrMsg(error.response?.data?.message);
-                        // }
-                        // else {
-                        //     setErrMsg('Log in failed');
-                        // }
-                    }
-                    
-                },
                 updateAuth: (user:IUser,accessToken:string,refreshToken:string,imageUrl:string,imageKey:string) => set(() => ({ user: {...user,imageUrl,imageKey},accessToken:accessToken,refreshToken:refreshToken })),              
             }),
             {

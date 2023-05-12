@@ -7,6 +7,5 @@ export default interface IAuthState {
     setAccessToken: (accessToken: string) => void
     setRefreshToken: (refreshToken: string) => void
     setUser: (user: IUser) => void
-    deleteImage:()=>void
     updateAuth: (user: IUser, accessToken: string, refreshToken: string, imageUrl:string,imageKey:string) => void
 }
