@@ -179,9 +179,10 @@
 
     }
 
-    @media screen and (max-width:425.98px) {
-        width: 50%;
-    }
+    @media screen and (max-width:1024px) {
+            width: 50%;
+            max-width: 170px;
+        }
 }
 
 .visuallyHidden {

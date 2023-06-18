@@ -14,6 +14,7 @@ import useUserStore from "@/lib/zustand/stores/useUserStore";
 import useHasMounted from "@/lib/hooks/useHasMounted";
 import omit from "@/lib/utils/omit";
 import IUser from "@/lib/types/IUser";
+import Skills from "./settings/Skills";
 
 const fullName = "John Doe";
 const userName = "johndoe123";
@@ -141,11 +142,12 @@ const Settings: React.FC = () => {
                     </button>
                 </div>
             </section>
-            <TransparentLine />
+            <Line />
             <GeneralInfo />
-            <TransparentLine />
-
-
+            <Line />
+            <h2 className={styles.heading}>Skills</h2>
+            <Skills/>
+            <Line />
         </div>
     );
 };

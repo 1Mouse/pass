@@ -122,12 +122,12 @@ $background-color: gray;
     }
 }
 
-.finish {
+.save {
     border: 3px $color-text-black solid;
     background: $color-text-black;
     font-weight: 600;
     display: block;
-    width: 30%;
+    width: 10%;
     margin: 0 auto;
     border-radius: 8px;
     padding: 1rem 2rem;
@@ -140,7 +140,10 @@ $background-color: gray;
     margin-top: 3rem;
     margin-bottom: 1rem;
     box-shadow: inset 0 0 0 0 $color-bg-white;
+    ;
     transition: ease-out 0.4s;
+    float: right;
+    margin-right: 2rem;
 
     &:hover:not(:disabled) {
         box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25);
@@ -150,10 +153,15 @@ $background-color: gray;
         color: $color-bg-white;
     }
 
-    @media screen and (max-width:425.98px) {
-        width: 50%;
+    &:disabled {
+        cursor: not-allowed;
+
     }
 
+    @media screen and (max-width:1024px) {
+        width: 50%;
+        max-width: 170px;
+    }
 }
 
 

@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState,useLayoutEffect } from "react";
 import styles from "./skills.module.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
@@ -9,6 +9,7 @@ import useUserStore from "@/lib/zustand/stores/useUserStore";
 import { InfinitySpin } from "react-loader-spinner";
 import useHasMounted from "@/lib/hooks/useHasMounted";
 import Error from "../common/Error";
+import { toast } from 'react-toastify'
 
 import { API_URL } from "@/lib/utils/urls";
 
@@ -41,7 +42,76 @@ function Skills() {
 
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
-    const [success, setSuccess] = useState(false);
+    const [errorCount, setErrorCount] = useState(0);
+    const [successCount, setSuccessCount] = useState(0);
+
+    const firstUpdate = useRef(true);
+    const secondUpdate = useRef(true);
+    const thirdUpdate = useRef(true);
+    const forthUpdate = useRef(true);
+
+    const fireSuccess = (toastedMsg: string) => toast.success(toastedMsg, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+    });
+
+    const fireError = (toastedMsg: string) => toast.error(toastedMsg, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+    });
+
+    console.log("intial", successCount);
+    useLayoutEffect(() => {
+        if (firstUpdate.current) {
+            firstUpdate.current = false;
+            return;
+        }
+        if (secondUpdate.current) {
+            secondUpdate.current = false;
+            return;
+        }
+        if (thirdUpdate.current) {
+            thirdUpdate.current = false;
+            return;
+        }
+        if (forthUpdate.current) {
+            forthUpdate.current = false;
+            return;
+        }
+        fireSuccess('Skills Updated Successfully');
+    }, [successCount])
+
+    useLayoutEffect(() => {
+        if (firstUpdate.current) {
+            firstUpdate.current = false;
+            return;
+        }
+        if (secondUpdate.current) {
+            secondUpdate.current = false;
+            return;
+        }
+        if (thirdUpdate.current) {
+            thirdUpdate.current = false;
+            return;
+        }
+        if (forthUpdate.current) {
+            forthUpdate.current = false;
+            return;
+        }
+        fireError(error || "Something went wrong");
+    }, [errorCount])
 
     const handleOptionClick = (option: string) => {
         setSelectedOptions((prevSelected) => {
@@ -74,12 +144,13 @@ function Skills() {
 
             setSkills(response?.data?.info.skills);
             setLoading(false)
-            setSuccess(true);
+            setSuccessCount((prev) => prev + 1);
         } catch (err) {
             const error = err as AxiosError;
             console.log(error)
+            setErrorCount((prev) => prev + 1);
             //@ts-ignore
-            setError(error.response.data.message);
+            setError(error.response?.data?.message || "Something went wrong");
             // if (error?.response) {
             //     //@ts-ignore
             //     setErrMsg(error.response?.data?.message);
@@ -92,27 +163,26 @@ function Skills() {
 
     if (!hasMounted) return null;
 
-    if (error) {
-        return (
-            <Error errMsg={error} />
-        )
-    }
+    // if (error) {
+    //     return (
+    //         <Error errMsg={error} />
+    //     )
+    // }
 
-    if (loading) {
-        return (
-            <InfinitySpin
-                width='200'
-                color="white"
-            />
-        );
-    }
+    // if (loading) {
+    //     return (
+    //         <InfinitySpin
+    //             width='200'
+    //             color="white"
+    //         />
+    //     );
+    // }
 
-    if (success) {
-        const redirectToProfile = `/users/${username}`;
-        router.push(redirectToProfile);
-    }
+    // if (success) {
+    //     const redirectToProfile = `/users/${username}`;
+    //     router.push(redirectToProfile);
+    // }
 
-    if (!success) {
         return (
             <><div className={styles.wrapper}>
 
@@ -127,12 +197,10 @@ function Skills() {
                         </button>
                     ))}
                 </div>
-                <button type="submit" className={styles.finish} onClick={(e) => handleSave(e)}>Finish</button>
+                <button type="submit" className={styles.save} onClick={(e) => handleSave(e)}>Save</button>
             </div>
             </>
         );
     }
-    return null;
-}
 
 export default Skills;

@@ -9,10 +9,13 @@ import {
 import { useState } from "react";
 import useAuthStore from "@/lib/zustand/stores/useAuthStore";
 import useHasMounted from "@/lib/hooks/useHasMounted";
+import { FRONT_URL } from "@/lib/utils/urls";
+
 const Navbar = () => {
     const hasMounted = useHasMounted();
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const accessToken: string | undefined = useAuthStore((state) => state.accessToken);
+    const username=useAuthStore(state=>state.user.username);
     console.log(accessToken);
     const isAuth = (accessToken && accessToken !== '') ? true : false;
 
@@ -41,10 +44,18 @@ const Navbar = () => {
                 <ul className={`${styles.navList} ${styles.collapssibleContent} ${!isOpen ? styles.hidden : ''}`}>
                     <li className={styles.navItem}><Link href="#">Browse</Link></li>
                     <li className={styles.navItem}><Link href="#">My Interviews</Link></li>
-                    <li className={styles.navItem}><Link href="#">Profile</Link></li>
-                    <li className={styles.navItem}><Link href="#">Settings</Link></li>
+                    <li className={styles.navItem}><Link href={
+                        (isAuth)?
+                        `${FRONT_URL}/users/${username}`:
+                        `${FRONT_URL}/login`
+                        }>Profile</Link></li>
+                    <li className={styles.navItem}><Link href={
+                        (isAuth) ?
+                            `${FRONT_URL}/users/settings` :
+                            `${FRONT_URL}/login`
+                    }>Settings</Link></li>
 
-                    {!isAuth && <li className={styles.navItem}><Link href="#" className={styles.logIn}>Log in</Link></li>}
+                    {!isAuth && <li className={styles.navItem}><Link href={`${FRONT_URL}/login`} className={styles.logIn}>Log in</Link></li>}
                 </ul>
             </nav>
         </>

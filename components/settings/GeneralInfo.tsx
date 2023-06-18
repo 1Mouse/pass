@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useLayoutEffect } from "react";
 import styles from "./generalInfo.module.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
@@ -9,10 +9,9 @@ import { useRouter } from "next/router";
 import useAuthStore from "@/lib/zustand/stores/useAuthStore";
 import useUserStore from "@/lib/zustand/stores/useUserStore";
 import useHasMounted from "@/lib/hooks/useHasMounted";
-
+import { toast } from 'react-toastify'
 import { InfinitySpin } from 'react-loader-spinner'
 import Error from "../common/Error";
-
 
 function GeneralInfo() {
     const hasMounted = useHasMounted();
@@ -30,21 +29,79 @@ function GeneralInfo() {
     const [bioFocus, setBioFocus] = useState(false);
 
     const [loading, setLoading] = useState(false);
-    const [success, setSuccess] = useState(false);
+    const [successCount, setSuccessCount] = useState(0);
+    const [errorCount, setErrorCount] = useState(0);
     const [error, setError] = useState<string | null>(null);
 
     const accessToken = useAuthStore(state => state.accessToken);
-    // const {setFirstName,setLastName,setLevelOfExperience,setBio} = useUserStore(state => ({
-    //     setFirstName: state.setFirstName,
-    //     setLastName: state.setLastName,
-    //     setLevelOfExperience: state.setLevelOfExperience,
-    //     setBio: state.setBio
-    // }));
 
-    // const validateName = (name: string): boolean => {
-    //     const regex = /^[a-zA-Z]+$/;
-    //     return regex.test(name);
-    // };
+    const firstUpdate = useRef(true);
+    const secondUpdate = useRef(true);
+    const thirdUpdate = useRef(true);
+    const forthUpdate = useRef(true);
+
+    const fireSuccess = (toastedMsg: string) => toast.success(toastedMsg, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+    });
+
+    const fireError = (toastedMsg: string) => toast.error(toastedMsg, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+    });
+
+    console.log("intial", successCount);
+    useLayoutEffect(() => {
+        if (firstUpdate.current) {
+            firstUpdate.current = false;
+            return;
+        }
+        if (secondUpdate.current) {
+            secondUpdate.current = false;
+            return;
+        }
+        if (thirdUpdate.current) {
+            thirdUpdate.current = false;
+            return;
+        }
+        if (forthUpdate.current) {
+            forthUpdate.current = false;
+            return;
+        }
+        fireSuccess('General Information updated successfully');
+    }, [successCount])
+
+    useLayoutEffect(() => {
+        if (firstUpdate.current) {
+            firstUpdate.current = false;
+            return;
+        }
+        if (secondUpdate.current) {
+            secondUpdate.current = false;
+            return;
+        }
+        if (thirdUpdate.current) {
+            thirdUpdate.current = false;
+            return;
+        }
+        if (forthUpdate.current) {
+            forthUpdate.current = false;
+            return;
+        }
+        fireError(error || "Something went wrong");
+    }, [errorCount])
 
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -73,12 +130,13 @@ function GeneralInfo() {
             setBio(response?.data?.info.bio)
             setLoading(false)
 
-            setSuccess(true);
+            setSuccessCount((prev) => prev + 1);
         } catch (err) {
             const error = err as AxiosError;
             console.log(error)
+            setErrorCount((prev) => prev + 1);
             //@ts-ignore
-            setError(error.response.data.message||"Something went wrong");
+            setError(error.response?.data?.message || "Something went wrong");
             // if (error?.response) {
             //     //@ts-ignore
             //     setErrMsg(error.response?.data?.message);
@@ -93,154 +151,150 @@ function GeneralInfo() {
         return null;
     }
 
-    if (error) {
-        return (
-            <Error errMsg={error} />
-        )
-    }
+    // if (loading) {
+    //     return (
+    //         <InfinitySpin
+    //             width='200'
+    //             color="white"
+    //         />
+    //     );
+    // }
 
-    if (loading) {
-        return (
-            <InfinitySpin
-                width='200'
-                color="white"
-            />
-        );
-    }
-
-    if (success) {
-        router.push('/users/polish-skills');
-    }
+    // if (success) {
+    //     //make a timer for 2 seconds
+    //     fireSuccess('General Information updated successfully');
+    // }
     console.log(firstName);
     console.log(levelOfExperience)
     console.log(bio)
     console.log(accessToken);
 
-    if (!success) {
-        return (
-            <>
-                <div className={styles.generalInfo}>
-                    <h2 className={styles.heading}>
-                        General Information
-                    </h2>
-                    {/* <Line/> */}
-                    <form onSubmit={handleSubmit} className={styles.form}>
-                        <div className={`${styles.grid} ${styles.customGrid}`}>
-                            <div className={styles.left}>
+    return (
+        <>
+            <div className={styles.generalInfo}>
+                <h2 className={styles.heading}>
+                    General Information
+                </h2>
+                {/* <Line/> */}
+                <form onSubmit={handleSubmit} className={styles.form}>
+                    <div className={`${styles.grid} ${styles.customGrid}`}>
+                        <div className={styles.left}>
 
 
-                                <div className={styles.inputContainer}>
-                                    {/* <label 
+                            <div className={styles.inputContainer}>
+                                {/* <label 
                                     // className={styles.visuallyHidden} htmlFor="firstName"
                                     aria-label='haha'
                                     >First Name</label> */}
-                                    <input
-                                        required
-                                        name="firstName"
-                                        type="name"
-                                        placeholder="First name"
-                                        ref={firstNameRef}
-                                        value={firstName}
-                                        onChange={(e) => setFirstName(e.target.value)}
-                                        onFocus={() => setFirstNameFocus(true)}
-                                        aria-live="polite"
-                                        aria-label='first name'
-                                    />
-                                    <p
-                                        className={
-                                            firstNameFocus && !firstName
-                                                ? styles.instructions
-                                                : styles.hidden
-                                        }
-                                    >
-                                        <FontAwesomeIcon icon={faInfoCircle} className={styles.pwdIcon} />
-                                        Please enter your first name
-                                    </p>
-                                </div>
-                                {/* <label htmlFor="lastName">Last Name</label> */}
-                                <div className={styles.inputContainer}>
-                                    <input
-                                        required
-                                        name="lastName"
-                                        type="name"
-                                        placeholder="Last name"
-                                        value={lastName}
-                                        onChange={(e) => setLastName(e.target.value)}
-                                        onFocus={() => setLastNameFocus(true)}
-                                        aria-placeholder="Close"
-                                    />
-                                    <p
-                                        className={
-                                            lastNameFocus && !lastName
-                                                ? styles.instructions
-                                                : styles.hidden
-                                        }
-                                    >
-                                        <FontAwesomeIcon icon={faInfoCircle} className={styles.pwdIcon} />
-                                        Please enter your last name
-                                    </p>
-                                </div>
-
-
-                                <select
+                                <input
                                     required
-                                    title="--Level Of Experience--"
-                                    name="levelOfExperience"
-                                    className={styles.select}
-                                    value={levelOfExperience}
-                                    onChange={(e) => setLevelOfExperience(e.target.value)}
-                                >
-                                    <option hidden disabled value="" className={styles.d}>
-                                        --Level Of Experience--
-                                    </option>
-                                    <option value="junior">Junior</option>
-                                    <option value="mid-level">Middle</option>
-                                    <option value="senior">Senior</option>
-                                    <option value="tech-lead">Tech Lead</option>
-                                    <option value="staff">Staff</option>
-                                    <option value="principal ">principal</option>
-                                </select>
-                            </div>
-
-                            <div className={styles.right}>
-                                <textarea
-                                    name='bio'
-                                    placeholder='Write about yourself'
-                                    className={styles.textArea}
-                                    value={bio}
-                                    onChange={(e) => setBio(e.target.value)}
-                                    onFocus={() => setBioFocus(true)}
-                                    // cols={30}
-                                    // rows={10}
-                                    required
-                                >
-                                </textarea>
+                                    name="firstName"
+                                    type="name"
+                                    placeholder="First name"
+                                    ref={firstNameRef}
+                                    value={firstName}
+                                    onChange={(e) => setFirstName(e.target.value)}
+                                    onFocus={() => setFirstNameFocus(true)}
+                                    aria-live="polite"
+                                    aria-label='first name'
+                                />
                                 <p
                                     className={
-                                        bioFocus && !bio
+                                        firstNameFocus && !firstName
                                             ? styles.instructions
                                             : styles.hidden
                                     }
                                 >
                                     <FontAwesomeIcon icon={faInfoCircle} className={styles.pwdIcon} />
-                                    Please write about yourself
+                                    Please enter your first name
                                 </p>
                             </div>
+                            {/* <label htmlFor="lastName">Last Name</label> */}
+                            <div className={styles.inputContainer}>
+                                <input
+                                    required
+                                    name="lastName"
+                                    type="name"
+                                    placeholder="Last name"
+                                    value={lastName}
+                                    onChange={(e) => setLastName(e.target.value)}
+                                    onFocus={() => setLastNameFocus(true)}
+                                    aria-placeholder="Close"
+                                />
+                                <p
+                                    className={
+                                        lastNameFocus && !lastName
+                                            ? styles.instructions
+                                            : styles.hidden
+                                    }
+                                >
+                                    <FontAwesomeIcon icon={faInfoCircle} className={styles.pwdIcon} />
+                                    Please enter your last name
+                                </p>
+                            </div>
+
+
+                            <select
+                                required
+                                title="--Level Of Experience--"
+                                name="levelOfExperience"
+                                className={styles.select}
+                                value={levelOfExperience}
+                                onChange={(e) => setLevelOfExperience(e.target.value)}
+                            >
+                                <option hidden disabled value="" className={styles.d}>
+                                    --Level Of Experience--
+                                </option>
+                                <option value="junior">Junior</option>
+                                <option value="mid-level">Middle</option>
+                                <option value="senior">Senior</option>
+                                <option value="tech-lead">Tech Lead</option>
+                                <option value="staff">Staff</option>
+                                <option value="principal ">principal</option>
+                            </select>
                         </div>
 
-                        <button
-                            disabled={(!firstName || !lastName || !levelOfExperience || !bio)}
-                            className={styles.next}
-                            type='submit'
-                        >
-                            Save
-                        </button>
-                    </form>
-                </div>
-            </>
-        );
-    }
-    return null;
+                        <div className={styles.right}>
+
+                            <textarea
+                                name='bio'
+                                placeholder='Write about yourself'
+                                className={styles.textArea}
+                                value={bio}
+                                onChange={(e) => setBio(e.target.value)}
+                                onFocus={() => setBioFocus(true)}
+                                // cols={30}
+                                // rows={10}
+                                required
+                            >
+                            </textarea>
+
+                            <p
+                                className={
+                                    bioFocus && !bio
+                                        ? styles.instructions
+                                        : styles.hidden
+                                }
+                            >
+                                <FontAwesomeIcon icon={faInfoCircle} className={styles.pwdIcon} />
+                                Please write about yourself
+                            </p>
+                        </div>
+                    </div>
+
+                    <button
+                        disabled={(!firstName || !lastName || !levelOfExperience || !bio)}
+                        className={styles.next}
+                        type='submit'
+                    >
+                        Save
+                    </button>
+                </form>
+            </div>
+            {/* <Toaster /> */}
+        </>
+    );
 }
+
 
 export default GeneralInfo;

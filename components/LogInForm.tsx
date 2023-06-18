@@ -91,7 +91,8 @@ const LogInForm = () => {
                 "password": pwd,
             });
             console.log(JSON.stringify(response?.data));
-            const u = omit(['password', 'info'], response?.data?.user) as IUser;
+            let u = omit(['password', 'info'], response?.data?.user) as IUser;
+            u = { ...u, imageUrl: "/assets/default_profile_photo.svg", imageKey: "" }
             console.log(u);
             setUser(u);
             setAccessToken(response?.data?.accessToken);
