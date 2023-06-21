@@ -22,13 +22,13 @@ import {
     faSquareXmark,
 } from "@fortawesome/free-solid-svg-icons";
 
-import IUser from '@/lib/types/IUser';
+// import IUser from '@/lib/types/IUser';
+import IUserBack from '@/lib/types/IUserBack';
 import ProfileContent from "@/components/ProfileContent";
-import ProfilePic from "@/components/ProfilePic";
-
+import omit from '@/lib/utils/omit';
 
 type Props = {
-    userData?: IUser|null;
+    userData?: IUserBack |null;
 };
 interface IParams extends ParsedUrlQuery {
     username: string;
@@ -62,6 +62,7 @@ export default function Profile(
     );
 }
 
+//@ts-ignore
 export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
     const { username } = ctx.params as IParams;
     let userData;
@@ -72,7 +73,9 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
             `${API_URL}/users/${username}`
         );
         console.log(JSON.stringify(response?.data));
-        userData = response?.data as IUser;
+        userData = omit(['password'],response?.data);
+        userData=userData as IUserBack;
+        console.log("userData", userData);
     } catch (err) {
         const e=err as AxiosError;
         console.log(e);

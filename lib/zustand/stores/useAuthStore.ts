@@ -19,6 +19,7 @@ const useAuthStore = create<IAuthState>()(
                     role: "",
                     imageUrl: "/assets/default_profile_photo.svg",
                     imageKey: "",
+                    rating: 0,
                 },
                 accessToken: "",
                 refreshToken: "",

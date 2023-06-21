@@ -88,6 +88,7 @@ export default function SearchBox() {
                             ...base,
                             backgroundColor: '#313638',
                             color: '#E8E9EB',
+                            fontSize:'1.2rem',
                         }),
                         multiValue: (base) => ({
                             ...base,

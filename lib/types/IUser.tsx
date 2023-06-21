@@ -7,6 +7,7 @@ export default interface IUser {
     role: string
     imageKey: string
     imageUrl: string
+    rating: number
     // info:{
     //     _id: string
     //     firstName: string
