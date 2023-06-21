@@ -12,21 +12,8 @@ import Error from "../common/Error";
 import { toast } from 'react-toastify'
 
 import { API_URL } from "@/lib/utils/urls";
+import SKILL_OPTIONS from "@/lib/constants/skillOptions";
 
-const options = [
-    "Frontend",
-    "Backend",
-    "IOS",
-    "Android",
-    "Data Science",
-    "DevOps",
-    "Flutter",
-    "DSA",
-    "Security",
-    "AI",
-    "Big Data",
-    "System Design"
-];
 
 function Skills() {
     const hasMounted = useHasMounted();
@@ -187,7 +174,7 @@ function Skills() {
             <><div className={styles.wrapper}>
 
                 <div className={styles['skills']}>
-                    {options.map((option) => (
+                    {SKILL_OPTIONS.map((option) => (
                         <button
                             key={option}
                             className={`${styles['option']} ${selectedOptions.includes(option) ? styles['selectedOption'] : ''}`}

@@ -1,0 +1,83 @@
+@use "@/styles/abstracts/variables" as *;
+
+.inputGroup {
+    box-shadow: 0 0 30px 20px #e6ebee;
+    border: 0;
+    margin: 4rem auto;
+    max-width: 670px;
+    border-radius: 30px;
+    display: flex;
+
+    .input {
+        border: 0;
+        flex-grow: 1;
+        padding: 1.5rem 2rem;
+        width: 0;
+        border-radius: 30px;
+        outline: 0;
+        font-size: 1.8rem;
+
+        &::placeholder {
+            color: darken(#ccc, 20%);
+        }
+
+        @media screen and (max-width:767.98px) {
+            font-size: 1.5rem;
+        }
+    }
+
+    .searchButton {
+        margin: 4px;
+        border: 0;
+        border-radius: 40px;
+        outline: 0;
+        padding: 2rem 4vw;
+        font-size: 1.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        white-space: nowrap;
+        cursor: pointer;
+        text-align: center;
+        background: linear-gradient(to right, $color-primary, $color-secondary);
+        color: #fff;
+
+        @media screen and (max-width:767.98px) {
+            font-size: 1.5rem;
+        }
+
+        .searchIcon {
+            margin-right: 1rem;
+            width: 2rem;
+            height: 2rem;
+            vertical-align: middle;
+        }
+    }
+}
+
+.selectWrapper {
+    width: 50%;
+    // margin: 0 auto;
+    display:grid;
+    grid-template-columns: 6fr 1fr;
+    // background-color: red;
+    grid-gap:2rem;
+
+    .applyFiltersbutton {
+        vertical-align:center;
+        border: 0;
+        border-radius: 5px;
+        outline: 0;
+        padding: 1rem 1rem;
+        font-size: 1.4rem;
+        font-weight: 400;
+        white-space: nowrap;
+        cursor: pointer;
+        text-align: center;
+        background: $color-text-black;
+        color: #fff;
+
+        @media screen and (max-width:767.98px) {
+            font-size: 1.5rem;
+        }
+    }
+}
