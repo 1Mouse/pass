@@ -7,7 +7,7 @@ const fullName = "John Doe";
 const userName = "johndoe123";
 const role = "Developer";
 const rating = 4;
-// const price =30;
+const price =30;
 const levelOfExperience = "Intermediate";
 const skills = ["JavaScript", "React", "CSS", "HTML"];
 const bio = "We are alwayes ready to face any challenging projects.";
@@ -32,10 +32,10 @@ const UserProfile: React.FC = () => {
           <span className={styles.label}>Rating</span>
           <span className={styles.value}>{rating}/5</span>
         </div>
-        {/* <div className={styles.field}>
+        <div className={styles.field}>
           <span className={styles.label}>price</span>
           <span className={styles.value}>{price}</span>
-        </div> */}
+        </div>
       </div>
       <div className={styles.rightSide}>
         <div className={styles.field}>

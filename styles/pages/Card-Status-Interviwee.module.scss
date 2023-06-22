@@ -1,0 +1,250 @@
+.cardcontainer {
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    grid-auto-rows: auto; 
+    justify-content: center;
+    align-content: center;
+    max-width: 1260px; 
+    transition: all 0.5s ease-in-out;
+  }
+  
+  .card {
+    width: 400px;
+    height: 600px;
+    transition: all 0.5s ease-in-out;
+  }
+  
+  @media (max-width: 868px) {
+    .cardcontainer {
+      grid-template-columns: repeat(2, 1fr);
+      transition: all 0.5s ease-in-out;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .cardcontainer {
+      grid-template-columns: repeat(1, 1fr);
+      transition: all 0.5s ease-in-out;
+    }
+  }
+  
+  .filterButtons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .filterButtons button {
+    background-color: transparent;
+    // color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 15px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  
+  }
+  
+
+
+// $primary-color: #0070f3;
+// $secondary-color: #333333;
+// $light-gray: #f8f8f8;
+// $dark-gray: #444444;
+// $pending-color: #f9a825;
+// $confirmed-color: #43a047;
+// $rejected-color: #e53935;
+// $finished-color: #2196f3;
+
+// .cardcontainer {
+//   display: flex;
+//   flex-wrap: wrap;
+//   margin: 0 -16px;
+// }
+
+// .cardcontainer > div {
+//   width: calc(33.33% - 32px);
+//   margin: 16px;
+// }
+
+// @media only screen and (max-width: 1024px) {
+//   .cardcontainer > div {
+//     width: calc(50% - 16px);
+//   }
+// }
+
+// @media only screen and (max-width: 767px) {
+//   .cardcontainer > div {
+//     width: 100%;
+//   }
+// }
+
+// .cardcontainerfilters {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   margin-bottom: 16px;
+// }
+
+// .filters {
+//   display: flex;
+//   flex-wrap: wrap;
+  
+// }
+
+// .filterbutton {
+//   margin-right: 8px;
+//   margin-bottom: 8px;
+//   padding: 8px 16px;
+//   border: none;
+//   border-radius: 4px;
+//   font-size: 16px;
+//   font-weight: 500;
+//   color: $secondary-color;
+//   background-color: $light-gray;
+//   cursor: pointer;
+//   transition: background-color 0.2s ease;
+// }
+
+// .filterbutton:hover {
+//   background-color: $primary-color;
+//   color: #fff;
+// }
+
+// .card {
+//   position: relative;
+//   width: 100%;
+//   height: 100%;
+//   border-radius: 8px;
+//   background-color: #fff;
+//   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+//   transition: transform 0.2s ease;
+//   overflow: hidden;
+//   cursor: pointer;
+// }
+
+// .card:hover {
+//   transform: translateY(-4px);
+// }
+
+// .card.pending {
+//   border-left: 8px solid $pending-color;
+// }
+
+// .card.confirmed {
+//   border-left: 8px solid $confirmed-color;
+// }
+
+// .card.rejected {
+//   border-left: 8px solid $rejected-color;
+// }
+
+// .card.finished {
+//   border-left: 8px solid $finished-color;
+// }
+
+// .card.unknown {
+//   border-left: 8px solid $secondary-color;
+// }
+
+// .cardcontent {
+//   padding: 16px;
+// }
+
+// .header {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   margin-bottom: 16px;
+// }
+
+// .rate,
+// .price {
+//   display: flex;
+//   align-items: center;
+// }
+
+// .Star,
+// .Dollar {
+//   margin-right: 8px;
+//   font-size: 16px;
+//   color: $primary-color;
+// }
+
+// .h4 {
+//   margin: 0;
+//   font-size: 16px;
+//   font-weight: 500;
+//   color: $secondary-color;
+// }
+
+// .cardimage {
+//   width: 100%;
+//   height: 0;
+//   padding-bottom: 100%;
+//   background-position: center;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   background-color: $light-gray;
+// }
+
+// .cardimage.pending {
+//   background-image: url("/photo-pending.svg");
+// }
+
+// .cardimage.confirmed {
+//   background-image: url("/photo-confirmed.svg");
+// }
+
+// .cardimage.rejected {
+//   background-image: url("/photo-rejected.svg");
+// }
+
+// .cardimage.finished {
+//   background-image: url("/photo-finished.svg");
+// }
+
+// .cardimage.unknown {
+//   background-image: url("/photo-unknown.svg");
+// }
+
+// .bio {
+//   margin-top: 16px;
+//   font-size: 14px;
+//   line-height: 1.5;
+//   color: $dark-gray;
+// }
+
+// .status {
+//   position: absolute;
+//   top: 16px;
+//   right: 16px;
+//   padding: 4px 8px;
+//   border-radius: 4px;
+//   font-size: 12px;
+//   font-weight: 500;
+//   text-transform: uppercase;
+//   color: #fff;
+// }
+
+// .status.pending {
+//   background-color: $pending-color;
+// }
+
+// .status.confirmed {
+//   background-color: $confirmed-color;
+// }
+
+// .status.rejected {
+//   background-color: $rejected-color;
+// }
+
+// .status.finished {
+//   background-color: $finished-color;
+// }
+
+// .status.unknown {
+//   background-color: $secondary-color;
+// }

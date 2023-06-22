@@ -1,0 +1,49 @@
+.cardcontainer {
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    grid-auto-rows: auto; 
+    justify-content: center;
+    align-content: center;
+    max-width: 1260px; 
+    transition: all 0.5s ease-in-out;
+  }
+  
+  .card {
+    width: 400px;
+    height: 600px;
+    transition: all 0.5s ease-in-out;
+  }
+  
+  @media (max-width: 868px) {
+    .cardcontainer {
+      grid-template-columns: repeat(2, 1fr);
+      transition: all 0.5s ease-in-out;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .cardcontainer {
+      grid-template-columns: repeat(1, 1fr);
+      transition: all 0.5s ease-in-out;
+    }
+  }
+  
+  .filterButtons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .filterButtons button {
+    background-color: transparent;
+    // color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 15px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  
+  }
+  

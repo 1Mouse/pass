@@ -1,0 +1,105 @@
+@use "../../styles/abstracts/variables" as *;
+
+.slidecontainer {
+  width: 100%;
+  min-width: 100%;
+  height: fit-content;
+}
+
+.slidecontent {
+  display: flex;
+  padding: 10px;
+  border-radius: 25px;
+  justify-content: center;
+}
+
+.card {
+  display: flex;
+  justify-content: space-around;
+  border-radius: 15px;
+  min-width: 260px;
+  height: 400px;
+  border: solid transparent;
+  border-color: $color-primary;
+  
+  cursor: pointer;
+  
+  &.pending {
+    background-color: #ABD9FF;
+  }
+
+  &.confirmed {
+    background-color: #98D8AA;
+  }
+
+  &.rejected {
+    background-color: #FF9494;
+  }
+
+  &.finished {
+    background-color: #F3E99F;
+  }
+
+  &:hover {
+    box-shadow: 9px 14px 50px $color-primary;
+  }
+}
+
+.card a {
+  text-decoration: none;
+}
+
+.cardcontent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+  height: 100%;
+  position: relative; 
+}
+
+.interviewerName {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: $color-text-black;
+  text-align: center;
+  // text-decoration: underline;
+  text-decoration-color: $color-primary;
+  margin-bottom: 10px; 
+}
+.intervieweeName {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: $color-text-black;
+  text-align: center;
+  text-decoration-color: $color-primary;
+}
+
+.button {
+  border: none;
+  font-size: 16px;
+  color: $color-bg-white;
+  padding: 8px 16px;
+  background-color: $color-primary;
+  border-radius: 6px;
+  margin: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 110%;
+}
+
+.button:hover {
+  background: $color-secondary;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.label{
+  color: $color-text-black;
+  }

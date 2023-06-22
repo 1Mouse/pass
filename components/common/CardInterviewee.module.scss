@@ -1,0 +1,317 @@
+@use "../../styles/abstracts/variables" as *;
+.slidecontainer {
+  width: 100%;
+  min-width: 100%;
+  height: fit-content;
+}
+
+.slidecontent {
+  display: flex;
+  padding: 10px;
+  border-radius: 25px;
+  justify-content: center;
+}
+
+.card {
+  display: flex;
+  justify-content: space-around;
+  border-radius: 15px;
+  min-width: 260px;
+  height: 400px;
+  border: solid transparent;
+  border-color: $color-primary;
+  
+  cursor: pointer;
+  
+  &.pending {
+    background-color: #ABD9FF;
+  }
+  &.confirmed {
+    background-color: #98D8AA;
+  }
+  &.rejected {
+    background-color: #FF9494;
+  }
+  &.finished {
+    background-color: #F3E99F;
+  }
+  &:hover {
+    box-shadow: 9px 14px 50px $color-primary;
+  }
+}
+
+.card a {
+  text-decoration: none;
+}
+
+.cardcontent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+  height: 100%;
+  position: relative; 
+}
+
+.interviewerName {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: $color-text-black;
+  text-align: center;
+  // text-decoration: underline;
+  text-decoration-color: $color-primary;
+  margin-bottom: 10px; 
+}
+.intervieweeName {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: $color-text-black;
+  text-align: center;
+  text-decoration-color: $color-primary;
+}
+
+.button {
+  border: none;
+  font-size: 16px;
+  color: $color-bg-white;
+  padding: 8px 16px;
+  background-color: $color-primary;
+  border-radius: 6px;
+  margin: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 110%;
+}
+
+.button:hover {
+  background: $color-secondary;
+}
+
+.buttonContainer {
+  position: absolute;
+  bottom: 10px; 
+  left: 37%;
+  transform: translateX(-50%);
+}
+.date {
+  font-size: 2rem;
+  color: $color-text-black;
+  text-align: center;
+  margin-bottom: 10px; 
+}
+.label{
+color: $color-text-black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// .slidecontainer {
+//   width: 100%;
+//   // padding: 40px 0;
+//     min-width: 100%;
+//     height: fit-content;
+// }
+
+// .slidecontent {
+//   display: flex;
+//   // flex-wrap: wrap;
+//   // margin: 0 40px;
+//   // gap: 15px;
+//   padding: 10px;
+//   border-radius: 25px;
+//   justify-content: center;
+
+// }
+
+// .card {
+//   border-radius: 15px;
+//   background-color: $color-bg-white;
+//   min-width: 270px; 
+//   height: 400px; 
+//   border: solid transparent;
+//   border-color: $color-primary;
+//   cursor: pointer;
+//   &.pending {
+//     background-color: #ABD9FF;
+//   }
+
+//   &.confirmed {
+//     background-color: #98D8AA;
+//   }
+
+//   &.rejected {
+//     background-color: #FF9494;
+//   }
+
+//   &.finished {
+//     background-color: #F3E99F;
+//   }
+
+
+//   &:hover {
+//     box-shadow: 9px 14px 50px rgb(0, 247, 255);
+//   }
+// }
+// .card a {
+//   text-decoration: none;
+// }
+// .imagecontent,
+// .cardcontent {
+//   display: flex;
+//   flex-direction: column;
+//   padding: 15px 15px;
+// }
+// .imagecontent {
+//   position: relative;
+//   row-gap: 5px;
+//   padding: 15px 0;
+//   align-items: center;
+// }
+
+// .cardimage {
+//   position: relative;
+//   border-radius: 50%;
+//   background: $color-bg-white;
+//   padding: 3px;
+//   transition: transform 300ms ease-in-out;
+// }
+
+// .cardimage .cardimg {
+//   height: 100%;
+//   width: 100%;
+//   object-fit: cover;
+//   border-radius: 50%;
+//   border: 4px solid $color-primary;
+// }
+
+// .cardimage:hover {
+//   transform: scale(1.2);
+// }
+
+// .cardimage .cardimg:hover {
+//   border-color: $color-secondary;
+// }
+
+// .name {
+//   font-size: 2rem;
+//   font-weight: bold;
+//   color: $color-text-black;
+//   text-align: center;
+//   text-decoration: underline;
+//   text-decoration-color: $color-primary;
+// }
+
+// .header {
+//   display: flex;
+//   justify-content: space-between;
+
+// }
+
+// .Dollar {
+//   width: 2rem;
+//   height: 2rem;
+// }
+
+// .price {
+//   font-size: 1.8rem;
+//   font-weight: lighter;
+//   align-self: self-end;
+//   display: flex;
+//   align-items: center;
+  
+// }
+
+// .Star {
+//   width: 2rem;
+//   height: 2rem;
+//   color: gold;
+//   margin-right: 4px;
+// }
+
+// .rate {
+//   font-size: 1.8rem;
+//   font-weight: lighter;
+//   align-self: self-start;
+//   display: flex;
+// }
+
+// .Bio {
+//   color: #707070;
+//   font-size: 1.5rem;
+//   display: -webkit-box;
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+//   -webkit-line-clamp: 2;
+//   -webkit-box-orient: vertical;
+//   text-align: center;
+// }
+
+// .button {
+//   border: none;
+//   font-size: 16px;
+//   color: $color-bg-white;
+//   padding: 8px 16px;
+//   background-color: $color-primary;
+//   border-radius: 6px;
+//   margin: 14px;
+//   cursor: pointer;
+//   transition: all 0.3s ease;
+//   width: 70%;
+//   align-self: center;
+// }
+
+// .button:hover {
+//   background: $color-secondary;
+// }
+
+// @media screen and (max-width: 768px) {
+//   .slidecontent {
+//     flex-direction: column;
+//   }
+
+//   .card {
+//     flex: 0 0 100%;
+//     max-width: 100%;
+//     min-height: 400px;
+
+//   }
+// }
+// .buttonContainer{
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     margin-top: 20px;
+//     margin-bottom: 20px;
+// }
