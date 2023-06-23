@@ -1,0 +1,28 @@
+@use "@/styles/abstracts/variables" as *;
+
+.errorContainer{
+    margin-top: 1rem;
+        background-color: $color-bg-white;
+        border-radius: 10px;
+        padding: 1.5rem;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        // min-height: 75dvh;
+        font-size:2.4rem;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding-bottom: 15rem;
+        .imageContainer{
+            margin: 0 auto;
+        }
+
+        .errorMsg{
+            margin-top: 1rem;
+            font-size: 2.8rem;
+            font-weight: 500;
+            color:black;
+        }
+        
+}

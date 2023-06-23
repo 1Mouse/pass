@@ -1,10 +1,17 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./profileContent.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { faGithub, faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons";
-import Line from '@/components/common/Line'
+import {
+    faGithub,
+    faLinkedin,
+    faTwitter,
+} from "@fortawesome/free-brands-svg-icons";
+import Line from "@/components/common/Line";
+import IUserBack from "@/lib/types/IUserBack";
+import GenericError from "./common/GenericError/GenericError";
 
 const fullName = "John Doe";
 const userName = "johndoe123";
@@ -15,40 +22,68 @@ const levelOfExperience = "Intermediate";
 const skills = ["JavaScript", "React", "CSS", "HTML"];
 const bio = "We are alwayes ready to face any challenging projects.";
 
-const ProfileContent: React.FC = () => {
+type Props = {
+    userData?: IUserBack | null;
+    errorMsg: string;
+};
+
+const ProfileContent = (props: Props) => {
+    console.log("props in profile content");
+    console.log(props);
+
+
+    if (props.userData === null) {
+        return <GenericError errorMsg={props.errorMsg} />;
+    }
+
     return (
         <div className={styles.contentBox}>
             <div className={`${styles.card}`}>
                 <div className={styles.imageContainer}>
                     <Image
-                        src="/assets/sample_photo.jpg"
-                        alt=""
-                        fill
+                        src={props.userData!.imageUrl}
+                        alt="a picture of a person"
+                        width={300}
+                        height={300}
                         className={styles.image}
                     />
                 </div>
                 <section className={styles.info}>
                     <h1 className={styles.name}>
-                        Lorem Ipsum
+                        {props.userData!.info.firstName} {props.userData!.info.lastName}
                         <span className={styles.rating}>
-                            4<FontAwesomeIcon icon={faStar} className={styles.icon} />
+                            {props.userData!.rating === 0 && "Unrated"}
+                            {Array(props.userData!.rating)
+                                .fill(0)
+                                .map((_, i) => (
+                                    <FontAwesomeIcon
+                                        key={i}
+                                        icon={faStar}
+                                        className={styles.icon}
+                                    />
+                                ))}
                         </span>
                     </h1>
-                    <p className={styles.username}>@thisisusername_</p>
-                    <p className={styles.bio}>Nullam condimentum, sapien vel mollis tincidunt, ex velit fermentum purus, eu elementum mi ipsum et nulla.  gravida dignissim tortor vel ultrices. Fusce eu risus eget.
-                        condimentum, sapien vel mollis tincidunt, ex velit fermentum purus, eu elementum u elementum mi ipsum et nulla. Pellentesque vitae vulputate nulla. </p>
+                    <p className={styles.username}>@{props.userData!.username}</p>
+                    <p className={styles.bio}>{props.userData!.info.bio}</p>
                     <div className={styles.bookNowContainer}>
-                        <p className={styles.price}>5.00$ /hour</p>
+                        <p className={styles.price}>{props.userData!.info.price}$ /hr</p>
                         <button className={styles.bookNow}>Book</button>
                     </div>
-            </section>
+                </section>
             </div>
             <section className={styles.skills}>
                 <h2 className={styles.heading}>Skills:</h2>
-                    <span className={styles.skill}>javascript</span>
-                    <span className={styles.skill}>DSA</span>
-                    <span className={styles.skill}>front end</span>
-                    <span className={styles.skill}>AI</span>
+                {props.userData!.info.skills!.map((skill, i) => (
+                    <span key={i} className={styles.skill}>
+                        {skill}
+                    </span>
+                ))}
+
+                {/* <span className={styles.skill}>javascript</span>
+                <span className={styles.skill}>DSA</span>
+                <span className={styles.skill}>front end</span>
+                <span className={styles.skill}>AI</span>
                 <span className={styles.skill}>big data analysis</span>    
                 <span className={styles.skill}>DSA</span>
                 <span className={styles.skill}>front end</span>
@@ -58,34 +93,54 @@ const ProfileContent: React.FC = () => {
                 <span className={styles.skill}>DSA</span>
                 <span className={styles.skill}>front end</span>
                 <span className={styles.skill}>AI</span>
-                <span className={styles.skill}>big data analysis</span>
+                <span className={styles.skill}>big data analysis</span> */}
 
                 {/* <Line/> */}
-                <h2 className={styles.heading}>Level of Experience: <span>Tech-lead</span></h2>
-                {/* <Line/> */}
-                <h2 className={styles.heading}>Socials:&nbsp; &nbsp; 
-                <span className={styles.socialIcon}>
-                <FontAwesomeIcon 
-                icon={faLinkedin}
-                className={`fa-2xl`}
-                />
-                </span>
-                <span className={styles.socialIcon}>
-                <FontAwesomeIcon 
-                icon={faGithub}
-                className={`fa-2xl`}
-                />
-                </span>
-                <span className={styles.socialIcon}>
-                <FontAwesomeIcon 
-                icon={faTwitter}
-                className={`fa-2xl`}
-                />
-                </span>
+                <h2 className={styles.heading}>
+                    Level of Experience:{" "}
+                    <span>{props.userData!.info.levelOfExperience}</span>
                 </h2>
-                
-                </section>
-            
+                {/* <Line/> */}
+
+                {props.userData!.info.socials && (
+                    <h2 className={styles.heading}>
+                        Socials:&nbsp; &nbsp;
+                        {props.userData!.info.socials.linkedin && (
+                            <span className={styles.socialIcon}>
+                                <Link
+                                    href={props.userData!.info.socials.linkedin}
+                                    rel="noopener noreferrer"
+                                    target="_blank"
+                                >
+                                    <FontAwesomeIcon icon={faLinkedin} className={`fa-2xl`} />
+                                </Link>
+                            </span>
+                        )}
+                        {props.userData!.info.socials.github && (
+                            <span className={styles.socialIcon}>
+                                <Link
+                                    href={props.userData!.info.socials.github}
+                                    rel="noopener noreferrer"
+                                    target="_blank"
+                                >
+                                    <FontAwesomeIcon icon={faGithub} className={`fa-2xl`} />
+                                </Link>
+                            </span>
+                        )}
+                        {props.userData!.info.socials.twitter && (
+                            <span className={styles.socialIcon}>
+                                <Link
+                                    href={props.userData!.info.socials.twitter}
+                                    rel="noopener noreferrer"
+                                    target="_blank"
+                                >
+                                    <FontAwesomeIcon icon={faTwitter} className={`fa-2xl`} />
+                                </Link>
+                            </span>
+                        )}                        
+                    </h2>
+                )}
+            </section>
         </div>
     );
 };

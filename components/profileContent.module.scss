@@ -45,7 +45,7 @@
     font-weight: 500;
     margin-left: 2rem;
     position: relative;
-    bottom: 2px;
+    bottom: 1%;
 
     display: inline-block;
 
@@ -58,6 +58,8 @@
 .icon {
     color: gold;
     font-size: 1.5rem;
+    margin-left: 3px;
+    padding-bottom: 3px;
 }
 
 .username {
@@ -137,6 +139,7 @@
 }
 
 .image {
+    aspect-ratio:1/1;
     object-fit: cover;
     border-radius: 10%;
     object-position: center;
@@ -160,6 +163,7 @@
     span{
         font-size:1.6rem;
         font-weight:500;
+        text-transform: capitalize;
     }
 }
 
@@ -179,5 +183,9 @@
     &:hover{
         color:$color-primary;
         cursor:pointer;
+    }
+
+    a{
+        all:unset;
     }
 }

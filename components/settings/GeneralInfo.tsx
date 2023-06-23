@@ -11,7 +11,6 @@ import useUserStore from "@/lib/zustand/stores/useUserStore";
 import useHasMounted from "@/lib/hooks/useHasMounted";
 import { toast } from 'react-toastify'
 import { InfinitySpin } from 'react-loader-spinner'
-import Error from "../common/Error";
 
 function GeneralInfo() {
     const hasMounted = useHasMounted();

@@ -28,7 +28,8 @@ import ProfileContent from "@/components/ProfileContent";
 import omit from '@/lib/utils/omit';
 
 type Props = {
-    userData?: IUserBack |null;
+    userData?: IUserBack |null
+    errorMsg: string
 };
 interface IParams extends ParsedUrlQuery {
     username: string;
@@ -43,6 +44,7 @@ export default function Profile(
     // console.log('context here', props.first);
 
     console.log(props.userData);
+    console.log(props.errorMsg);
 
     return (
         <>
@@ -55,7 +57,7 @@ export default function Profile(
                 <Navbar />
             <div className={styles.bgWrapper}>
                 <main className={`container ${styles.block}`}>
-                    <ProfileContent/>
+                    <ProfileContent {...props}/>
             </main>
             </div>
         </>
@@ -74,16 +76,18 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
         );
         console.log(JSON.stringify(response?.data));
         userData = omit(['password'],response?.data);
-        userData=userData as IUserBack;
+        userData= userData as IUserBack;
         console.log("userData", userData);
     } catch (err) {
         const e=err as AxiosError;
         console.log(e);
-        // errMsg=(e.response)?e.response?.data?.message:e.message;
+        //@ts-ignore
+        errorMsg=e.response?.data?.message;
     }
     return {
         props: {
             userData: userData||null,
+            errorMsg: errorMsg||'Server is down'
         },
     };
 };

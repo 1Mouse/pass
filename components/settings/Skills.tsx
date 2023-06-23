@@ -8,7 +8,6 @@ import useAuthStore from "@/lib/zustand/stores/useAuthStore";
 import useUserStore from "@/lib/zustand/stores/useUserStore";
 import { InfinitySpin } from "react-loader-spinner";
 import useHasMounted from "@/lib/hooks/useHasMounted";
-import Error from "../common/Error";
 import { toast } from 'react-toastify'
 
 import { API_URL } from "@/lib/utils/urls";

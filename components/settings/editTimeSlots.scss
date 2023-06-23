@@ -1,0 +1,202 @@
+@use "../../../styles/abstracts/variables" as *;
+
+$background-color: gray;
+
+
+.selectContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: $color-primary 1px solid;
+}
+
+.selectLabel {
+    display: flex;
+    align-self: start;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+
+.selectWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+
+}
+
+.weekDaysContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+
+    @media screen and (max-width: 768px) {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+.weekDayButton {
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid $background-color;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    transform: rotate(0deg);
+
+    &:hover {
+        background-color: $color-secondary;
+        animation: bounce 1s ease-in-out;
+    }
+
+    @keyframes bounce {
+        0% {
+            transform: translateY(0);
+        }
+
+        25% {
+            transform: translateY(-5px);
+        }
+
+        50% {
+            transform: translateY(0);
+        }
+
+        75% {
+            transform: translateY(-2px);
+        }
+
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+
+    &.selected {
+        background-color: $color-primary;
+        color: #fff;
+        border-color: $background-color;
+    }
+
+    @media screen and (max-width: 768px) {
+        width: calc(33.33% - 10px);
+        margin-bottom: 10px;
+    }
+
+    @media screen and (max-width: 480px) {
+        width: calc(50% - 10px);
+        margin-bottom: 10px;
+    }
+
+    @media screen and (max-width: 320px) {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+.optionsContainer {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 10px;
+    margin-bottom: 20px;
+}
+
+.optionButton {
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid $background-color;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    transform: rotate(0deg);
+
+    &:hover {
+        background-color: $color-secondary;
+        animation: bounce 1s ease-in-out;
+    }
+
+    @keyframes bounce {
+        0% {
+            transform: translateY(0);
+        }
+
+        25% {
+            transform: translateY(-5px);
+        }
+
+        50% {
+            transform: translateY(0);
+        }
+
+        75% {
+            transform: translateY(-2px);
+        }
+
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+
+    &.selected {
+        background-color: $color-primary;
+        color: #fff;
+        border-color: $background-color;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .optionsContainer {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .optionsContainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.saveButton {
+    padding: 5px 8px;
+    height: 3.4375rem;
+    width: 12rem;
+    margin: 4px;
+    font-weight: 600;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    color: white;
+    background-color: $color-text-black;
+    cursor: pointer;
+
+    @media only screen and (max-width: 768px) {
+        animation: fadeIn 0.5s ease-in-out forwards;
+    }
+}
+
+.saveButton:hover {
+    color: $color-text-black;
+    background-color: white;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

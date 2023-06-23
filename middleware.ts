@@ -9,7 +9,7 @@ export default function middleware(req: NextRequest) {
     // let username = (session) ? JSON.parse(session.value).username : null;
     // let info = (session) ? JSON.parse(session.value).info : null;
 
-    let username=req.cookies.get('username')?.value.slice(1, -1);
+    let username=req.cookies.get('username')?.value;
     let info=req.cookies.get('info');
     let skills=req.cookies.get('skills');
     let profile = FRONT_URL +'/users/'+ username;
