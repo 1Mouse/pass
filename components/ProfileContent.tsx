@@ -41,7 +41,12 @@ const ProfileContent = (props: Props) => {
             <div className={`${styles.card}`}>
                 <div className={styles.imageContainer}>
                     <Image
-                        src={props.userData!.imageUrl}
+                        src={
+                            props.userData!.imageUrl === '' ?
+                            '/assets/default_profile_photo.svg'
+                            :
+                            props.userData!.imageUrl
+                        }
                         alt="a picture of a person"
                         width={300}
                         height={300}

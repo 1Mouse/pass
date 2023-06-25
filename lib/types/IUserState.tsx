@@ -23,5 +23,7 @@ export default interface IUserState {
     setLevelOfExperience: (levelOfExperience: string) => void
     setBio: (bio: string) => void
     setSkills: (skills: string[]) => void
+    setPrice: (price: number) => void
+    setPricable: (pricable: boolean) => void
     updateInfo: (info: IInfo) => void
 }

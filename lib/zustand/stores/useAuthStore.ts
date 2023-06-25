@@ -17,7 +17,7 @@ const useAuthStore = create<IAuthState>()(
                     confirmed: false,
                     active: false,
                     role: "",
-                    imageUrl: "/assets/default_profile_photo.svg",
+                    imageUrl: "",
                     imageKey: "",
                     rating: 0,
                 },

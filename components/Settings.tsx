@@ -15,6 +15,10 @@ import useHasMounted from "@/lib/hooks/useHasMounted";
 import omit from "@/lib/utils/omit";
 import IUser from "@/lib/types/IUser";
 import Skills from "./settings/Skills";
+import EditUserName from "./settings/EditUserName";
+import EditEmail from "./settings/EditEmail";
+import EditPrice from './settings/EditPrice';
+import ChangePassword from './settings/ChangePassword'
 
 const fullName = "John Doe";
 const userName = "johndoe123";
@@ -30,7 +34,9 @@ const bio = "We are alwayes ready to face any challenging projects.";
 const Settings: React.FC = () => {
     const hasMounted = useHasMounted();
 
-    const [accessToken, setUser, imageUrl] = useAuthStore(state => [state.accessToken, state.setUser, state.user.imageUrl]);
+    const [accessToken, setUser, imageUrl, role] = useAuthStore(state => [state.accessToken, state.setUser, state.user.imageUrl, state.user.role]);
+
+    const[price,setPrice,priceable,setPricable]=useUserStore(state=>[state.price,state.setPrice, state.priceable,state.setPricable]);
 
     const [image, setImage] = useState<string>(imageUrl);
 
@@ -53,7 +59,7 @@ const Settings: React.FC = () => {
             );
             console.log(JSON.stringify(response?.data));
             let u = omit(['password', 'info'], response?.data) as IUser;
-            u={...u,imageUrl:"/assets/default_profile_photo.svg",imageKey:""}
+            u={...u,imageUrl:"",imageKey:""}
             setUser(u);
             setImage(u.imageUrl)
         } catch (err) {
@@ -90,6 +96,7 @@ const Settings: React.FC = () => {
             );
             console.log(JSON.stringify(response?.data));
             const u = omit(['password', 'info'], response?.data) as IUser;
+            console.log(u);
             setUser(u);
             setImage(u.imageUrl)
 
@@ -116,7 +123,7 @@ const Settings: React.FC = () => {
             <section className={styles.photoSection}>
                 <div className={styles.imageContainer}>
                     <Image
-                        src={image}
+                        src={image!==''?image:'/assets/default_profile_photo.svg'}
                         alt="profile picture"
                         width={200}
                         height={200}
@@ -148,6 +155,25 @@ const Settings: React.FC = () => {
             <h2 className={styles.heading}>Skills</h2>
             <Skills/>
             <Line />
+            <EditUserName 
+            accessToken={accessToken} 
+            setUser={setUser}
+            />
+            <Line />
+            <EditEmail
+            accessToken={accessToken}
+            />
+            <Line />
+            <ChangePassword
+            accessToken={accessToken}
+            />
+            <Line />
+            {role==='interviewer'&& <EditPrice
+                accessToken={accessToken}
+                setPrice={setPrice}
+                setPricable={setPricable}
+                pricable={priceable}
+            />}
         </div>
     );
 };

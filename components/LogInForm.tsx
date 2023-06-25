@@ -21,10 +21,7 @@ import IUser from "@/lib/types/IUser";
 import omit from './../lib/utils/omit';
 import setCookie from './../lib/utils/setCookie';
 import useUserStore  from '@/lib/zustand/stores/useUserStore';
-
-const EMAIL_REGEX =
-    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-const PWD_REGEX = /^(.{0,7}|[^0-9]*|[^A-Z]*|[^a-z]*|[a-zA-Z0-9]*)$/;
+import { EMAIL_REGEX, PWD_REGEX } from "@/lib/utils/regex";
 
 const LogInForm = () => {
     const router = useRouter();
@@ -92,7 +89,6 @@ const LogInForm = () => {
             });
             console.log(JSON.stringify(response?.data));
             let u = omit(['password', 'info'], response?.data?.user) as IUser;
-            u = { ...u, imageUrl: "/assets/default_profile_photo.svg", imageKey: "" }
             console.log(u);
             setUser(u);
             setAccessToken(response?.data?.accessToken);
