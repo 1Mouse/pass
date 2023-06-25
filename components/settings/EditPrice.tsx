@@ -129,7 +129,10 @@ function EditPrice({ accessToken, setPrice, setPricable, pricable }: any) {
                         type="number"
                         value={value}
                         placeholder=""
-                        onChange={(e) => setValue(+e.target.value)}
+                        onChange={(e) => {
+                            setValue(+e.target.value)
+                            setSuccess(false);
+                        }}
                         required
                     />
                     <p
@@ -140,8 +143,8 @@ function EditPrice({ accessToken, setPrice, setPricable, pricable }: any) {
                                     styles.hidden
                         }
                     >
-                        <FontAwesomeIcon icon={success ? faCheck : faInfoCircle} className={styles.pwdIcon} />
-                        {errMsg}{success ? "Success" : ""}
+                        <FontAwesomeIcon icon={(success&&!errMsg)  ? faCheck : faInfoCircle} className={styles.pwdIcon} />
+                        {errMsg}{(success&&!errMsg) ? "Success" : ""}
                     </p>
                     <button className={styles.save} onClick={handleSubmit}
                         disabled={value === 0 || !validatePrice || isLoading}
