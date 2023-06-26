@@ -18,7 +18,10 @@ import Skills from "./settings/Skills";
 import EditUserName from "./settings/EditUserName";
 import EditEmail from "./settings/EditEmail";
 import EditPrice from './settings/EditPrice';
-import ChangePassword from './settings/ChangePassword'
+import ChangePassword from './settings/ChangePassword';
+import EditSocials from './settings/EditSocials';
+import EditRole from './settings/EditRole';
+import EditTimeSlots from './settings/EditTimeSlots';
 
 const fullName = "John Doe";
 const userName = "johndoe123";
@@ -168,12 +171,24 @@ const Settings: React.FC = () => {
             accessToken={accessToken}
             />
             <Line />
-            {role==='interviewer'&& <EditPrice
+            <EditSocials
+            accessToken={accessToken}
+            />
+            <Line />
+            {role==='interviewee'&&
+                <EditRole accessToken={accessToken}/>
+            }
+            {role==='interviewer'&& <>
+            <EditPrice
                 accessToken={accessToken}
                 setPrice={setPrice}
                 setPricable={setPricable}
                 pricable={priceable}
-            />}
+                />
+            <Line/>
+            </>
+            }
+            {role==='interviewer'&& <EditTimeSlots/>}
         </div>
     );
 };

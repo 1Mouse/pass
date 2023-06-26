@@ -76,18 +76,7 @@ function EditEmail({ accessToken}: any) {
                     onChange={(e) => setValue(e.target.value)}
                     required
                 />
-                <label
-                    className={styles.label}
-                    htmlFor="email">Email*</label>
-                <input
-                    id="email"
-                    className={styles.input}
-                    type="text"
-                    value={value}
-                    placeholder="enter new email"
-                    onChange={(e) => setValue(e.target.value)}
-                    required
-                />
+            
                 <p
                     className={
                         errMsg&&value!=='' ? styles.instructions

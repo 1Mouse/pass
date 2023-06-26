@@ -1,4 +1,7 @@
 import IInfo from "./IInfo";
+import ISocials from "./ISocials";
+import ITimeSlot from "./ITimeSlot";
+
 export default interface IUserState {
     firstName: string
     lastName: string
@@ -9,15 +12,8 @@ export default interface IUserState {
     priceable?: boolean
     interviewsHad?: []
     interviewsMade?: []
-    socials?: {
-        linkedin?: string
-        github?: string
-        twitter?: string
-    }
-    timeslots?: {
-        day: number
-        hours: string[]
-    }[]
+    socials?: ISocials
+    timeslots?: ITimeSlot[]
     setFirstName: (firstName: string) => void
     setLastName: (lastName: string) => void
     setLevelOfExperience: (levelOfExperience: string) => void
@@ -25,5 +21,7 @@ export default interface IUserState {
     setSkills: (skills: string[]) => void
     setPrice: (price: number) => void
     setPricable: (pricable: boolean) => void
+    setSocials:(socials:ISocials) =>void
+    setTimeSlots:(timeSlots:ITimeSlot[])=>void
     updateInfo: (info: IInfo) => void
 }

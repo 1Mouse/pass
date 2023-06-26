@@ -1,3 +1,5 @@
+import ISocials from './ISocials'
+import ITimeSlot from './ITimeSlot'
 export default interface IInfo {
         firstName: string
         lastName: string
@@ -8,13 +10,6 @@ export default interface IInfo {
         interviewsHad?: []
         interviewsMade?: []
         skills?: string[]
-        socials?: {
-            linkedin?: string
-            github?: string
-            twitter?: string
-        }
-        timeslots?: {
-            day: number
-            hours: string[]
-        }[]
+        socials?: ISocials
+        timeslots?: ITimeSlot[]
     }

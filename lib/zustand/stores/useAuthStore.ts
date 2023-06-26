@@ -28,7 +28,8 @@ const useAuthStore = create<IAuthState>()(
                 setRefreshToken: (refreshToken) =>
                     set(() => ({ refreshToken: refreshToken })),
                 setUser: (user) => set(() => ({ user: user })),
-                updateAuth: (user:IUser,accessToken:string,refreshToken:string,imageUrl:string,imageKey:string) => set(() => ({ user: {...user,imageUrl,imageKey},accessToken:accessToken,refreshToken:refreshToken })),              
+                updateAuth: (user:IUser,accessToken:string,refreshToken:string,imageUrl:string,imageKey:string) => set(() => ({ user: {...user,imageUrl,imageKey},accessToken:accessToken,refreshToken:refreshToken })),
+                setRole: (role) => set(() => ({ user: { ...get().user, role: role } })),              
             }),
             {
                 name: "auth",

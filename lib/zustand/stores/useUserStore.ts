@@ -32,6 +32,8 @@ const useUserStore = create<IUserState>()(
                 setSkills: (skills) => set(() => ({ skills: skills })),
                 setPrice: (price) => set(() => ({ price: price })),
                 setPricable: (pricable) => set(() => ({ priceable: pricable })),
+                setSocials:(socials)=> set(()=>({socials:socials})),
+                setTimeSlots:(timeSlots)=> set(()=>({timeslots:timeSlots})),
                 updateInfo: (info: IInfo) => set(() => ({ ...info })),
             }),
             {
