@@ -140,7 +140,7 @@ function ChangePassword({accessToken}:{accessToken:string}) {
                                 </div>
                             </div>
                         </div>
-                            <button className={styles.button} onClick={handleSave}>
+                            <button className={styles.save} onClick={handleSave}>
                                 save
                             </button>
                     </div>
