@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faArrowDownWideShort} from "@fortawesome/free-solid-svg-icons";
 import styles from './searchBox.module.scss'
 
 import Select, { SelectInstance } from 'react-select';
@@ -15,6 +15,8 @@ export default function SearchBox() {
     const selectRef = useRef<SelectInstance>(null);
     const [filterOptions, setFilterOptions] = useState<string[]>([]);
     const [searchInput, setSearchInput] = useState<string>("");
+    
+    const [toggle,setToggle]=useState(false);
 
     const handleChange = (options: any) => {
         //@ts-ignore
@@ -68,8 +70,13 @@ export default function SearchBox() {
                     search
                 </button>
             </div>
-
-            <div className={styles.selectWrapper}>
+                <div className={styles.showFilters}>
+                    <span className={`{}styles.filter  Icon`} onClick={()=>setToggle(true)}>
+                        <FontAwesomeIcon icon={faArrowDownWideShort} /> Filters</span>
+                    </div>
+            {
+                toggle&&
+                <div className={styles.selectWrapper}>
                 <Select
                     onChange={handleChange}
                     ref={selectRef}
@@ -100,7 +107,7 @@ export default function SearchBox() {
                     apply filters
                 </button>
             </div>
-
+}
         </>
     );
 }

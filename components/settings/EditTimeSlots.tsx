@@ -4,14 +4,11 @@ import styles from "./editTimeSlots.module.scss";
 import moreStyles from './editUserName.module.scss';
 
 function EditTimeSlots() {
-    const [timeSlots,setTimeSlots]=useUserStore();
     const [selectedDay, setSelectedDay] = useState<number | null>(null);
     const [selectedTimes, setSelectedTimes] = useState<Record<number, number[]>>({});
 
-
-
-    console.log('selectedDay', selectedDay);
-    console.log('selectedTimes',selectedTimes);
+    console.log('selectedDay',selectedDay);
+    console.log('selectedDay',selectedDay);
 
     const handleDayClick = (dayIndex: number) => {
         setSelectedDay(selectedDay === dayIndex ? null : dayIndex);
@@ -29,12 +26,12 @@ function EditTimeSlots() {
     };
 
     const handleSaveClick = () => {
-        // for (const day of Object.keys(selectedTimes)) {
-        //     const selectedDayTimes = selectedTimes[day as unknown as number];
-        //     if (selectedDayTimes.length > 0) {
-        //         console.log(`day:${day}, hours:${selectedDayTimes.map(formatTimeForConsole).join(", ")}`);
-        //     }
-        // }
+        for (const day of Object.keys(selectedTimes)) {
+            const selectedDayTimes = selectedTimes[day as unknown as number];
+            if (selectedDayTimes.length > 0) {
+                console.log(`day:${day}, hours:${selectedDayTimes.map(formatTimeForConsole).join(", ")}`);
+            }
+        }
     };
 
     const formatTime = (time: number) => {
@@ -45,11 +42,11 @@ function EditTimeSlots() {
         return `${formattedHour}:${formattedMinute} ${amPm}`;
     };
 
-    // const formatTimeForConsole = (time: number) => {
-    //     const formattedHour = time.toString().padStart(2, "0");
-    //     const formattedMinute = "00";
-    //     return `${formattedHour}:${formattedMinute}`;
-    // };
+    const formatTimeForConsole = (time: number) => {
+        const formattedHour = time.toString().padStart(2, "0");
+        const formattedMinute = "00";
+        return `${formattedHour}:${formattedMinute}`;
+    };
 
     const days = [
         { name: "Sunday", index: 0 },

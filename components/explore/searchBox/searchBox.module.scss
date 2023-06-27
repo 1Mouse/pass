@@ -56,6 +56,33 @@
 }
 
 .selectWrapper {
+    opacity: 1;
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    
+    @keyframes fadeIn {
+        0% {
+            transform: translateX(900);
+            opacity: 0.0;
+        }
+    
+        60% {
+            transform: translateX(500);
+            opacity: 0.75;
+        }
+    
+        80% {
+            transform: translateX(200);
+            opacity: 1;
+        }
+    
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
     width: 70%;
     // margin: 0 auto;
     display:grid;
@@ -86,4 +113,16 @@
             font-size: 1.4rem;
         }
     }
+}
+
+.showFilters{
+    margin-bottom:0.5rem;
+
+    .filterIcon{
+        opacity:0.8;
+        cursor:pointer;
+    }
+}
+.cursor{
+    cursor:default !important;
 }

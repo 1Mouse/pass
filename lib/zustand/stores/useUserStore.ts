@@ -23,7 +23,7 @@ const useUserStore = create<IUserState>()(
                     github: "",
                     twitter: "",
                 },
-                timeslots: [],
+                timeSlots: [],
                 setFirstName: (firstName) => set(() => ({ firstName: firstName })),
                 setLastName: (lastName) => set(() => ({ lastName: lastName })),
                 setLevelOfExperience: (levelOfExperience) =>
@@ -33,7 +33,7 @@ const useUserStore = create<IUserState>()(
                 setPrice: (price) => set(() => ({ price: price })),
                 setPricable: (pricable) => set(() => ({ priceable: pricable })),
                 setSocials:(socials)=> set(()=>({socials:socials})),
-                setTimeSlots:(timeSlots)=> set(()=>({timeslots:timeSlots})),
+                setTimeSlots:(timeSlots)=> set(()=>({timeSlots:timeSlots})),
                 updateInfo: (info: IInfo) => set(() => ({ ...info })),
             }),
             {
