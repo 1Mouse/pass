@@ -42,7 +42,7 @@ const ProfileContent = (props: Props) => {
                 <div className={styles.imageContainer}>
                     <Image
                         src={
-                            props.userData!.imageUrl === '' ?
+                            props.userData!.imageUrl === '' || props.userData!.imageUrl === undefined ?
                             '/assets/default_profile_photo.svg'
                             :
                             props.userData!.imageUrl

@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import styles from "@/styles/pages/explore.module.scss"
+import Card from '@/components/explore/Card/Card'
 
 import axios, { AxiosError } from "axios";
 import { API_URL } from "@/lib/utils/urls";
@@ -22,26 +23,38 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import IUser from '@/lib/types/IUser';
-import SearchBox from "@/components/explore/searchBox/SearchBox";
+import SearchBox from "@/components/explore/SearchBox/SearchBox";
+import IUserBack from "@/lib/types/IUserBack";
+import GenericError from "@/components/common/GenericError/GenericError";
 
 
+type Props = {
+    usersData?: IUserBack[] | null
+    errorMsg: string
+};
+interface IParams extends ParsedUrlQuery {
+    username: string;
+}
 
-// type Props = {
-//     userData?: IUser | null;
-// };
-// interface IParams extends ParsedUrlQuery {
-//     username: string;
-// }
 
 export default function Explore(
-    // props: InferGetServerSidePropsType<typeof getServerSideProps>
+    props: InferGetServerSidePropsType<typeof getServerSideProps>
 ) {
     const router = useRouter();
-    const [msg, setMsg] = useState<string>("");
+    // const[searchText, setSearchText] = useState<string>("");
     // console.log('router here', router);
-    // console.log('context here', props.first);
+    // console.log('props here', props);
 
-    // console.log(props.userData);
+    console.log(props.usersData);
+
+    // useEffect(()=>{
+
+    // },[])
+    const fetchCards=async(searchText:string,filterOptions:string[]=[])=>{
+        router.push(
+            `/explore?fullTextSearch=${searchText}${filterOptions.length!==0?'&skills='+filterOptions.join(','):''}`
+        )
+    }
 
     return (
         <>
@@ -55,32 +68,49 @@ export default function Explore(
             <div className={styles.bgWrapper}>
                 <main className={`container ${styles.block}`}>
                     <h2 className={styles.heading}> 🚀 Get expert coaching, mock <mark>interviews,</mark> and more</h2>
-                    <SearchBox />
+                    <SearchBox
+                        fetchCards={fetchCards}
+                    />
+                    {
+                        props.usersData?.filter(user=>user.info&&user.role==='interviewer').map((user) => (
+                            <Card
+                                key={user._id}
+                                userData={user}
+                            />
+                        ))
+                    }
+                    {
+                        props.usersData?.length===0&&<GenericError errorMsg={'No results found!!'}/>
+                    }
                 </main>
             </div>
         </>
     );
 }
 
-// export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
-//     const { username } = ctx.params as IParams;
-//     let userData;
-//     let errorMsg: string | null = null;
-
-//     try {
-//         const response = await axios.get(
-//             `${API_URL}/users/${username}`
-//         );
-//         console.log(JSON.stringify(response?.data));
-//         userData = response?.data as IUser;
-//     } catch (err) {
-//         const e = err as AxiosError;
-//         console.log(e);
-//         // errMsg=(e.response)?e.response?.data?.message:e.message;
-//     }
-//     return {
-//         props: {
-//             userData: userData || null,
-//         },
-//     };
-// };
+export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
+    console.log("ctx.query", ctx.query);
+    let usersData;
+    let errorMsg: string | null = null;
+    // console.log(`${API_URL}/users/search${ctx.query.fullTextSearch ? '?fullTextSearch=' + ctx.query.fullTextSearch : ''}${ctx.query.skills ? '&info.skills=' + ctx.query.skills : ''}`)
+    try {
+        const response = await axios.get(
+            `${API_URL}/users/search?${ctx.query.fullTextSearch?'fullTextSearch='+ctx.query.fullTextSearch:''}${ctx.query.skills&&!ctx.query.fullTextSearch?'info.skills='+ctx.query.skills:(ctx.query.skills)?'&info.skills='+ctx.query.skills:''}`
+        );
+        // console.log(JSON.stringify(response?.data));
+        // userData = omit(['password'], response?.data);
+        usersData = response.data as IUserBack[];
+        // console.log("usersData", usersData);
+    } catch (err) {
+        const e = err as AxiosError;
+        console.log(e);
+        //@ts-ignore
+        errorMsg = e.response?.data?.message;
+    }
+    return {
+        props: {
+            usersData: usersData || null,
+            errorMsg: errorMsg || 'Server is down'
+        },
+    };
+};
