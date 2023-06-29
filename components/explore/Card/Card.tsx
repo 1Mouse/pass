@@ -1,14 +1,8 @@
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./card.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import {
-    faGithub,
-    faLinkedin,
-    faTwitter,
-} from "@fortawesome/free-brands-svg-icons";
 import IUserBack from "@/lib/types/IUserBack";
 
 
@@ -36,6 +30,7 @@ const Card = (props: Props) => {
                         width={300}
                         height={300}
                         className={styles.image}
+                        loading="eager"
                     />
                 </div>
                 <section className={styles.info}>
@@ -81,44 +76,6 @@ const Card = (props: Props) => {
                     <span>{props.userData!.info.levelOfExperience}</span>
                 </h2>
 
-                {/* {props.userData!.info.socials && (
-                    <h2 className={styles.heading}>
-                        Socials:&nbsp; &nbsp;
-                        {props.userData!.info.socials.linkedin && (
-                            <span className={styles.socialIcon}>
-                                <Link
-                                    href={props.userData!.info.socials.linkedin}
-                                    rel="noopener noreferrer"
-                                    target="_blank"
-                                >
-                                    <FontAwesomeIcon icon={faLinkedin} className={`fa-2xl`} />
-                                </Link>
-                            </span>
-                        )}
-                        {props.userData!.info.socials.github && (
-                            <span className={styles.socialIcon}>
-                                <Link
-                                    href={props.userData!.info.socials.github}
-                                    rel="noopener noreferrer"
-                                    target="_blank"
-                                >
-                                    <FontAwesomeIcon icon={faGithub} className={`fa-2xl`} />
-                                </Link>
-                            </span>
-                        )}
-                        {props.userData!.info.socials.twitter && (
-                            <span className={styles.socialIcon}>
-                                <Link
-                                    href={props.userData!.info.socials.twitter}
-                                    rel="noopener noreferrer"
-                                    target="_blank"
-                                >
-                                    <FontAwesomeIcon icon={faTwitter} className={`fa-2xl`} />
-                                </Link>
-                            </span>
-                        )}
-                    </h2>
-                )} */}
             </section>
         </div>
     );

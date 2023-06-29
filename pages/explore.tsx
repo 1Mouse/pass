@@ -1,8 +1,8 @@
 import Head from "next/head";
-import Image from "next/image";
+// import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import { useRouter } from "next/router";
-import { useState } from "react";
+// import { useState, useEffect } from "react";
 import styles from "@/styles/pages/explore.module.scss"
 import Card from '@/components/explore/Card/Card'
 
@@ -16,17 +16,13 @@ import {
 } from "next";
 import { ParsedUrlQuery } from "querystring";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faSquareCheck,
-    faSquareXmark,
-} from "@fortawesome/free-solid-svg-icons";
 
-import IUser from '@/lib/types/IUser';
+
+// import IUser from '@/lib/types/IUser';
 import SearchBox from "@/components/explore/SearchBox/SearchBox";
 import IUserBack from "@/lib/types/IUserBack";
 import GenericError from "@/components/common/GenericError/GenericError";
-
+// import useAuthStore from '@/lib/zustand/stores/useAuthStore';
 
 type Props = {
     usersData?: IUserBack[] | null
@@ -47,12 +43,11 @@ export default function Explore(
 
     console.log(props.usersData);
 
-    // useEffect(()=>{
 
-    // },[])
-    const fetchCards=async(searchText:string,filterOptions:string[]=[])=>{
+
+    const fetchCards = async (searchText: string, filterOptions: string[] = []) => {
         router.push(
-            `/explore?fullTextSearch=${searchText}${filterOptions.length!==0?'&skills='+filterOptions.join(','):''}`
+            `/explore?fullTextSearch=${searchText}${filterOptions.length !== 0 ? '&skills=' + filterOptions.join(',') : ''}`
         )
     }
 
@@ -72,7 +67,7 @@ export default function Explore(
                         fetchCards={fetchCards}
                     />
                     {
-                        props.usersData?.filter(user=>user.info&&user.role==='interviewer').map((user) => (
+                        props.usersData?.filter(user => user.info && user.role === 'interviewer').map((user) => (
                             <Card
                                 key={user._id}
                                 userData={user}
@@ -80,7 +75,7 @@ export default function Explore(
                         ))
                     }
                     {
-                        props.usersData?.length===0&&<GenericError errorMsg={'No results found!!'}/>
+                        props.usersData?.length === 0 && <GenericError errorMsg={'No results found!!'} />
                     }
                 </main>
             </div>
@@ -92,10 +87,11 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
     console.log("ctx.query", ctx.query);
     let usersData;
     let errorMsg: string | null = null;
+
     // console.log(`${API_URL}/users/search${ctx.query.fullTextSearch ? '?fullTextSearch=' + ctx.query.fullTextSearch : ''}${ctx.query.skills ? '&info.skills=' + ctx.query.skills : ''}`)
     try {
         const response = await axios.get(
-            `${API_URL}/users/search?${ctx.query.fullTextSearch?'fullTextSearch='+ctx.query.fullTextSearch:''}${ctx.query.skills&&!ctx.query.fullTextSearch?'info.skills='+ctx.query.skills:(ctx.query.skills)?'&info.skills='+ctx.query.skills:''}`
+            `${API_URL}/users/search?${ctx.query.fullTextSearch ? 'fullTextSearch=' + ctx.query.fullTextSearch : ''}${ctx.query.skills && !ctx.query.fullTextSearch ? 'info.skills=' + ctx.query.skills : (ctx.query.skills) ? '&info.skills=' + ctx.query.skills : ''}`
         );
         // console.log(JSON.stringify(response?.data));
         // userData = omit(['password'], response?.data);
