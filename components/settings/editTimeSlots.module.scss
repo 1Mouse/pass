@@ -16,7 +16,7 @@ $background-color: gray;
     display: flex;
     align-self: start;
     margin-bottom: 2rem;
-    color:black;
+    color: black;
     font-size: 2.5rem;
     font-weight: 600;
 }
@@ -168,36 +168,43 @@ $background-color: gray;
     }
 }
 
-.saveButton {
-    padding: 5px 8px;
-    height: 3.4375rem;
-    width: 12rem;
-    margin: 4px;
+.save {
+    border: 3px $color-text-black solid;
+    background: $color-text-black;
     font-weight: 600;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    color: white;
-    background-color: $color-text-black;
+    display: block;
+    width: 10%;
+    margin: 0 auto;
+    border-radius: 8px;
+    padding: 1rem 2rem;
+    color: $color-bg-white;
     cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    box-shadow: inset 0 0 0 0 $color-bg-white;
+    ;
+    transition: ease-out 0.4s;
+    margin-right: 2rem;
 
-    @media only screen and (max-width: 768px) {
-        animation: fadeIn 0.5s ease-in-out forwards;
+    &:hover:not(:disabled) {
+        box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25);
+        filter: brightness(120%);
+        transform: scale(1.05);
+        box-shadow: inset 400px 0 0 0 $color-text-black;
+        color: $color-bg-white;
     }
-}
 
-.saveButton:hover {
-    color: $color-text-black;
-    background-color: white;
-}
+    &:disabled {
+        cursor: not-allowed;
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
     }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    @media screen and (max-width:1024px) {
+        width: 50%;
+        max-width: 170px;
     }
 }

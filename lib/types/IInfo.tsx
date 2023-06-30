@@ -11,5 +11,5 @@ export default interface IInfo {
         interviewsMade?: []
         skills?: string[]
         socials?: ISocials
-        timeSlots?: ITimeSlot[]
+        timeslots?: ITimeSlot[]
     }

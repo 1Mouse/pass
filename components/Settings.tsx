@@ -188,7 +188,7 @@ const Settings: React.FC = () => {
             <Line/>
             </>
             }
-            {role==='interviewer'&& <EditTimeSlots/>}
+            {role==='interviewer'&& <EditTimeSlots accessToken={accessToken}/>}
         </div>
     );
 };
