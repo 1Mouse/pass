@@ -2,7 +2,7 @@ import Head from "next/head";
 // import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import { useRouter } from "next/router";
-// import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import styles from "@/styles/pages/explore.module.scss"
 import Card from '@/components/explore/Card/Card'
 
@@ -22,7 +22,7 @@ import { ParsedUrlQuery } from "querystring";
 import SearchBox from "@/components/explore/SearchBox/SearchBox";
 import IUserBack from "@/lib/types/IUserBack";
 import GenericError from "@/components/common/GenericError/GenericError";
-// import useAuthStore from '@/lib/zustand/stores/useAuthStore';
+import useAuthStore from '@/lib/zustand/stores/useAuthStore';
 
 type Props = {
     usersData?: IUserBack[] | null
@@ -42,6 +42,19 @@ export default function Explore(
     // console.log('props here', props);
 
     console.log(props.usersData);
+    const [hideAuthedUser, setHideAuthedUser] = useState<boolean>(false);
+    const username = useAuthStore(state => state.user.username);
+
+    useEffect(() => {
+        username !== '' ? setHideAuthedUser(true) : setHideAuthedUser(false)
+    }, [])
+
+    let data = props.usersData?.filter(user => {
+        if (hideAuthedUser)
+            return user.username !== username && user.info && user.role === 'interviewer';
+
+        return user.info && user.role === 'interviewer';
+    });
 
 
 
@@ -67,7 +80,7 @@ export default function Explore(
                         fetchCards={fetchCards}
                     />
                     {
-                        props.usersData?.filter(user => user.info && user.role === 'interviewer').map((user) => (
+                        data?.map((user) => (
                             <Card
                                 key={user._id}
                                 userData={user}
@@ -75,7 +88,7 @@ export default function Explore(
                         ))
                     }
                     {
-                        props.usersData?.length === 0 && <GenericError errorMsg={'No results found!!'} />
+                        data?.length === 0 && <GenericError errorMsg={'No results found!!'} />
                     }
                 </main>
             </div>

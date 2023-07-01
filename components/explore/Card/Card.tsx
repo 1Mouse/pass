@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import IUserBack from "@/lib/types/IUserBack";
 
+import useAuthStore from "@/lib/zustand/stores/useAuthStore";
 
 
 type Props = {
@@ -15,6 +16,12 @@ const Card = (props: Props) => {
     // console.log("props in profile content");
     // console.log(props);
 
+    const username = useAuthStore(state => state.user.username);
+
+    // if(username===props.userData!.username){
+    //     return null;
+    // }
+    
     return (
         <div className={styles.contentBox}>
             <div className={`${styles.card}`}>

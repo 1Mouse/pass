@@ -9,7 +9,7 @@ import { API_URL } from "@/lib/utils/urls";
 import axios, { AxiosError } from "axios";
 import { fireError, fireSuccess } from "@/lib/utils/toasts";
 
-function EditTimeSlots({accessToken}:any) {
+function EditTimeSlots({ accessToken }: any) {
     const [timeslots, setTimeslots] = useUserStore(state => [state.timeslots, state.setTimeslots]);
     const [selectedDay, setSelectedDay] = useState<number | null>(null);
     const [selectedTimes, setSelectedTimes] = useState<ITimeSlot[]>(timeslots ? timeslots : []);
@@ -48,7 +48,7 @@ function EditTimeSlots({accessToken}:any) {
         }
     };
 
-    const handleSaveClick = async() => {
+    const handleSaveClick = async () => {
         try {
             setLoading(true)
             const response = await axios.put(`${API_URL}/users/timeslots/`, {
@@ -138,9 +138,9 @@ function EditTimeSlots({accessToken}:any) {
                         </div>
                     )}
                 </div>
-                                    <button className={styles.save} onClick={handleSaveClick} disabled={loading}>
-                        {loading?'loading...':'Save'}
-                    </button>
+                <button className={styles.save} onClick={handleSaveClick} disabled={loading}>
+                    {loading ? 'loading...' : 'Save'}
+                </button>
             </div>
         </>
     );

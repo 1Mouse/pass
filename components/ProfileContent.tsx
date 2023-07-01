@@ -12,15 +12,8 @@ import {
 import Line from "@/components/common/Line";
 import IUserBack from "@/lib/types/IUserBack";
 import GenericError from "./common/GenericError/GenericError";
+import useAuthStore from "@/lib/zustand/stores/useAuthStore";
 
-const fullName = "John Doe";
-const userName = "johndoe123";
-const role = "Developer";
-const rating = 4;
-// const price =30;
-const levelOfExperience = "Intermediate";
-const skills = ["JavaScript", "React", "CSS", "HTML"];
-const bio = "We are alwayes ready to face any challenging projects.";
 
 type Props = {
     userData?: IUserBack | null;
@@ -31,6 +24,7 @@ const ProfileContent = (props: Props) => {
     console.log("props in profile content");
     console.log(props);
 
+    const username=useAuthStore(state=>state.user.username);
 
     if (props.userData === null) {
         return <GenericError errorMsg={props.errorMsg} />;
@@ -73,7 +67,7 @@ const ProfileContent = (props: Props) => {
                     <p className={styles.bio}>{props.userData!.info.bio}</p>
                     <div className={styles.bookNowContainer}>
                         <p className={styles.price}>{props.userData!.info.price}$ /hr</p>
-                        <button className={styles.bookNow}>Book</button>
+                        {username===''&&username!==props.userData!.username&&props.userData!.role==='interviewer'&&<button className={styles.bookNow}>Book</button>}
                     </div>
                 </section>
             </div>
