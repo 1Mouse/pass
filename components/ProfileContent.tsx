@@ -13,7 +13,7 @@ import Line from "@/components/common/Line";
 import IUserBack from "@/lib/types/IUserBack";
 import GenericError from "./common/GenericError/GenericError";
 import useAuthStore from "@/lib/zustand/stores/useAuthStore";
-
+import {useEffect,useState} from 'react';
 
 type Props = {
     userData?: IUserBack | null;
@@ -25,6 +25,12 @@ const ProfileContent = (props: Props) => {
     console.log(props);
 
     const username=useAuthStore(state=>state.user.username);
+
+    const [firstRender, setFirstRender] = useState<boolean>(false);
+
+    useEffect(() => {
+        setFirstRender(true);
+    }, [])
 
     if (props.userData === null) {
         return <GenericError errorMsg={props.errorMsg} />;
@@ -67,7 +73,7 @@ const ProfileContent = (props: Props) => {
                     <p className={styles.bio}>{props.userData!.info.bio}</p>
                     <div className={styles.bookNowContainer}>
                         <p className={styles.price}>{props.userData!.info.price}$ /hr</p>
-                        {username===''&&username!==props.userData!.username&&props.userData!.role==='interviewer'&&<button className={styles.bookNow}>Book</button>}
+                        {firstRender && props.userData!.role==='interviewer' && (username===''||username!==props.userData!.username)&&<button className={styles.bookNow}>Book</button>}
                     </div>
                 </section>
             </div>
