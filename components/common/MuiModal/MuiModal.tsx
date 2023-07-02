@@ -1,11 +1,7 @@
 import styles from './muiModal.module.scss';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
+
 
 import { useState } from 'react';
 import dayjs, { Dayjs } from 'dayjs';
@@ -57,11 +53,11 @@ export default function MuiModal(props: any) {
     }
 
     const handleBook = async () => {
-        let formatDate = dayjs(day).toISOString().split('T')[0].concat('T',selectedTime!,':00.000+03:00');
-        // console.log(formatDate);
+        let formatDate = dayjs(day!.add(4, 'hour')).toISOString().split('T')[0].concat('T', selectedTime!, ':00.000+03:00');
+        console.log(formatDate);
         try {
             setLoading(true)
-            const response = await axios.put(`${API_URL}/interviews/`, {
+            const response = await axios.post(`${API_URL}/interviews/`, {
                 "interviewer": props.interviewerId,
                 "interviewee": props.intervieweeId,
                 "date": formatDate
@@ -97,6 +93,7 @@ export default function MuiModal(props: any) {
                     <div className={styles.modalContainer}>
 
                         <h2 className={styles.modalHeading}>Book a mock interview</h2>
+                        <div className={styles.inputsContainer}>
                         <DatePicker
                             label="Select Day"
                             value={day}
@@ -104,37 +101,39 @@ export default function MuiModal(props: any) {
                             onChange={(newValue) => handleDaySelection(newValue)}
                         />
 
-                        {/* <div className={`${styles.selectWrapper} ${!toggle ? styles.hidden : ''}`}> */}
+                        <div className={`${styles.selectWrapper} ${!show ? styles.hidden : ''}`}>
                         <Select
                             instanceId={'time'}
+                            placeholder="Select Time"
+                            //@ts-ignore
                             onChange={handleTimeSelection}
-                            closeMenuOnSelect={false}
+                            closeMenuOnSelect={true}
                             options={timesPool}
                             styles={{
                                 control: (baseStyles, state) => ({
                                     ...baseStyles,
-                                    borderColor: state.isFocused ? 'dodgerblue' : 'dimgray',
-                                    borderWidth: '3px',
-                                    borderRadius: '10px',
-                                }),
-                                multiValueLabel: (base) => ({
-                                    ...base,
-                                    backgroundColor: '#313638',
-                                    color: '#E8E9EB',
-                                    fontSize: '1.2rem',
-                                }),
-                                multiValue: (base) => ({
-                                    ...base,
+                                    borderColor: state.isFocused ? 'dodgerblue' : 'gainsboro',
+                                    borderWidth: '2px',
+                                    borderRadius: '4px',
+                                    marginTop:'2rem'
                                 }),
                             }}
                         />
-                        {/* </div> */}
+                        </div>
+                        </div>
                     </div>
                     <DialogActions>
-                        <Button onClick={handleClose}>Cancel</Button>
-                        <Button onClick={handleBook} disabled={(loading || selectedTime === null || day === null)}>
+                        <button
+                        className={styles.cancel}
+                         onClick={handleClose}>
+                            Cancel
+                            </button>
+                        <button 
+                        className={styles.book}
+                        onClick={handleBook} 
+                        disabled={(loading || selectedTime === null || day === null)}>
                             {loading ? "loading..." : "Book"}
-                        </Button>
+                        </button>
                     </DialogActions>
                 </Dialog>
             </LocalizationProvider>
