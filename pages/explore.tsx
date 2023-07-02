@@ -88,7 +88,7 @@ export default function Explore(
                         ))
                     }
                     {
-                        data?.length === 0 && <GenericError errorMsg={'No results found!!'} />
+                        (data?.length === 0||!data) && <GenericError errorMsg={(!data)?props.errorMsg:'No results found!!'} />
                     }
                 </main>
             </div>
