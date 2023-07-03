@@ -38,37 +38,7 @@ export default function SearchBox({fetchCards}:any) {
         setFilterOptions(syncFilterValues);
     }
 
-    const handleSearch = async () => {
-        console.log(searchInput);
-        console.log(filterOptions);
-        // try {
-        //     const response = await axios.put(`${API_URL}/users/search?fullTextSearch=Netflix&info.skills=c++,dsa`, {
-        //         "firstName": firstName,
-        //         "lastName": lastName,
-        //         "levelOfExperience": levelOfExperience,
-        //         "bio": bio
-        //     }
-        //     );
-        //     console.log(JSON.stringify(response?.data));
-
-
-
-        // } catch (err) {
-        //     // const error = err as AxiosError;
-        //     // console.log(error)
-        //     // setErrorCount((prev) => prev + 1);
-        //     // //@ts-ignore
-        //     // setError(error.response?.data?.message || "Something went wrong");
-        //     // // if (error?.response) {
-        //     // //     //@ts-ignore
-        //     // //     setErrMsg(error.response?.data?.message);
-        //     // // }
-        //     // // else {
-        //     // //     setErrMsg('Log in failed');
-        //     // // }
-        // }
-    }
-
+    
     return (
         <>
             <div className={styles.inputGroup}>

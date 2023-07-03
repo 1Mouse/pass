@@ -42,8 +42,11 @@ const Navbar = () => {
                     }}
                 />
                 <ul className={`${styles.navList} ${styles.collapssibleContent} ${!isOpen ? styles.hidden : ''}`}>
-                    <li className={styles.navItem}><Link href="#">Browse</Link></li>
-                    <li className={styles.navItem}><Link href="#">My Interviews</Link></li>
+                    <li className={styles.navItem}><Link href={`${FRONT_URL}/explore`}>Explore</Link></li>
+                    <li className={styles.navItem}><Link href={(isAuth) ?
+                        `${FRONT_URL}/manage-interviews`:
+                        `${FRONT_URL}/login`
+                        }>My Interviews</Link></li>
                     <li className={styles.navItem}><Link href={
                         (isAuth)?
                         `${FRONT_URL}/users/${username}`:

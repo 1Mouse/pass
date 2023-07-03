@@ -4,7 +4,7 @@ const SKILL_OPTIONS = [
     "IOS",
     "Android",
     "Data Science",
-    "DevOps",
+    "Devops",
     "Flutter",
     "DSA",
     "Security",
