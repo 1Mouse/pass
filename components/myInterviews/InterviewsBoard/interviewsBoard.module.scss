@@ -1,5 +1,4 @@
-
-
+@use "@/styles/abstracts/variables" as *;
 
 .buttonRole {
     background: white;
@@ -8,6 +7,71 @@
     padding: 0.5rem 2rem;
     border-radius: 8px;
     cursor: pointer;
-    margin-bottom: 2rem;
     font-size: 1.4rem;
+    margin-top: 1rem;
+    margin-right: 1rem;
+}
+
+.statusContainer{
+    display:flex;
+    justify-content: center;
+    gap:1rem;
+    margin: 0 auto;
+    margin-top: 1rem;
+    background:white;
+    border-radius:100px;
+    padding:0.5rem 0;
+    @media only screen and (min-width:767.98px) {
+        width: 70%;
+    }
+
+    .buttonStatus{ 
+            display: block;
+            cursor: pointer;
+            border-radius:100px;
+            border:0;
+            outline:none;
+            &:disabled{
+                cursor:not-allowed;
+            }
+            @media only screen and (max-width:500px) {
+                font-size: 1.4rem;
+            }
+        }
+    
+    .red{
+        background: lightcoral;
+    }
+    .yellow{
+        background:yellow;
+    }
+    .green{
+        background:lightgreen;
+    }
+    .blue{
+        background:dodgerblue;
+    }
+}
+
+.cardsContainer{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap:2rem;
+    margin-top: 1rem;
+
+    @media only screen and (min-width:767.98px) {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }   
+}
+
+.caughtUp{
+    background:white;
+    display:flex;
+    justify-content:center; 
+    align-items:center;
+    text-align:center;
+    margin-top:10rem;
+    font-size:2.8rem;
+    min-height:50dvh;
+    border-radius:100px;
 }

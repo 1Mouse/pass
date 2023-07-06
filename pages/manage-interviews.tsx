@@ -23,7 +23,7 @@ import SearchBox from "@/components/explore/SearchBox/SearchBox";
 import IUserBack from "@/lib/types/IUserBack";
 import GenericError from "@/components/common/GenericError/GenericError";
 import useAuthStore from '@/lib/zustand/stores/useAuthStore';
-
+import useHasMounted from '@/lib/hooks/useHasMounted';
 import InterviewsBoard from "@/components/myInterviews/InterviewsBoard/InterviewsBoard";
 
 // type Props = {
@@ -40,9 +40,10 @@ export default function ManageInterviews() {
     // console.log('router here', router);
     // console.log('props here', props);
 
-
+    const hasMounted= useHasMounted();
     const username = useAuthStore(state => state.user.username);
 
+    if(!hasMounted)return null;
 
     return (
         <>
