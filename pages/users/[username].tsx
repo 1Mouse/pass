@@ -26,6 +26,7 @@ import {
 import IUserBack from '@/lib/types/IUserBack';
 import ProfileContent from "@/components/ProfileContent";
 import omit from '@/lib/utils/omit';
+import FinishedInterviews from '@/components/myInterviews/FinishedInterviews/FinishedInterviews'
 
 type Props = {
     userData?: IUserBack |null
@@ -58,6 +59,9 @@ export default function Profile(
             <div className={styles.bgWrapper}>
                 <main className={`container ${styles.block}`}>
                     <ProfileContent {...props}/>
+                    {/* <FinishedInterviews 
+                        role={props.userData?.role!}
+                        username={props.userData?.username} /> */}
             </main>
             </div>
         </>

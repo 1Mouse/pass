@@ -1,0 +1,25 @@
+@use "../../styles/abstracts/variables" as *;
+
+
+.line {
+    width: 100%;
+    color: gray;
+    display: flex;
+    align-items: center;
+    margin: 3rem auto;
+}
+
+.line:before,
+.line:after {
+    content: '';
+    flex: 0 1 100%;
+    border-bottom: 5px solid gray;
+}
+
+.line:before {
+    margin-left: 0;
+}
+
+.line:after {
+    margin-right: 0;
+}

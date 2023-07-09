@@ -1,0 +1,11 @@
+@use "@/styles/abstracts/variables" as *;
+
+.interviewCard {
+    border: 1px solid black;
+    margin: 4rem 0;
+}
+
+
+.edit {
+    float: right;
+}

@@ -1,9 +1,4 @@
 import styles from "./interviewsBoard.module.scss"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faBars,
-    faXmark
-} from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
 import useAuthStore from "@/lib/zustand/stores/useAuthStore";
 import useUserStore from '@/lib/zustand/stores/useUserStore';
@@ -13,6 +8,7 @@ import axios, { AxiosError } from 'axios';
 import InterviewCard from '../InterviewCard/InterviewCard';
 
 import IInterview from "@/lib/types/Interviews/IInterview";
+import {fireError} from '@/lib/utils/toasts';
 
 const InterviewsBoard = () => {
     // const hasMounted = useHasMounted();
@@ -47,18 +43,16 @@ const InterviewsBoard = () => {
             setLoading(false);
         } catch (err) {
             setLoading(false);
-            // const error = err as AxiosError;
-            // console.log(error)
-            // setErrorCount((prev) => prev + 1);
-            // //@ts-ignore
-            // setError(error.response?.data?.message || "Something went wrong");
-            // // if (error?.response) {
-            // //     //@ts-ignore
-            // //     setErrMsg(error.response?.data?.message);
-            // // }
-            // // else {
-            // //     setErrMsg('Log in failed');
-            // // }
+            const error = err as AxiosError;
+            console.log(error)
+            //@ts-ignore
+            if (error?.response) {
+                //@ts-ignore
+                fireError(error.response?.data?.message);
+            }
+            else {
+                fireError('Something went wrong');
+            }
         }
     }
 

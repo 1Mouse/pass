@@ -14,6 +14,8 @@ import IUserBack from "@/lib/types/IUserBack";
 import GenericError from "./common/GenericError/GenericError";
 import useAuthStore from "@/lib/zustand/stores/useAuthStore";
 import {useEffect,useState} from 'react';
+import FinishedInterviews from '@/components/myInterviews/FinishedInterviews/FinishedInterviews';
+import ThickLine from '@/components/common/ThickLine';
 
 type Props = {
     userData?: IUserBack | null;
@@ -85,27 +87,10 @@ const ProfileContent = (props: Props) => {
                     </span>
                 ))}
 
-                {/* <span className={styles.skill}>javascript</span>
-                <span className={styles.skill}>DSA</span>
-                <span className={styles.skill}>front end</span>
-                <span className={styles.skill}>AI</span>
-                <span className={styles.skill}>big data analysis</span>    
-                <span className={styles.skill}>DSA</span>
-                <span className={styles.skill}>front end</span>
-                <span className={styles.skill}>AI</span>
-                <span className={styles.skill}>big data analysis</span>
-                <span className={styles.skill}>javascript</span>
-                <span className={styles.skill}>DSA</span>
-                <span className={styles.skill}>front end</span>
-                <span className={styles.skill}>AI</span>
-                <span className={styles.skill}>big data analysis</span> */}
-
-                {/* <Line/> */}
-                <h2 className={styles.heading}>
+                 <h2 className={styles.heading}>
                     Level of Experience:{" "}
                     <span>{props.userData!.info.levelOfExperience}</span>
                 </h2>
-                {/* <Line/> */}
 
                 {props.userData!.info.socials && (
                     <h2 className={styles.heading}>
@@ -146,6 +131,10 @@ const ProfileContent = (props: Props) => {
                     </h2>
                 )}
             </section>
+            {/* <ThickLine />     */}
+            <FinishedInterviews 
+                        role={props.userData?.role!}
+                        username={props.userData?.username} />
         </div>
     );
 };
