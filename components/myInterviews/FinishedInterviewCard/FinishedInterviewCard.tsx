@@ -53,8 +53,8 @@ const FinishedInterviewCard = ({ interview, username, updateInterviews }: Props)
 
                 {toggleEdit && <EditInterviewInfo interview={interview} setToggleEdit={setToggleEdit} toggleEdit={toggleEdit} updateInterviews={updateInterviews} />}
                 {!toggleEdit&& interview.info?.title!==undefined && <InterviewInfo interview={interview} />}
-                {toggleEdit && interview.info?.title!==undefined && <interviewReview />}
-                {!toggleEdit&&interview.info?.review!==}
+                {/* {toggleEdit && interview.info?.title!==undefined && <EditInterviewReview />}
+                {!toggleEdit && interview.info?.reviews?.length > 0 && <InterviewReview/>} */}
             </section>
         </>
     )

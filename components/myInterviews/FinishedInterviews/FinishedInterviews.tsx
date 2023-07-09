@@ -27,6 +27,7 @@ export default function FinishedInterviews({ username, role }: Props) {
         for(let i=0;i<interviewsMade.length;i++){
             if(interviewsMade[i]._id===interview._id){
                 interviewsMade[i].info=interview.info;
+                console.log('did it work',interviewsMade[i]);
                 setInterviewsMade(interviewsMade);
                 return;
             }
