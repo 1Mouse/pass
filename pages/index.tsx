@@ -3,8 +3,14 @@ import Head from 'next/head'
 import Image from 'next/image'
 // import { Inter } from '@next/font/google'
 import Hero from './../components/Hero';
-
-// const inter = Inter({ subsets: ['latin'] })
+import Footer from '@/components/Footer';
+import Hero1 from './../components/Heor1';
+import Hero2 from './../components/Hero2';
+import Hero3 from '@/components/Hero3';
+import styles from '../styles/index.module.scss'
+import Hero4 from '@/components/Hero4';
+import Hero5 from '@/components/Hero5';
+import Hero6 from '@/components/Hero6';
 
 export default function Home() {
   return (
@@ -18,6 +24,13 @@ export default function Home() {
       <main>
           <Navbar/>
           <Hero/>
+          <Hero1></Hero1>
+         <Hero3></Hero3>
+         <Hero4></Hero4>
+         <Hero2></Hero2>
+         <Hero5></Hero5>
+         <Hero6></Hero6>
+          <Footer/>
       </main>
     </>
   )

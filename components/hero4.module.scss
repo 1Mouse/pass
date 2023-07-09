@@ -1,0 +1,176 @@
+@use "../styles/abstracts/variables" as *;
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 500px; 
+  border-radius: 10px;
+  margin-bottom: 6rem;
+}
+
+.card {
+  display: grid;
+  position: relative;
+  width: 80%;
+  background: linear-gradient(to top, $color-secondary, $color-primary);
+  max-width: 450px; 
+  min-height: 500px; 
+  border-radius: 10px;
+  padding: 2rem;
+  color: $color-text-offWhite; 
+  box-shadow: 0 .25rem .25rem rgba(0, 0, 0, 0.2),
+    0 0 1rem rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.card__text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.card__content {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+
+.card__button {
+    border: 3px $color-text-black solid;
+    background: $color-bg-white;
+    font-weight: 600;
+    margin: 0 auto;
+    border-radius: 8px;
+    padding: 1rem 2rem;
+    color: $color-text-black;
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: 2px;
+    box-shadow: inset 0 0 0 0 $color-text-black;
+    transition: ease-out 0.4s;
+  
+    &:hover {
+      box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25);
+      filter: brightness(120%);
+      transform: scale(1.05);
+      box-shadow: inset 400px 0 0 0 $color-text-black;
+      color: $color-bg-white;
+    }
+  }
+
+.card__image-container {
+  margin: -2rem -2rem 1rem -2rem;
+}
+
+.card__line {
+  display: flex;
+  position: relative;
+  opacity: 0;
+  animation: LineFadeIn .8s .8s forwards ease-in;
+}
+
+.card__image {
+  opacity: 0;
+  animation: ImageFadeIn .8s 1.4s forwards;
+}
+
+.card__title {
+  color: white;
+  margin-top: 35px;
+  margin-bottom: 10px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  font-size: 20px;
+}
+
+.card__paragraph {
+  color: white;
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.card__content {
+  opacity: 0;
+  animation: ContentFadeIn .8s 1.6s forwards;
+}
+
+.card__svg {
+  position: absolute;
+  left: 0;
+  top: 120px;
+}
+
+@keyframes LineFadeIn {
+  0% {
+    opacity: 0;
+    d: path("M 0 100 Q 0 100 0 100 Q 0 100 0 100 C 0 100 0 100 0 100 Q 0 100 0 100 ");
+    stroke: #ffffff;
+  }
+
+  50% {
+    opacity: 1;
+    d: path("M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400");
+    stroke: gray;
+  }
+
+  100% {
+    opacity: 1;
+    d: path("M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400");
+    stroke: #000000;
+  }
+}
+
+@keyframes ContentFadeIn {
+  0% {
+    transform: translateY(-1rem);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 460px) {
+  .container {
+    height: 100%;
+  }
+
+  .card {
+    width: 90%;
+    
+
+  }
+  @keyframes LineFadeIn {
+    0% {
+      opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+  }
+}
+
+// @keyframes ImageFadeIn {
+//   0% {
+//     transform: translate(-.5rem, -.5rem) scale(1.05);
+//     opacity: 0;
+//     filter: blur(2px);
+//   }
+
+//   50% {
+//     opacity: 1;
+//     filter: blur(2px);
+//   }
+
+//   100% {
+//     transform: translateY(0) scale(1.0);
+//     opacity: 1;
+//     filter: blur(0);
+//   }
+// }

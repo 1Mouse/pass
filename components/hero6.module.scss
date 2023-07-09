@@ -1,0 +1,65 @@
+@use "../styles/abstracts/variables" as *;
+
+.page {
+  display: flex;
+  justify-content: center;
+  padding-top: 150px; 
+  padding-bottom: 150px;
+  @media (max-width: 855px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.card {
+  width: 250px; 
+  height: 350px; 
+  background: lightgray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  border-radius: 20%;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.7s ease-in-out;
+  overflow: hidden;
+  margin: 20px;
+
+  @media (max-width: 855px) {
+    width: 250px;
+    height: 350px;
+     margin: 20px 0;
+  }
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  height: 40%;
+  width: 100%;
+  background-color: $color-primary;
+  bottom: 0;
+  right: 0;
+  transform: translateY(70px);
+  border-radius: 100%;
+  transition: all 0.7s ease-in-out;
+}
+
+.c-txt {
+  z-index: 2;
+  display: flex;
+  text-align: center;
+  padding: 10px;
+}
+
+.card:hover::before {
+  transform: scale(7) translate(-20px);
+}
+
+.card:hover {
+  box-shadow: 1px -10px 50px 50px $color-secondary;
+  color: #f3f3f3;
+}
