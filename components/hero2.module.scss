@@ -44,7 +44,7 @@
   justify-content: center;
   align-items: center;
   // margin: 20px;
-  background: linear-gradient(45deg, #0C84DF 0%, #ffffff 100%);
+  background: linear-gradient(45deg, $color-primary 0%, #ffffff 100%);
 
   // background-color: #51c9ff;
   border-radius: 10px;
@@ -98,7 +98,7 @@
     span:nth-child(1),
     span:nth-child(2),
     span:nth-child(3) {
-      background: linear-gradient(to bottom, transparent 50%, #0C84DF 100%);
+      background: linear-gradient(to bottom, transparent 50%, $color-primary 100%);
       background-size: 100% 200%;
       transition: background-position 0.5s;
       background-position: 0 100%;
