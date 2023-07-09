@@ -121,10 +121,10 @@ const SignUpForm = () => {
                             </span>
                         </p>
                     </div>
-                    <button type="button" className={styles.btnGoogle}>
+                    {/* <button type="button" className={styles.btnGoogle}>
                         Sign up with Google
                     </button>
-                    <OrLine />
+                    <OrLine /> */}
                 <form onSubmit={handleSubmit} className={styles.formItself}>
                         <p
                             ref={errRef}
@@ -211,9 +211,10 @@ const SignUpForm = () => {
             <div className={styles.signupRight}>
                 <div className={styles.imageContainer}>
                     <Image
-                        src="/assets/Signup-Image-1.5x.png"
+                        src="/assets/signup-artwork.svg"
                         alt=""
                         fill
+                        priority={true}
                         className={styles.image}
                     />
                 </div>

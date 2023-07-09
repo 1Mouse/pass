@@ -24,4 +24,5 @@ export default interface IUserState {
     setSocials:(socials:ISocials) =>void
     setTimeslots:(timeslots:ITimeSlot[])=>void
     updateInfo: (info: IInfo) => void
+    clearInfo: () => void
 }

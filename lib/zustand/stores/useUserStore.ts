@@ -8,31 +8,31 @@ import IInfo from "@/lib/types/IInfo";
 const initialTimeslots = [
     {
         day: 0,
-        hours:[]
+        hours: []
     },
     {
         day: 1,
-        hours:[]
+        hours: []
     },
     {
         day: 2,
-        hours:[]
+        hours: []
     },
     {
         day: 3,
-        hours:[]
+        hours: []
     },
     {
         day: 4,
-        hours:[]
+        hours: []
     },
     {
         day: 5,
-        hours:[]
+        hours: []
     },
     {
         day: 6,
-        hours:[]
+        hours: []
     },
 ]
 const useUserStore = create<IUserState>()(
@@ -62,9 +62,26 @@ const useUserStore = create<IUserState>()(
                 setSkills: (skills) => set(() => ({ skills: skills })),
                 setPrice: (price) => set(() => ({ price: price })),
                 setPricable: (pricable) => set(() => ({ priceable: pricable })),
-                setSocials:(socials)=> set(()=>({socials:socials})),
-                setTimeslots:(timeslots)=> set(()=>({timeslots:timeslots})),
+                setSocials: (socials) => set(() => ({ socials: socials })),
+                setTimeslots: (timeslots) => set(() => ({ timeslots: timeslots })),
                 updateInfo: (info: IInfo) => set(() => ({ ...info })),
+                clearInfo: () => set(() => ({
+                    firstName: "",
+                    lastName: "",
+                    levelOfExperience: "",
+                    bio: "",
+                    skills: [],
+                    price: 0,
+                    priceable: false,
+                    interviewsHad: [],
+                    interviewsMade: [],
+                    socials: {
+                        linkedin: "",
+                        github: "",
+                        twitter: "",
+                    },
+                    timeslots: initialTimeslots
+                }))
             }),
             {
                 name: "user",

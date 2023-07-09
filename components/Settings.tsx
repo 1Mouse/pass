@@ -163,10 +163,10 @@ const Settings: React.FC = () => {
             setUser={setUser}
             />
             <Line />
-            <EditEmail
+            {/* <EditEmail
             accessToken={accessToken}
             />
-            <Line />
+            <Line /> */}
             <ChangePassword
             accessToken={accessToken}
             />

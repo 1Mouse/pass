@@ -156,10 +156,10 @@ const LogInForm = () => {
                                 </span>
                             </p>
                         </div>
-                        <button type="button" className={styles.btnGoogle}>
+                        {/* <button type="button" className={styles.btnGoogle}>
                             Log in with Google
                         </button>
-                        <OrLine />
+                        <OrLine /> */}
                         <form onSubmit={handleSubmit} className={styles.formItself}>
                             <p
                                 ref={errRef}
@@ -235,9 +235,10 @@ const LogInForm = () => {
                 <div className={styles.signupRight}>
                     <div className={styles.imageContainer}>
                         <Image
-                            src="/assets/Signup-Image-1.5x.png"
+                            src="/assets/login-artwork.svg"
                             alt=""
                             fill
+                            priority={true}
                             className={styles.image}
                         />
                     </div>

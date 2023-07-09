@@ -4,10 +4,7 @@ import { faInfoCircle, faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios, { AxiosError } from "axios";
 import { API_URL } from "@/lib/utils/urls";
-import setCookie from "@/lib/utils/setCookie";
-import omit from "@/lib/utils/omit";
-import IUser from "@/lib/types/IUser";
-import { EMAIL_REGEX } from '@/lib/utils/regex';
+
 
 function EditPrice({ accessToken, setPrice, setPricable, pricable }: any) {
     const [value, setValue] = useState(0);
@@ -45,6 +42,9 @@ function EditPrice({ accessToken, setPrice, setPricable, pricable }: any) {
             );
             console.log(JSON.stringify(response?.data));
             const isPricable: boolean = response?.data.info.pricable;
+            // if(isPricable){
+
+            // }
             setIsLoading(false);
             setPricable(isPricable);
             setElligabilityMsg('');
