@@ -25,23 +25,23 @@ const InterviewInfo = ({ interview }: Props) => {
         <>
             <h2 className={styles.heading}>{interview.info!.title}</h2>
             <p className={styles.summary}>{interview.info!.summary}</p>
-            <h2 className={styles.tags}>Skills:</h2>
+            <h2 className={styles.tags}>Tags:
             {interview.info!.tags.map((tag, i) => (
                 <span key={i} className={styles.tag}>
                     {tag}
                 </span>
             ))}
+        </h2 >
             {
                 interview.info!.reviews && interview.info!.reviews.length > 0 &&
                 <>
-                    <h2 className={styles.heading}>Reviews:</h2>
+                    {/* <h2 className={styles.heading}>Reviews:</h2> */}
                     {interview.info!.reviews.map((review, i) => (
                         <div key={i}>
                             <h2 className={styles.subHeading}>{getFromAndTo()}</h2>
                             <p className={styles.summary}>{review.feedback}</p>
-                            <p>Rating: 
-                                <span className={styles.rating}>
-                                
+                            <p className={styles.rating}>Rating: 
+                                <span>
                                 {Array(review.rating)
                                     .fill(0)
                                     .map((_, i) => (
@@ -62,18 +62,5 @@ const InterviewInfo = ({ interview }: Props) => {
         </>
     )
 }
-
-// function Review(){ 
-//     const getThat=()=>{
-//         if (reveiw.interviewee._id !== AuthedId) return interview.interviewee._id;
-//         else return interview.interviewer._id;
-//     }
-//     return(
-//         <>
-//         <h3>from {}</h3>
-//         <p>Review text</p>
-//         </>
-//     )
-// }
 
 export default InterviewInfo;

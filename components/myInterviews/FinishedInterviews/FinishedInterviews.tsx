@@ -1,15 +1,9 @@
 import styles from "./finishedInterviews.module.scss"
 import { useState, useEffect } from "react";
-import useAuthStore from "@/lib/zustand/stores/useAuthStore";
-import useUserStore from '@/lib/zustand/stores/useUserStore';
 import useHasMounted from "@/lib/hooks/useHasMounted";
 import { API_URL } from "@/lib/utils/urls";
 import axios, { AxiosError } from 'axios';
-import Image from 'next/image';
 import IInterview from "@/lib/types/Interviews/IInterview";
-import { fireError } from '@/lib/utils/toasts';
-import InterviewCard from './../InterviewCard/InterviewCard';
-import EditInterviewInfo from './../EditInterviewInfo/EditInterviewInfo';
 import FinishedInterviewCard from './../FinishedInterviewCard/FinishedInterviewCard';
 
 type Props = {

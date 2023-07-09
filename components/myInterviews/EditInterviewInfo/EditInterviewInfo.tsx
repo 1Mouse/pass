@@ -7,8 +7,12 @@ import axios, { AxiosError } from 'axios';
 import IInterview from '@/lib/types/Interviews/IInterview';
 import { fireSuccess, fireError } from '@/lib/utils/toasts'
 import useAuthStore from '@/lib/zustand/stores/useAuthStore';
+import Line from '@/components/common/Line';
+import makeAnimated from 'react-select/animated';
 
+const animatedComponents = makeAnimated();
 const components = {
+    ...animatedComponents,
     DropdownIndicator: null,
 };
 
@@ -130,7 +134,8 @@ const EditInterviewInfo = ({ interview, setToggleEdit, toggleEdit, updateIntervi
     return (
         <>
             <div>
-                <h2 className={styles.heading}>Change Username:</h2>
+                <Line/>
+                <h2 className={styles.heading}>Edit interview data and review:</h2>
                 <label
                     className={styles.label}
                     htmlFor="title">title*</label>
@@ -148,7 +153,7 @@ const EditInterviewInfo = ({ interview, setToggleEdit, toggleEdit, updateIntervi
                     htmlFor="summary">summary*</label>
                 <textarea
                     id="summary"
-                    className={styles.input}
+                    className={`${styles.input} ${styles.textArea}`}
                     value={summary}
                     placeholder="Enter summary..."
                     onChange={(e) => setSummary(e.target.value)}
@@ -176,6 +181,7 @@ const EditInterviewInfo = ({ interview, setToggleEdit, toggleEdit, updateIntervi
                 />
                 <label
                     className={styles.label}
+                    style={{marginTop:'1.5rem'}}
                     htmlFor="rating">rating*</label>
                 <input
                     id="rating"
@@ -194,7 +200,7 @@ const EditInterviewInfo = ({ interview, setToggleEdit, toggleEdit, updateIntervi
                     htmlFor="feedback">summary*</label>
                 <textarea
                     id="feedback"
-                    className={styles.input}
+                    className={`${styles.input} ${styles.textArea}`}
                     value={feedback}
                     placeholder="Enter feedback..."
                     onChange={(e) => setFeedback(e.target.value)}
