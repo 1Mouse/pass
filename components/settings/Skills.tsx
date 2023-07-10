@@ -127,7 +127,7 @@ function Skills() {
 
             setSkills(response?.data?.info.skills);
             setLoading(false)
-            fireSuccess('General info is updated successfully');
+            fireSuccess('Skills is updated successfully');
             // setSuccessCount((prev) => prev + 1);
         } catch (err) {
             setLoading(false);
