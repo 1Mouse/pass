@@ -48,7 +48,7 @@ const Card = (props: Props) => {
                         </Link>
                         <span className={styles.rating}>
                             {props.userData!.rating === 0 && "Unrated"}
-                            {Array(props.userData!.rating)
+                            {Array(+props.userData!.rating.toFixed())
                                 .fill(0)
                                 .map((_, i) => (
                                     <FontAwesomeIcon
