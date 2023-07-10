@@ -14,7 +14,7 @@ const InterviewInfo = ({ interview }: Props) => {
         else if(interview.info&&interview.info.reviews&&interview.info.reviews.length>0&&interview.info.reviews[0].from===interview.interviewer._id){
             return 'Review given about the interviewee'
         }
-        if (interview.info && interview.info.reviews && interview.info.reviews.length > 1 && interview.info.reviews[1].from === interview.interviewee._id){
+        else if (interview.info && interview.info.reviews && interview.info.reviews.length > 1 && interview.info.reviews[1].from === interview.interviewee._id){
             return 'Review given about the interviewer'
         }
         else if(interview.info&&interview.info.reviews&&interview.info.reviews.length>1&&interview.info.reviews[1].from===interview.interviewer._id){
