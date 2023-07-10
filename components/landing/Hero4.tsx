@@ -32,7 +32,7 @@ const Hero4 = () => {
     };
   }, []);
 
-  const resetAnimation = (target) => {
+  const resetAnimation = (target:any) => {
     const linePath = target.querySelector(`.${styles.card__line}`);
     const contentElement = target.querySelector(`.${styles.card__content}`);
 
