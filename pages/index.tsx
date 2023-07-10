@@ -4,6 +4,15 @@ import Image from 'next/image'
 // import { Inter } from '@next/font/google'
 import Hero from './../components/Hero';
 
+import Hero1 from '@/components/landing/Hero1';
+import Hero2 from '@/components/landing/Hero2';
+import Hero3 from '@/components/landing/Hero3';
+import Hero4 from '@/components/landing/Hero4';
+import Hero5 from '@/components/landing/Hero5';
+import Hero6 from '@/components/landing/Hero6';
+import Footer from '@/components/landing/Footer';
+
+
 // const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
@@ -18,6 +27,14 @@ export default function Home() {
       <main>
           <Navbar/>
           <Hero/>
+          
+          <Hero1/>
+         <Hero3/>
+         <Hero4/>
+         <Hero2/>
+         <Hero5/>
+         <Hero6/>
+         <Footer/>
       </main>
     </>
   )

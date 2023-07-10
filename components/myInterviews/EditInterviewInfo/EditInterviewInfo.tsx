@@ -197,7 +197,7 @@ const EditInterviewInfo = ({ interview, setToggleEdit, toggleEdit, updateIntervi
 
                 <label
                     className={styles.label}
-                    htmlFor="feedback">summary*</label>
+                    htmlFor="feedback">feedback*</label>
                 <textarea
                     id="feedback"
                     className={`${styles.input} ${styles.textArea}`}
