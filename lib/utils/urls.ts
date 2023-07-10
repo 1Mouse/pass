@@ -25,7 +25,7 @@
 //         'http://localhost:8080/api/v1'
 
 
-// export const FRONT_URL = 'http://ec2-34-239-108-221.compute-1.amazonaws.com:3000';
+// export const FRONT_URL = 'http://localhost:3000';
 export const FRONT_URL = 'http://ec2-34-239-108-221.compute-1.amazonaws.com:3000';
 
 
