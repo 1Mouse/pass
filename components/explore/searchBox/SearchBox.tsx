@@ -8,7 +8,6 @@ import Select, { SelectInstance } from 'react-select';
 import makeAnimated from 'react-select/animated';
 import selectSkillOptions from "@/lib/constants/selectSkillOptions";
 import axios from 'axios';
-import { API_URL } from '@/lib/utils/urls'
 
 const animatedComponents = makeAnimated();
 
