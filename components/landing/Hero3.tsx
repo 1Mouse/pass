@@ -7,46 +7,46 @@ const Hero3 = () => {
   const sectionTwoRef = useRef(null);
   const sectionThreeRef = useRef(null);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const sectionOne = sectionOneRef.current;
-      const sectionTwo = sectionTwoRef.current;
-      const sectionThree = sectionThreeRef.current;
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const sectionOne = sectionOneRef?.current;
+  //     const sectionTwo = sectionTwoRef?.current;
+  //     const sectionThree = sectionThreeRef?.current;
 
-      if (sectionOne) {
-        const rectOne = sectionOne.getBoundingClientRect();
-        if (rectOne.top < window.innerHeight && rectOne.bottom >= 0) {
-          sectionOne.classList.add(styles.animateSection);
-        } else {
-          sectionOne.classList.remove(styles.animateSection);
-        }
-      }
+  //     if (sectionOne) {
+  //       const rectOne = sectionOne?.getBoundingClientRect();
+  //       if (rectOne.top < window.innerHeight && rectOne.bottom >= 0) {
+  //         sectionOne?.classList?.add(styles.animateSection);
+  //       } else {
+  //         sectionOne?.classList?.remove(styles.animateSection);
+  //       }
+  //     }
 
-      if (sectionTwo) {
-        const rectTwo = sectionTwo.getBoundingClientRect();
-        if (rectTwo.top < window.innerHeight && rectTwo.bottom >= 0) {
-          sectionTwo.classList.add(styles.animateSection);
-        } else {
-          sectionTwo.classList.remove(styles.animateSection);
-        }
-      }
+  //     if (sectionTwo) {
+  //       const rectTwo = sectionTwo?.getBoundingClientRect();
+  //       if (rectTwo.top < window.innerHeight && rectTwo.bottom >= 0) {
+  //         sectionTwo?.classList?.add(styles.animateSection);
+  //       } else {
+  //         sectionTwo?.classList?.remove(styles.animateSection);
+  //       }
+  //     }
 
-      if (sectionThree) {
-        const rectThree = sectionThree.getBoundingClientRect();
-        if (rectThree.top < window.innerHeight && rectThree.bottom >= 0) {
-          sectionThree.classList.add(styles.animateSection);
-        } else {
-          sectionThree.classList.remove(styles.animateSection);
-        }
-      }
-    };
+  //     if (sectionThree) {
+  //       const rectThree = sectionThree?.getBoundingClientRect();
+  //       if (rectThree.top < window.innerHeight && rectThree.bottom >= 0) {
+  //         sectionThree?.classList?.add(styles.animateSection);
+  //       } else {
+  //         sectionThree.classList?.remove(styles.animateSection);
+  //       }
+  //     }
+  //   };
 
-    window.addEventListener('scroll', handleScroll);
+  //   window.addEventListener('scroll', handleScroll);
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, []);
 
   return (
     <div className={styles.page}>
