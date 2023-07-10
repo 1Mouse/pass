@@ -7,6 +7,6 @@ export const FRONT_URL = isProduction
         ? 'http://localhost:3000'
         : 'http://localhost:3000'
 
-export const API_URL = isProduction ?'https://pass-interviews.onrender.com/v1':
+export const API_URL = isProduction ?'http://ec2-34-207-95-142.compute-1.amazonaws.com/api/v1':
     isDevelopment ?'http://localhost:8080/api/v1':
         'http://localhost:8080/api/v1'
