@@ -1,14 +1,15 @@
-import { useRef, useState,useLayoutEffect } from "react";
+import { useState } from "react";
 import styles from "./skills.module.scss";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import axios, { AxiosError } from "axios";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import useAuthStore from "@/lib/zustand/stores/useAuthStore";
 import useUserStore from "@/lib/zustand/stores/useUserStore";
-import { InfinitySpin } from "react-loader-spinner";
+// import { InfinitySpin } from "react-loader-spinner";
 import useHasMounted from "@/lib/hooks/useHasMounted";
-import { toast } from 'react-toastify'
+// import { toast } from 'react-toastify'
+import {fireSuccess,fireError} from '@/lib/utils/toasts';
 
 import { API_URL } from "@/lib/utils/urls";
 import SKILL_OPTIONS from "@/lib/constants/skillOptions";
@@ -17,87 +18,83 @@ import SKILL_OPTIONS from "@/lib/constants/skillOptions";
 function Skills() {
     const hasMounted = useHasMounted();
 
-    const router = useRouter();
-
-    const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
     const accessToken = useAuthStore(state => state.accessToken);
     const skills = useUserStore(state => state.skills);
     const setSkills = useUserStore(state => state.setSkills);
-
-    const username = useAuthStore(state => state.user.username);
+    const [selectedOptions, setSelectedOptions] = useState<string[]>(skills.length>0?skills:[]);
 
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<string | null>(null);
-    const [errorCount, setErrorCount] = useState(0);
-    const [successCount, setSuccessCount] = useState(0);
+    // const [error, setError] = useState<string | null>(null);
+    // const [errorCount, setErrorCount] = useState(0);
+    // const [successCount, setSuccessCount] = useState(0);
 
-    const firstUpdate = useRef(true);
-    const secondUpdate = useRef(true);
-    const thirdUpdate = useRef(true);
-    const forthUpdate = useRef(true);
+    // const firstUpdate = useRef(true);
+    // const secondUpdate = useRef(true);
+    // const thirdUpdate = useRef(true);
+    // const forthUpdate = useRef(true);
 
-    const fireSuccess = (toastedMsg: string) => toast.success(toastedMsg, {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-    });
+    // const fireSuccess = (toastedMsg: string) => toast.success(toastedMsg, {
+    //     position: "top-right",
+    //     autoClose: 2000,
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //     draggable: true,
+    //     progress: undefined,
+    //     theme: "colored",
+    // });
 
-    const fireError = (toastedMsg: string) => toast.error(toastedMsg, {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-    });
+    // const fireError = (toastedMsg: string) => toast.error(toastedMsg, {
+    //     position: "top-right",
+    //     autoClose: 2000,
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //     draggable: true,
+    //     progress: undefined,
+    //     theme: "colored",
+    // });
 
-    console.log("intial", successCount);
-    useLayoutEffect(() => {
-        if (firstUpdate.current) {
-            firstUpdate.current = false;
-            return;
-        }
-        if (secondUpdate.current) {
-            secondUpdate.current = false;
-            return;
-        }
-        if (thirdUpdate.current) {
-            thirdUpdate.current = false;
-            return;
-        }
-        if (forthUpdate.current) {
-            forthUpdate.current = false;
-            return;
-        }
-        fireSuccess('Skills Updated Successfully');
-    }, [successCount])
+    // console.log("intial", successCount);
+    // useLayoutEffect(() => {
+    //     if (firstUpdate.current) {
+    //         firstUpdate.current = false;
+    //         return;
+    //     }
+    //     if (secondUpdate.current) {
+    //         secondUpdate.current = false;
+    //         return;
+    //     }
+    //     if (thirdUpdate.current) {
+    //         thirdUpdate.current = false;
+    //         return;
+    //     }
+    //     if (forthUpdate.current) {
+    //         forthUpdate.current = false;
+    //         return;
+    //     }
+    //     fireSuccess('Skills Updated Successfully');
+    // }, [successCount])
 
-    useLayoutEffect(() => {
-        if (firstUpdate.current) {
-            firstUpdate.current = false;
-            return;
-        }
-        if (secondUpdate.current) {
-            secondUpdate.current = false;
-            return;
-        }
-        if (thirdUpdate.current) {
-            thirdUpdate.current = false;
-            return;
-        }
-        if (forthUpdate.current) {
-            forthUpdate.current = false;
-            return;
-        }
-        fireError(error || "Something went wrong");
-    }, [errorCount])
+    // useLayoutEffect(() => {
+    //     if (firstUpdate.current) {
+    //         firstUpdate.current = false;
+    //         return;
+    //     }
+    //     if (secondUpdate.current) {
+    //         secondUpdate.current = false;
+    //         return;
+    //     }
+    //     if (thirdUpdate.current) {
+    //         thirdUpdate.current = false;
+    //         return;
+    //     }
+    //     if (forthUpdate.current) {
+    //         forthUpdate.current = false;
+    //         return;
+    //     }
+    //     fireError(error || "Something went wrong");
+    // }, [errorCount])
 
     const handleOptionClick = (option: string) => {
         setSelectedOptions((prevSelected) => {
@@ -130,20 +127,20 @@ function Skills() {
 
             setSkills(response?.data?.info.skills);
             setLoading(false)
-            setSuccessCount((prev) => prev + 1);
+            fireSuccess('General info is updated successfully');
+            // setSuccessCount((prev) => prev + 1);
         } catch (err) {
+            setLoading(false);
             const error = err as AxiosError;
             console.log(error)
-            setErrorCount((prev) => prev + 1);
             //@ts-ignore
-            setError(error.response?.data?.message || "Something went wrong");
-            // if (error?.response) {
-            //     //@ts-ignore
-            //     setErrMsg(error.response?.data?.message);
-            // }
-            // else {
-            //     setErrMsg('Log in failed');
-            // }
+            if (error?.response) {
+                //@ts-ignore
+                fireError(error.response?.data?.message);
+            }
+            else {
+                fireError('Something wrong happened');
+            }
         }
     }
 
@@ -183,7 +180,7 @@ function Skills() {
                         </button>
                     ))}
                 </div>
-                <button type="submit" className={styles.save} onClick={(e) => handleSave(e)}>Save</button>
+                <button disabled={loading} type="submit" className={styles.save} onClick={(e) => handleSave(e)}>{loading?'loading':'Save'}</button>
             </div>
             </>
         );

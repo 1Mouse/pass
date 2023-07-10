@@ -107,6 +107,9 @@
         padding: 2rem;
         border: 2px gray solid;
         background:white;
+        @media only screen and (max-width:767.98px){
+            height:175px;
+        }
         &:focus-within {
             border: 2px dodgerblue solid;
         }

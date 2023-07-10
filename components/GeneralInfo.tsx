@@ -198,7 +198,7 @@ function GeneralInfo() {
                                     <option value="senior">Senior</option>
                                     <option value="tech-lead">Tech Lead</option>
                                     <option value="staff">Staff</option>
-                                    <option value="principal ">principal</option>
+                                    <option value="architect">Architect</option>
                                 </select>
                             </div>
 

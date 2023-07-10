@@ -1,20 +1,21 @@
-import { useRef, useState, useLayoutEffect } from "react";
+import { useRef, useState } from "react";
 import styles from "./generalInfo.module.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
-import Line from "../common/Line";
-import axios, { AxiosError, AxiosResponse } from "axios";
+// import Line from "../common/Line";
+import axios, { AxiosError } from "axios";
 import { API_URL } from "@/lib/utils/urls";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import useAuthStore from "@/lib/zustand/stores/useAuthStore";
 import useUserStore from "@/lib/zustand/stores/useUserStore";
 import useHasMounted from "@/lib/hooks/useHasMounted";
-import { toast } from 'react-toastify'
-import { InfinitySpin } from 'react-loader-spinner'
+// import { toast } from 'react-toastify'
+import {fireSuccess,fireError} from '@/lib/utils/toasts';
+// import { InfinitySpin } from 'react-loader-spinner'
 
 function GeneralInfo() {
     const hasMounted = useHasMounted();
-    const router = useRouter();
+    // const router = useRouter();
     const firstNameRef = useRef<HTMLInputElement>(null);
 
     const [firstName, setFirstName] = useUserStore(state => [state.firstName, state.setFirstName]);
@@ -28,79 +29,79 @@ function GeneralInfo() {
     const [bioFocus, setBioFocus] = useState(false);
 
     const [loading, setLoading] = useState(false);
-    const [successCount, setSuccessCount] = useState(0);
-    const [errorCount, setErrorCount] = useState(0);
-    const [error, setError] = useState<string | null>(null);
+    // const [successCount, setSuccessCount] = useState(0);
+    // const [errorCount, setErrorCount] = useState(0);
+    // const [error, setError] = useState<string | null>(null);
 
     const accessToken = useAuthStore(state => state.accessToken);
 
-    const firstUpdate = useRef(true);
-    const secondUpdate = useRef(true);
-    const thirdUpdate = useRef(true);
-    const forthUpdate = useRef(true);
+    // const firstUpdate = useRef(true);
+    // const secondUpdate = useRef(true);
+    // const thirdUpdate = useRef(true);
+    // const forthUpdate = useRef(true);
 
-    const fireSuccess = (toastedMsg: string) => toast.success(toastedMsg, {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-    });
+    // const fireSuccess = (toastedMsg: string) => toast.success(toastedMsg, {
+    //     position: "top-right",
+    //     autoClose: 2000,
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //     draggable: true,
+    //     progress: undefined,
+    //     theme: "colored",
+    // });
 
-    const fireError = (toastedMsg: string) => toast.error(toastedMsg, {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-    });
+    // const fireError = (toastedMsg: string) => toast.error(toastedMsg, {
+    //     position: "top-right",
+    //     autoClose: 2000,
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //     draggable: true,
+    //     progress: undefined,
+    //     theme: "colored",
+    // });
 
-    console.log("intial", successCount);
-    useLayoutEffect(() => {
-        if (firstUpdate.current) {
-            firstUpdate.current = false;
-            return;
-        }
-        if (secondUpdate.current) {
-            secondUpdate.current = false;
-            return;
-        }
-        if (thirdUpdate.current) {
-            thirdUpdate.current = false;
-            return;
-        }
-        if (forthUpdate.current) {
-            forthUpdate.current = false;
-            return;
-        }
-        fireSuccess('General Information updated successfully');
-    }, [successCount])
+    // console.log("intial", successCount);
+    // useLayoutEffect(() => {
+    //     if (firstUpdate.current) {
+    //         firstUpdate.current = false;
+    //         return;
+    //     }
+    //     if (secondUpdate.current) {
+    //         secondUpdate.current = false;
+    //         return;
+    //     }
+    //     if (thirdUpdate.current) {
+    //         thirdUpdate.current = false;
+    //         return;
+    //     }
+    //     if (forthUpdate.current) {
+    //         forthUpdate.current = false;
+    //         return;
+    //     }
+    //     fireSuccess('General Information updated successfully');
+    // }, [successCount])
 
-    useLayoutEffect(() => {
-        if (firstUpdate.current) {
-            firstUpdate.current = false;
-            return;
-        }
-        if (secondUpdate.current) {
-            secondUpdate.current = false;
-            return;
-        }
-        if (thirdUpdate.current) {
-            thirdUpdate.current = false;
-            return;
-        }
-        if (forthUpdate.current) {
-            forthUpdate.current = false;
-            return;
-        }
-        fireError(error || "Something went wrong");
-    }, [errorCount])
+    // useLayoutEffect(() => {
+    //     if (firstUpdate.current) {
+    //         firstUpdate.current = false;
+    //         return;
+    //     }
+    //     if (secondUpdate.current) {
+    //         secondUpdate.current = false;
+    //         return;
+    //     }
+    //     if (thirdUpdate.current) {
+    //         thirdUpdate.current = false;
+    //         return;
+    //     }
+    //     if (forthUpdate.current) {
+    //         forthUpdate.current = false;
+    //         return;
+    //     }
+    //     fireError(error || "Something went wrong");
+    // }, [errorCount])
 
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -128,21 +129,20 @@ function GeneralInfo() {
             setLevelOfExperience(response?.data?.info.levelOfExperience);
             setBio(response?.data?.info.bio)
             setLoading(false)
-
-            setSuccessCount((prev) => prev + 1);
+            fireSuccess('General info is updated successfully');
+            // setSuccessCount((prev) => prev + 1);
         } catch (err) {
+            setLoading(false);
             const error = err as AxiosError;
             console.log(error)
-            setErrorCount((prev) => prev + 1);
             //@ts-ignore
-            setError(error.response?.data?.message || "Something went wrong");
-            // if (error?.response) {
-            //     //@ts-ignore
-            //     setErrMsg(error.response?.data?.message);
-            // }
-            // else {
-            //     setErrMsg('Log in failed');
-            // }
+            if (error?.response) {
+                //@ts-ignore
+                fireError(error.response?.data?.message);
+            }
+            else {
+                fireError('Something wrong happened');
+            }
         }
     }
 
@@ -249,7 +249,7 @@ function GeneralInfo() {
                                 <option value="senior">Senior</option>
                                 <option value="tech-lead">Tech Lead</option>
                                 <option value="staff">Staff</option>
-                                <option value="principal ">principal</option>
+                                <option value="architect">Architect</option>
                             </select>
                         </div>
 
@@ -282,11 +282,11 @@ function GeneralInfo() {
                     </div>
 
                     <button
-                        disabled={(!firstName || !lastName || !levelOfExperience || !bio)}
+                        disabled={(loading || !firstName || !lastName || !levelOfExperience || !bio)}
                         className={styles.next}
                         type='submit'
                     >
-                        Save
+                        {loading? 'loading':'Save'}
                     </button>
                 </form>
             </div>
