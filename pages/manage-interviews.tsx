@@ -19,7 +19,7 @@ import { ParsedUrlQuery } from "querystring";
 
 
 // import IUser from '@/lib/types/IUser';
-import SearchBox from "@/components/explore/SearchBox/SearchBox";
+import SearchBox from "@/components/explore/InputBox/SearchBox";
 import IUserBack from "@/lib/types/IUserBack";
 import GenericError from "@/components/common/GenericError/GenericError";
 import useAuthStore from '@/lib/zustand/stores/useAuthStore';
@@ -40,10 +40,10 @@ export default function ManageInterviews() {
     // console.log('router here', router);
     // console.log('props here', props);
 
-    const hasMounted= useHasMounted();
+    const hasMounted = useHasMounted();
     const username = useAuthStore(state => state.user.username);
 
-    if(!hasMounted)return null;
+    if (!hasMounted) return null;
 
     return (
         <>
@@ -56,7 +56,7 @@ export default function ManageInterviews() {
             <Navbar />
             <div className={styles.bgWrapper}>
                 <main className={`container ${styles.block}`}>
-                    <InterviewsBoard/>
+                    <InterviewsBoard />
                 </main>
             </div>
         </>

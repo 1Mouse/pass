@@ -19,7 +19,7 @@ import { ParsedUrlQuery } from "querystring";
 
 
 // import IUser from '@/lib/types/IUser';
-import SearchBox from "@/components/explore/SearchBox/SearchBox";
+import SearchBox from "@/components/explore/InputBox/SearchBox";
 import IUserBack from "@/lib/types/IUserBack";
 import GenericError from "@/components/common/GenericError/GenericError";
 import useAuthStore from '@/lib/zustand/stores/useAuthStore';
@@ -88,7 +88,7 @@ export default function Explore(
                         ))
                     }
                     {
-                        (data?.length === 0||!data) && <GenericError errorMsg={(!data)?props.errorMsg:'No results found!!'} />
+                        (data?.length === 0 || !data) && <GenericError errorMsg={(!data) ? props.errorMsg : 'No results found!!'} />
                     }
                 </main>
             </div>
