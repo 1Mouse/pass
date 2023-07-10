@@ -1,0 +1,204 @@
+@use "@/styles/abstracts/variables" as *;
+
+.contentBox {
+    margin-top: 1rem;
+    background-color: $color-bg-white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.card {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    position: relative;
+    height: 300px;
+
+    @media screen and (max-width:767.98px) {
+        grid-template-columns: repeat(1, 1fr);
+        height: unset;
+    }
+}
+
+.info {
+    grid-column: 2/5;
+    padding-top: 1rem;
+
+    @media screen and (max-width:767.98px) {
+        grid-column: unset;
+    }
+}
+
+
+.name {
+    font-size: 2.6rem;
+    font-weight: 600;
+    margin: 0;
+
+    &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+
+.rating {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-left: 2rem;
+    position: relative;
+    bottom: 1%;
+
+    display: inline-block;
+
+    &:hover {
+        text-decoration: none;
+        cursor: default;
+    }
+}
+
+.icon {
+    color: gold;
+    font-size: 1.5rem;
+    margin-left: 3px;
+    padding-bottom: 3px;
+}
+
+.username {
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: lighten($color-text-black, 30%);
+    margin-bottom: 2rem;
+}
+
+.bio {
+    font-size: 1.5rem;
+    padding-right: 2rem;
+}
+
+.price {
+    font-size: 1.6rem;
+    font-weight: 500;
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+}
+
+.bookNow {
+    border: none;
+    background: $color-text-black;
+    // display: block;
+    width: 10%;
+    margin: 0 auto;
+    border-radius: 8px;
+    padding: 0.7rem 2rem;
+    color: $color-bg-white;
+    cursor: pointer;
+    white-space: nowrap;
+    // transition-property: transform, box-shadow, filter;
+    // transition-duration: 0.25s;
+    // transition-timing-function: ease-in-out;
+    // transition-delay: 0.1s;
+    position: absolute;
+    bottom: 1rem;
+    right: 2rem;
+    display: block;
+
+    &:hover {
+        box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25);
+        filter: brightness(120%);
+        transform: scale(1.05);
+    }
+
+    @media screen and (max-width:1023.98px) {
+        width: 50%;
+    }
+}
+
+.bookNowContainer {
+    @media screen and (max-width:767.98px) {
+        margin-top: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .price {
+            position: unset;
+        }
+
+        .bookNow {
+            position: unset;
+            margin: 0;
+        }
+    }
+}
+
+.imageContainer {
+    width: 300px;
+    height: 300px;
+
+    @media screen and (max-width:767.98px) {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.image {
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 10%;
+    object-position: center;
+    border-style: none;
+    width: 100% !important;
+    position: relative !important;
+    height: unset !important;
+}
+
+.imageContainer>div {
+    position: unset !important;
+}
+
+
+/////////////////////////////////////////////////
+
+.heading {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-top: 3rem;
+
+    span {
+        font-size: 1.6rem;
+        font-weight: 500;
+        text-transform: capitalize;
+    }
+}
+
+.skill {
+    font-size: 1.5rem;
+    display: inline-block;
+    background: gainsboro;
+    padding: 0.5rem 1.5rem;
+    margin: 0.5rem 1rem;
+    border: 2px solid black;
+    border-radius: 7px;
+}
+
+.socialIcon {
+    display: inline-block;
+    margin-right: 1rem;
+
+    &:hover {
+        color: $color-primary;
+        cursor: pointer;
+    }
+
+    a {
+        all: unset;
+    }
+}
+
+
+.unsetLink{
+    all:unset;
+}
+

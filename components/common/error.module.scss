@@ -1,0 +1,55 @@
+@use "../../styles/abstracts/variables" as *;
+
+.parent {
+    display: flex;
+    justify-content: center;
+}
+
+.box {
+    background-color: $color-text-black;
+    width: 30vw;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    border-radius: 25.5px;
+    min-height: 21rem;
+}
+
+.msg {
+    text-align: center;
+    margin-top: 2.5rem;
+    font-size: 2rem;
+    color: $color-bg-white;
+}
+
+.tryAgainParent {
+    display: flex;
+    justify-content: center;
+}
+
+.tryAgain {
+    margin-top: 3.5rem;
+    border-radius: 15px;
+    min-height: 6rem;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    width: 25vw;
+    background-color: #9999;
+    border-style: none;
+    color: white;
+    font-size: 2.5rem;
+}
+
+.tryAgain:hover {
+    background-color: #535353;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+    .box {
+        width: 80vw;
+    }
+
+    .tryAgain {
+        width: 60vw;
+        font-size: 2rem;
+    }
+}

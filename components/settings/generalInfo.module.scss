@@ -1,0 +1,195 @@
+@use "@/styles/abstracts/variables" as *;
+
+
+.heading {
+    font-size: 3rem;
+    font-weight: 700;
+    color: black;
+    margin-bottom: 1.5rem;
+
+    @media screen and (max-width:767.98px) {
+        font-size: 2.5rem;
+    }
+}
+
+.grid {
+    display: grid;
+}
+
+@media screen and (min-width:767.98px) {
+    .customGrid {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.left {
+    >* {
+        width: 100%;
+    }
+
+    margin-left:2rem;
+    margin-right:2rem;
+}
+
+.right {
+    // grid-column-start: 2;
+    // grid-column-end: 5;
+    margin-right: 2rem;
+    margin-left: 2rem;
+
+    @media screen and (min-width:767.98px) {
+        grid-column-start: 2;
+        grid-column-end: 5;
+    }
+}
+
+.form {
+    margin-top: 3rem;
+
+
+    .inputContainer {
+        margin-bottom: 2rem;
+    }
+
+    input {
+        width: 100%;
+        display: block;
+        height: 5.5rem;
+        border-radius: 5px;
+        padding: 0 2rem;
+        border: 2px black solid;
+        border-radius: 7px;
+        outline: transparent;
+
+        &:focus-within {
+            border: 2px $color-secondary solid;
+        }
+    }
+
+    .select {
+        display: block;
+        margin: 1rem 0;
+        height: 5.5rem;
+        border-radius: 5px;
+        padding: 0 2rem;
+        border: 2px black solid;
+        border-radius: 7px;
+        outline: transparent;
+        appearance: none;
+        color: darken(#acacac, 20%);
+
+        &:selection {
+            color: $color-text-black;
+        }
+
+        // option:checked{
+        //     color:red;
+        // }
+
+        // option:not(.d){
+        //     color:$color-text-black;
+        // }
+        &:focus-within {
+            border: 2px $color-secondary solid;
+        }
+    }
+
+    .textArea {
+        display: block;
+        resize: none;
+        width: 100%;
+        height: 100%;
+        outline: transparent;
+        border: 0;
+        border-radius: 10px;
+        padding: 2rem;
+        border: 2px gray solid;
+        background:white;
+        @media only screen and (max-width:767.98px){
+            height:175px;
+        }
+        &:focus-within {
+            border: 2px dodgerblue solid;
+        }
+    }
+
+}
+
+
+.instructions {
+    font-size: 1.2rem;
+    color: darken(red, 10%);
+
+    .pwdIcon {
+        margin-right: 0.5rem;
+
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+
+
+
+.next {
+    border: 3px $color-text-black solid;
+    background: $color-text-black;
+    font-weight: 600;
+    display: block;
+    width: 10%;
+    margin: 0 auto;
+    border-radius: 8px;
+    padding: 1rem 2rem;
+    color: $color-bg-white;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    box-shadow: inset 0 0 0 0 $color-bg-white;
+    ;
+    transition: ease-out 0.4s;
+    float:right;
+    margin-right:2rem;
+    &:hover:not(:disabled) {
+        box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25);
+        filter: brightness(120%);
+        transform: scale(1.05);
+        box-shadow: inset 400px 0 0 0 $color-text-black;
+        color: $color-bg-white;
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+
+    }
+
+    @media screen and (max-width:1024px) {
+        width: 50%;
+        max-width:170px;
+    }
+}
+
+.visuallyHidden {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px);
+    /* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
+    clip: rect(1px, 1px, 1px, 1px);
+    /*maybe deprecated but we need to support legacy browsers */
+    clip-path: inset(50%);
+    /*modern browsers, clip-path works inwards from each corner*/
+    white-space: nowrap;
+    /* added line to stop words getting smushed together (as they go onto seperate lines and some screen readers do not understand line feeds as a space */
+}

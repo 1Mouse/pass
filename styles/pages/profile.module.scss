@@ -1,0 +1,11 @@
+@use "../abstracts/variables" as *;
+
+.block {
+    min-height: 100vh;
+    border:1px solid transparent;
+}
+
+.bgWrapper {
+    background: rgb(81, 201, 255);
+    background: radial-gradient(circle, rgba(81, 201, 255, 1) 64%, rgba(12, 132, 223, 1) 100%);
+}

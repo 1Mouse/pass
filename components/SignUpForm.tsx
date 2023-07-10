@@ -14,14 +14,16 @@ import {
     faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import axios,{AxiosError} from 'axios';
-import config from '../config.json';
+import { API_URL } from "@/lib/utils/urls";
+import { useRouter } from "next/router";
 
-const API_ENDPOINT=config.apiEndpoint;
 const EMAIL_REGEX =
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 const PWD_REGEX = /^(.{0,7}|[^0-9]*|[^A-Z]*|[^a-z]*|[a-zA-Z0-9]*)$/;
 
 const SignUpForm = () => {
+    const router=useRouter();
+
     const emailRef = useRef<HTMLInputElement>(null);
     const errRef = useRef<HTMLInputElement>(null);
 
@@ -67,7 +69,7 @@ const SignUpForm = () => {
         }
 
         try {
-            const response = await axios.post(`${API_ENDPOINT}/signup`, {
+            const response = await axios.post(`${API_URL}/signup`, {
                 "email": email.toLowerCase(),
                 "password": pwd,
                 "role":role
@@ -87,6 +89,12 @@ const SignUpForm = () => {
             }
         }
     }
+
+    if(success)
+    {
+        router.push('users/email/confirmation/')
+    }
+
     return (
         <div className={`grid grid--1x2 ${styles.pageNoScroll}`}>
             <div className={styles.signupLeft}>
@@ -95,7 +103,7 @@ const SignUpForm = () => {
                         <Link href="/">
                             <Image
                                 className={styles.navBrand}
-                                src="assets/passLogo.svg"
+                                src="/assets/passLogo.svg"
                                 alt=""
                                 width={125}
                                 height={57}
@@ -113,10 +121,10 @@ const SignUpForm = () => {
                             </span>
                         </p>
                     </div>
-                    <button type="button" className={styles.btnGoogle}>
+                    {/* <button type="button" className={styles.btnGoogle}>
                         Sign up with Google
                     </button>
-                    <OrLine />
+                    <OrLine /> */}
                 <form onSubmit={handleSubmit} className={styles.formItself}>
                         <p
                             ref={errRef}
@@ -203,9 +211,10 @@ const SignUpForm = () => {
             <div className={styles.signupRight}>
                 <div className={styles.imageContainer}>
                     <Image
-                        src="/assets/Signup-Image-1.5x.png"
+                        src="/assets/signup-artwork.svg"
                         alt=""
                         fill
+                        priority={true}
                         className={styles.image}
                     />
                 </div>
