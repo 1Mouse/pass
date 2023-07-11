@@ -53,7 +53,18 @@ const ButtonWrapper = ({ currency, showSpinner, interviewId, accessToken }: any)
                     })
                 }).then((response) => response.json()).then((order) => order.id);
             }}
-
+             onApprove={function (data, actions) {
+                    return fetch(`${API_URL}/payments/orders/${data.orderID}/capture`, {
+                    method: "post",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${accessToken}`
+                    },
+                    body: JSON.stringify({
+                        interviewId: interviewId
+                    })
+                }).then((response) => response.json())
+            }}
         />
     </>
     );
