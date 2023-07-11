@@ -78,7 +78,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
         const response = await axios.get(
             `${API_URL}/users/${username}`
         );
-        console.log(JSON.stringify(response?.data));
+        console.log('user from back',JSON.stringify(response?.data));
         userData = omit(['password'],response?.data);
         userData= userData as IUserBack;
         console.log("userData", userData);
