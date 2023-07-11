@@ -13,9 +13,10 @@ type Props = {
     interview: IInterview,
     accessToken: string,
     filterAnInterview: (_id: string) => void
+    updatePaymentStatus: (_id: string) => void
 }
 
-export default function InterviewCard({ interview, accessToken, filterAnInterview }: Props) {
+export default function InterviewCard({ interview, accessToken, filterAnInterview, updatePaymentStatus }: Props) {
     const [role, authedId] = useAuthStore(state => [state.user.role, state.user._id])
     const [loading, setLoading] = useState<boolean>(false)
     const [showModal, setShowModal] = useState(false);
@@ -144,6 +145,7 @@ export default function InterviewCard({ interview, accessToken, filterAnIntervie
                                 setShowModal={setShowModal}
                                 accessToken={accessToken}
                                 interviewId={interview._id}
+                                updatePaymentStatus={updatePaymentStatus}
                             />
                         }
                 </>

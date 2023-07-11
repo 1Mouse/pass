@@ -19,7 +19,7 @@ const amount = "2";
 const currency = "USD";
 const style = { layout: "vertical" };
 // Custom component to wrap the PayPalButtons and handle currency changes
-const ButtonWrapper = ({ currency, showSpinner, interviewId, accessToken}: any) => {
+const ButtonWrapper = ({ currency, showSpinner, interviewId, accessToken, updatePaymentStatus, handleClose }: any) => {
     // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
     // This is the main reason to wrap the PayPalButtons in a new component
     const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
@@ -74,7 +74,10 @@ const ButtonWrapper = ({ currency, showSpinner, interviewId, accessToken}: any) 
                     body: JSON.stringify({
                         interviewId: interviewId
                     })
-                }).then((response) => response.json())
+                    }).then((response) => response.json()).then(() => {
+                        handleClose();
+                        updatePaymentStatus(interviewId);
+                    })
             }}
         />
     </>
@@ -112,6 +115,8 @@ export default function PaypalModal(props: any) {
                                 currency={currency}
                                 showSpinner={false}
                                 accessToken={props.accessToken}
+                                updatePaymentStatus={props.updatePaymentStatus}
+                                handleClose={handleClose}
                             />
                         </PayPalScriptProvider>
                     </div>

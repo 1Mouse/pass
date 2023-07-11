@@ -26,6 +26,13 @@ const InterviewsBoard = () => {
         const filtered = interviews?.filter(interview => interview._id !== _id)
         setInterviews(filtered);
     }
+    const updatePaymentStatus=(_id: string)=>{
+        const modified=[...interviews!];
+        const index=modified.findIndex(interview=>interview._id===_id);
+        modified[index].isPaid=true;
+        setInterviews(modified);
+    }
+
     const fetchInterviews = async () => {
         let type = switchRole ? "had" : "made";
         if (role === 'interviewee') {
@@ -118,7 +125,9 @@ const InterviewsBoard = () => {
                         key={interview._id}
                         interview={interview}
                         accessToken={accessToken}
-                        filterAnInterview={filterAnInterview} />)}
+                        filterAnInterview={filterAnInterview} 
+                        updatePaymentStatus={updatePaymentStatus}
+                        />)}
             </div>
         </>
     );
