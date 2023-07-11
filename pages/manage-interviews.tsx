@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import styles from "@/styles/pages/manageInterviews.module.scss"
 import Card from '@/components/explore/Card/Card'
+// import Script from 'next/script'
 
 import axios, { AxiosError } from "axios";
 import { API_URL } from "@/lib/utils/urls";
@@ -53,6 +54,8 @@ export default function ManageInterviews() {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
+            {/* <Script src="https://www.paypal.com/sdk/js?client-id=AfTPCmMG-JNM7WFRoqLUzNPjrP3knNkdT_BwqdDS3ytM5Maz_uUiHWoqIkhMpKsSZqcW6dIfTYWIXZVq" strategy="afterInteractive" /> */}
+
             <Navbar />
             <div className={styles.bgWrapper}>
                 <main className={`container ${styles.block}`}>

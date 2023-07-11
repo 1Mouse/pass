@@ -7,6 +7,7 @@ import { API_URL } from '@/lib/utils/urls';
 import { fireSuccess, fireError } from '@/lib/utils/toasts';
 import dayjs, { Dayjs } from 'dayjs';
 import Link from 'next/link';
+import PaypalModal from "@/components/common/PaypalModal/PaypalModal";
 
 type Props = {
     interview: IInterview,
@@ -17,6 +18,8 @@ type Props = {
 export default function InterviewCard({ interview, accessToken, filterAnInterview }: Props) {
     const [role, authedId] = useAuthStore(state => [state.user.role, state.user._id])
     const [loading, setLoading] = useState<boolean>(false)
+    const [showModal, setShowModal] = useState(false);
+
 
     console.log('here', interview)
     const handleConfirm = async () => {
@@ -131,11 +134,21 @@ export default function InterviewCard({ interview, accessToken, filterAnIntervie
                         <span>got paid: </span>
                         <span>{interview.isPaid ? 'yes' : 'no'}</span>
                     </div>
-                    {true && <button
+                    {true&& 
+                    <button
                         className={styles.pay}
                         disabled={loading}
-                        onClick={handlePay}
-                    >{loading ? 'loading...' : 'pay now'}</button>}
+                        onClick={() => setShowModal(true)}
+                        >
+                    {loading ? 'loading...' : 'pay now'}</button>}
+                    {showModal &&
+                            <PaypalModal
+                                showModal={showModal}
+                                setShowModal={setShowModal}
+                                accessToken={accessToken}
+                                interviewId={interview._id}
+                            />
+                        }
                 </>
             }
             {/* {interview.status === "rejected" && <p>rejected</p>}
@@ -144,3 +157,6 @@ export default function InterviewCard({ interview, accessToken, filterAnIntervie
     </>
     )
 }
+
+
+//!interview.isPaid&& interview.interviewee._id===authedId 

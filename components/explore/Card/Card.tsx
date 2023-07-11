@@ -6,8 +6,8 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import IUserBack from "@/lib/types/IUserBack";
 import { useState } from 'react';
 import useAuthStore from "@/lib/zustand/stores/useAuthStore";
-import Modal from "@/components/common/Modal/Modal";
-import BookModal from "@/components/common/BookModal/BookModal";
+// import Modal from "@/components/common/Modal/Modal";
+// import BookModal from "@/components/common/BookModal/BookModal";
 import MuiModal from "@/components/common/MuiModal/MuiModal";
 
 type Props = {
