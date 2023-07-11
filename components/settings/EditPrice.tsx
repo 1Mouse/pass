@@ -5,9 +5,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios, { AxiosError } from "axios";
 import { API_URL } from "@/lib/utils/urls";
 
+import { fireError, fireSuccess } from "@/lib/utils/toasts";
+import {useRouter} from 'next/router';
+import useUserStore from '@/lib/zustand/stores/useUserStore'
 
-function EditPrice({ accessToken, setPrice, setPricable, pricable }: any) {
-    const [value, setValue] = useState(0);
+
+
+function EditPrice({ accessToken, setPrice, setPricable, priceable,price }: any) {
+    const router=useRouter();
+    const [value, setValue] = useState(price?price:0);
     const [errMsg, setErrMsg] = useState("");
     const [success, setSuccess] = useState(false);
     const [validPrice, setValidPrice] = useState(false);
@@ -16,9 +22,14 @@ function EditPrice({ accessToken, setPrice, setPricable, pricable }: any) {
     const [isLoading, setIsLoading] = useState(false);
 
     const validatePrice = value >= 5;
+    const [url,setUrl]=useState('')
+    const [gotUrl,setGotUrl]=useState(false);
+    const merchantId=useUserStore(state=>state.merchantId)
 
-    console.log("missed",accessToken)
-
+    console.log('==========================================')
+    console.log(priceable)
+    console.log(price)
+    console.log('==========================================')
     useEffect(() => {
         setValidPrice(validatePrice);
         if (!validatePrice)
@@ -41,10 +52,8 @@ function EditPrice({ accessToken, setPrice, setPricable, pricable }: any) {
                 }
             );
             console.log(JSON.stringify(response?.data));
-            const isPricable: boolean = response?.data.info.pricable;
-            // if(isPricable){
-
-            // }
+            const isPricable: boolean = response?.data.info.priceable;
+            console.log('after Request',isPricable)
             setIsLoading(false);
             setPricable(isPricable);
             setElligabilityMsg('');
@@ -84,6 +93,7 @@ function EditPrice({ accessToken, setPrice, setPricable, pricable }: any) {
             setIsLoading(false);
             setErrMsg('');
             setSuccess(true);
+            
         } catch (err) {
             setIsLoading(false);
             setSuccess(false);
@@ -99,11 +109,46 @@ function EditPrice({ accessToken, setPrice, setPricable, pricable }: any) {
         }
     };
 
+    const handleOnboarding = async () => {
+        try {
+            setIsLoading(true)
+            const response = await axios.get(`${API_URL}/payments/onboard`, 
+                {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                    }
+                }
+            );
+            console.log(JSON.stringify(response?.data));
+            setUrl(response?.data.links[1].href);
+
+            setGotUrl(true)
+            setIsLoading(false);
+            // fireSuccess("Onboarding successful");
+        } catch (err) {
+            setIsLoading(false);
+            const error = err as AxiosError;
+            console.log(error)
+            if (error?.response) {
+                //@ts-ignore
+                fireError(error.response?.data?.message);
+            }
+            else {
+                fireError('Something went wrong');
+            }
+        }
+    };
+
+    if(gotUrl){
+        console.log(url);
+        router.push(url)
+        return null;
+    }
 
     return (
-        <>
+        <>  
             {
-            !pricable &&
+            !priceable &&
                 <h2 className={styles.heading}>Do you want to check elligability for pricing?
                 <button className={styles.check}
                     onClick={updatePricable}
@@ -117,7 +162,10 @@ function EditPrice({ accessToken, setPrice, setPricable, pricable }: any) {
                     {elligabilityMsg}
                 </p>
             }
-            { pricable &&
+            {priceable&&!merchantId&&
+            <h2 className={styles.heading}>now you can start onboarding with paypal?<button onClick={handleOnboarding} className={styles.check} disabled={isLoading}>{isLoading?'loading':'onboard'}</button>
+                            </h2>}
+            { priceable&&merchantId &&
                 <div>
                     <h2 className={styles.subHeading}>Change price:</h2>
                     <label
@@ -154,7 +202,7 @@ function EditPrice({ accessToken, setPrice, setPricable, pricable }: any) {
                         </button>
                 </div>
             }
-        </>
+            </>
     );
 }
 

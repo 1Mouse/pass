@@ -180,10 +180,11 @@ const Settings: React.FC = () => {
             }
             {role==='interviewer'&& <>
             <EditPrice
+                price={price}
                 accessToken={accessToken}
                 setPrice={setPrice}
                 setPricable={setPricable}
-                pricable={priceable}
+                priceable={priceable}
                 />
             <Line/>
             </>

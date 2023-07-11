@@ -54,6 +54,7 @@ const useUserStore = create<IUserState>()(
                     twitter: "",
                 },
                 timeslots: initialTimeslots,
+                merchantId: "",
                 setFirstName: (firstName) => set(() => ({ firstName: firstName })),
                 setLastName: (lastName) => set(() => ({ lastName: lastName })),
                 setLevelOfExperience: (levelOfExperience) =>
@@ -81,7 +82,8 @@ const useUserStore = create<IUserState>()(
                         twitter: "",
                     },
                     timeslots: initialTimeslots
-                }))
+                })),
+                setMerchantId:(merchantId)=> set(()=>({merchantId:merchantId})),
             }),
             {
                 name: "user",

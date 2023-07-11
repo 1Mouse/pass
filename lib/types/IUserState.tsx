@@ -14,6 +14,7 @@ export default interface IUserState {
     interviewsMade?: []
     socials?: ISocials
     timeslots?: ITimeSlot[]
+    merchantId?: string
     setFirstName: (firstName: string) => void
     setLastName: (lastName: string) => void
     setLevelOfExperience: (levelOfExperience: string) => void
@@ -25,4 +26,5 @@ export default interface IUserState {
     setTimeslots:(timeslots:ITimeSlot[])=>void
     updateInfo: (info: IInfo) => void
     clearInfo: () => void
+    setMerchantId: (merchantId: string) => void
 }

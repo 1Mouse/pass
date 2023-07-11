@@ -12,4 +12,5 @@ export default interface IInfo {
         skills?: string[]
         socials?: ISocials
         timeslots?: ITimeSlot[]
+        merchantId?: string
     }
