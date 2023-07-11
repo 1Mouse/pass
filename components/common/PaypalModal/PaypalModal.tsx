@@ -19,7 +19,7 @@ const amount = "2";
 const currency = "USD";
 const style = { layout: "vertical" };
 // Custom component to wrap the PayPalButtons and handle currency changes
-const ButtonWrapper = ({ currency, showSpinner, interviewId, accessToken, setPaidIsDone}: any) => {
+const ButtonWrapper = ({ currency, showSpinner, interviewId, accessToken}: any) => {
     // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
     // This is the main reason to wrap the PayPalButtons in a new component
     const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
@@ -74,7 +74,7 @@ const ButtonWrapper = ({ currency, showSpinner, interviewId, accessToken, setPai
                     body: JSON.stringify({
                         interviewId: interviewId
                     })
-                }).then((response) => response.json()).then(()=>setPaidIsDone(true))
+                }).then((response) => response.json())
             }}
         />
     </>
@@ -88,44 +88,6 @@ export default function PaypalModal(props: any) {
     const handleClose = () => {
         props.setShowModal(false);
     };
-
-
-
-    // const handleBook = async () => {
-    //     let formatDate = dayjs(day!.add(4, 'hour')).toISOString().split('T')[0].concat('T', selectedTime!, ':00.000+03:00');
-    //     console.log(formatDate);
-    //     try {
-    //         setLoading(true)
-    //         const response = await axios.post(`${API_URL}/interviews/`, {
-    //             "interviewer": props.interviewerId,
-    //             "interviewee": props.intervieweeId,
-    //             "date": formatDate
-    //         },
-    //             {
-    //                 headers: {
-    //                     Authorization: `Bearer ${props.accessToken}`,
-    //                 }
-    //             }
-    //         );
-    //         console.log(JSON.stringify(response?.data));
-    //         setLoading(false);
-    //         fireSuccess('Interview booked successfully');
-    //         props.setShowModal(false);
-    //     } catch (err) {
-    //         setLoading(false);
-    //         const error = err as AxiosError;
-    //         console.log(error)
-    //         if (error?.response) {
-    //             //@ts-ignore
-    //             fireError(error.response?.data?.message);
-    //         }
-    //         else {
-    //             fireError('Something went wrong');
-    //         }
-    //     }
-    // }
-
-
 
 
     return (
@@ -150,7 +112,6 @@ export default function PaypalModal(props: any) {
                                 currency={currency}
                                 showSpinner={false}
                                 accessToken={props.accessToken}
-                                setPaidIsDone={props.setPaidIsDone}
                             />
                         </PayPalScriptProvider>
                     </div>

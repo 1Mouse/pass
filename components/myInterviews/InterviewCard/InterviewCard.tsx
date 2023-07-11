@@ -19,16 +19,7 @@ export default function InterviewCard({ interview, accessToken, filterAnIntervie
     const [role, authedId] = useAuthStore(state => [state.user.role, state.user._id])
     const [loading, setLoading] = useState<boolean>(false)
     const [showModal, setShowModal] = useState(false);
-    const [paidIsDone,setPaidIsDone]=useState(false);
 
-    const handlePay = async () => {
-        filterAnInterview(interview._id);
-        fireSuccess('rejection is done');
-    }
-    if(paidIsDone)
-    {
-        handlePay();
-    }
 
     console.log('here', interview)
     const handleConfirm = async () => {
@@ -144,17 +135,15 @@ export default function InterviewCard({ interview, accessToken, filterAnIntervie
                     {!interview.isPaid && interview.interviewee._id === authedId && 
                     <button
                         className={styles.pay}
-                        disabled={loading}
                         onClick={() => setShowModal(true)}
                         >
-                    {loading ? 'loading...' : 'pay now'}</button>}
+                    {'pay now'}</button>}
                     {showModal &&
                             <PaypalModal
                                 showModal={showModal}
                                 setShowModal={setShowModal}
                                 accessToken={accessToken}
                                 interviewId={interview._id}
-                                setPaidIsDone={setPaidIsDone}
                             />
                         }
                 </>
