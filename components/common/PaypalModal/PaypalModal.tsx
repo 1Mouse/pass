@@ -19,7 +19,7 @@ const amount = "2";
 const currency = "USD";
 const style = { layout: "vertical" };
 // Custom component to wrap the PayPalButtons and handle currency changes
-const ButtonWrapper = ({ currency, showSpinner, interviewId, accessToken }: any) => {
+const ButtonWrapper = ({ currency, showSpinner, interviewId, accessToken, setPaidIsDone}: any) => {
     // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
     // This is the main reason to wrap the PayPalButtons in a new component
     const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
@@ -42,6 +42,7 @@ const ButtonWrapper = ({ currency, showSpinner, interviewId, accessToken }: any)
             forceReRender={[amount, currency]}
             fundingSource={undefined}
             createOrder={(data, actions) => {
+                console.log('interview id', interviewId)
                 return fetch(`${API_URL}/payments/orders`, {
                     method: "post",
                     headers: {
@@ -51,9 +52,19 @@ const ButtonWrapper = ({ currency, showSpinner, interviewId, accessToken }: any)
                     body: JSON.stringify({
                         interviewId: interviewId
                     })
-                }).then((response) => response.json()).then((order) => order.id);
+                }).then((response) => {
+                        console.log('here',response)
+                        return response.json()
+                    })
+                    .then((order) => {
+                        console.log('order id', order.id)
+                        return order.id
+                    }).catch(err=>console.log(err));
             }}
              onApprove={function (data, actions) {
+                console.log('data',data);
+                console.log('capture - interview id',interviewId);
+                console.log('capture - order id', data.orderID)
                     return fetch(`${API_URL}/payments/orders/${data.orderID}/capture`, {
                     method: "post",
                     headers: {
@@ -63,7 +74,7 @@ const ButtonWrapper = ({ currency, showSpinner, interviewId, accessToken }: any)
                     body: JSON.stringify({
                         interviewId: interviewId
                     })
-                }).then((response) => response.json())
+                }).then((response) => response.json()).then(()=>setPaidIsDone(true))
             }}
         />
     </>
@@ -130,7 +141,8 @@ export default function PaypalModal(props: any) {
                                 "clientId": "AfTPCmMG-JNM7WFRoqLUzNPjrP3knNkdT_BwqdDS3ytM5Maz_uUiHWoqIkhMpKsSZqcW6dIfTYWIXZVq",
                                 components: "buttons",
                                 currency: "USD",
-                                merchantId: 'Q5ADEKZKC7F72'
+                                merchantId: 'Q5ADEKZKC7F72',
+                                intent: "capture"
                             }}
                         >
                             <ButtonWrapper
@@ -138,6 +150,7 @@ export default function PaypalModal(props: any) {
                                 currency={currency}
                                 showSpinner={false}
                                 accessToken={props.accessToken}
+                                setPaidIsDone={props.setPaidIsDone}
                             />
                         </PayPalScriptProvider>
                     </div>
