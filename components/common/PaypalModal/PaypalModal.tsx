@@ -39,41 +39,21 @@ const ButtonWrapper = ({ currency, showSpinner, interviewId, accessToken }: any)
         <PayPalButtons
             style={{ layout: "vertical" }}
             disabled={false}
-            forceReRender={[]}
+            forceReRender={[amount, currency]}
             fundingSource={undefined}
             createOrder={(data, actions) => {
-                return axios.post(`${API_URL}/payments/orders`, {
-                    "interviewId": interviewId
-                },
-                    {
-                        headers: {
-                            Authorization: `Bearer ${accessToken}`,
-                        }
-                    }
-                ).then(response => {
-                    console.log('response fucken here',response)
-                    return response.data;
-                }).then(order => order.id).catch(err => {
-                    console.log(err)
-                })
+                return fetch(`${API_URL}/payments/orders`, {
+                    method: "post",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${accessToken}`
+                    },
+                    body: JSON.stringify({
+                        interviewId: interviewId
+                    })
+                }).then((response) => response.json()).then((order) => order.id);
             }}
 
-            onApprove={function (data, actions) {
-                return axios.post(`${API_URL}/payments/orders/${data.orderID}/capture`, {
-                    "interviewId": interviewId
-                },
-                    {
-                        headers: {
-                            Authorization: `Bearer ${accessToken}`,
-                        }
-                    }
-                ).then(response => {
-                    console.log(response)
-                    fireSuccess("Payment completed successfully")
-                }).catch(err => {
-                    console.log(err)
-                })
-            }}
         />
     </>
     );
@@ -136,7 +116,7 @@ export default function PaypalModal(props: any) {
                     <div style={{ maxWidth: "750px", minHeight: "200px" }}>
                         <PayPalScriptProvider
                             options={{
-                                clientId: "AfTPCmMG-JNM7WFRoqLUzNPjrP3knNkdT_BwqdDS3ytM5Maz_uUiHWoqIkhMpKsSZqcW6dIfTYWIXZVq",
+                                "clientId": "AfTPCmMG-JNM7WFRoqLUzNPjrP3knNkdT_BwqdDS3ytM5Maz_uUiHWoqIkhMpKsSZqcW6dIfTYWIXZVq",
                                 components: "buttons",
                                 currency: "USD",
                                 merchantId: 'Q5ADEKZKC7F72'
