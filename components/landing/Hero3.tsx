@@ -55,7 +55,7 @@ const Hero3 = () => {
           <h1 className={styles.title}>How it works</h1>
           {/* <p className={styles.subtitle}>This is the Hero3 component.</p> */}
         </div>
-        <div className={`${styles.section_one}`} ref={sectionOneRef}>
+        <div data-aos="fade-right" className={`${styles.section_one}`} ref={sectionOneRef}>
           <h3 className={styles.sectionTitle}>Book Mock Interviews at Your Convenience:</h3>
           {/* <p className={styles.sectionContent}>This is the content of the first section1.</p> */}
           <div className={styles.card}>
@@ -67,7 +67,7 @@ const Hero3 = () => {
             </div>
           </div>
         </div>
-        <div className={`${styles.section_two}`} ref={sectionTwoRef}>
+        <div data-aos="fade-left" className={`${styles.section_two}`} ref={sectionTwoRef}>
           <h3 className={styles.sectionTitle}>Connect with Senior Engineers from FAANG & Top Companies:</h3>
           <div className={styles.card}>
             <div className={styles.card_content_two}>
@@ -77,7 +77,7 @@ const Hero3 = () => {
             </div>
           </div>
         </div>
-        <div className={`${styles.section_three}`} ref={sectionThreeRef}>
+        <div data-aos="fade-right" className={`${styles.section_three}`} ref={sectionThreeRef}>
           <h3 className={styles.sectionTitle}>Work Towards Landing Your Dream Job:</h3>
           <div className={styles.card}>
             <div className={styles.card_content_three}>
