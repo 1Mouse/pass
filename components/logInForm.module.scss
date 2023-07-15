@@ -52,7 +52,7 @@
     border-radius: 5px;
     padding: 0 0.4rem;
     border: 2px gainsboro solid;
-
+ 
     &:focus-within {
         border: 2px $color-secondary solid;
     }
@@ -72,6 +72,7 @@
         color: #333;
         justify-self: start;
         align-self: center;
+        width: 100%;
     }
 
     .eye {

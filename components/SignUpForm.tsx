@@ -13,7 +13,7 @@ import {
     faUser,
     faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
-import axios,{AxiosError} from 'axios';
+import axios, { AxiosError } from 'axios';
 import { API_URL } from "@/lib/utils/urls";
 import { useRouter } from "next/router";
 
@@ -22,7 +22,7 @@ const EMAIL_REGEX =
 const PWD_REGEX = /^(.{0,7}|[^0-9]*|[^A-Z]*|[^a-z]*|[a-zA-Z0-9]*)$/;
 
 const SignUpForm = () => {
-    const router=useRouter();
+    const router = useRouter();
 
     const emailRef = useRef<HTMLInputElement>(null);
     const errRef = useRef<HTMLInputElement>(null);
@@ -36,8 +36,9 @@ const SignUpForm = () => {
     const [pwdFocus, setPwdFocus] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
 
-    const [role,setRole]=useState('');
+    const [role, setRole] = useState('');
 
+    const [loading, setLoading] = useState(false);
     const [errMsg, setErrMsg] = useState("");
     const [success, setSuccess] = useState(false);
 
@@ -57,29 +58,32 @@ const SignUpForm = () => {
         setErrMsg("");
     }, [email, pwd]);
 
-    const handleSubmit = async (e: any)=>{
+    const handleSubmit = async (e: any) => {
         e.preventDefault();
         console.log('done')
-        const validateEmail=EMAIL_REGEX.test(email);
-        const validatePwd=!PWD_REGEX.test(pwd);
-        if(!validateEmail||!validatePwd){
+        const validateEmail = EMAIL_REGEX.test(email);
+        const validatePwd = !PWD_REGEX.test(pwd);
+        if (!validateEmail || !validatePwd) {
             console.log('here')
             setErrMsg('Invalid Entries');
             return;
         }
 
         try {
+            setLoading(true);
             const response = await axios.post(`${API_URL}/signup`, {
                 "email": email.toLowerCase(),
                 "password": pwd,
-                "role":role
+                "role": role
             });
             console.log(JSON.stringify(response?.data));
             setEmail('');
             setPwd('');
+            setLoading(false);
             setSuccess(true);
         } catch (err) {
-            const error=err as AxiosError;
+            setLoading(false);
+            const error = err as AxiosError;
             if (!error?.response) {
                 setErrMsg('No Server Response');
             } else if (error.response?.status === 400) {
@@ -90,8 +94,7 @@ const SignUpForm = () => {
         }
     }
 
-    if(success)
-    {
+    if (success) {
         router.push('users/email/confirmation/')
     }
 
@@ -125,7 +128,7 @@ const SignUpForm = () => {
                         Sign up with Google
                     </button>
                     <OrLine /> */}
-                <form onSubmit={handleSubmit} className={styles.formItself}>
+                    <form onSubmit={handleSubmit} className={styles.formItself}>
                         <p
                             ref={errRef}
                             className={
@@ -189,8 +192,8 @@ const SignUpForm = () => {
                             id="role"
                             name="role"
                             className={styles.select}
-                            value={role} 
-                            onChange={(e)=>setRole(e.target.value)}
+                            value={role}
+                            onChange={(e) => setRole(e.target.value)}
                         >
                             <option hidden disabled value="" className={styles.d}>
                                 Let&apos;s select role:
@@ -198,13 +201,13 @@ const SignUpForm = () => {
                             <option value="interviewee">Interviewee</option>
                             <option value="interviewer">Interviewer</option>
                         </select>
-                        <button 
-                        disabled={(!validEmail||!validPwd||(role===''))} 
-                        className={styles.btnPrimary}
-                        type='submit'
+                        <button
+                            disabled={(!validEmail || !validPwd || (role === '') || loading)}
+                            className={styles.btnPrimary}
+                            type='submit'
                         >
-                            Sign Up
-                            </button>
+                            {loading ? 'loading...' : 'Sign Up'}
+                        </button>
                     </form>
                 </div>
             </div>

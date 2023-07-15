@@ -20,7 +20,7 @@ import useAuthStore from '../lib/zustand/stores/useAuthStore';
 import IUser from "@/lib/types/IUser";
 import omit from './../lib/utils/omit';
 import setCookie from './../lib/utils/setCookie';
-import useUserStore  from '@/lib/zustand/stores/useUserStore';
+import useUserStore from '@/lib/zustand/stores/useUserStore';
 import { EMAIL_REGEX, PWD_REGEX } from "@/lib/utils/regex";
 
 const LogInForm = () => {
@@ -37,7 +37,7 @@ const LogInForm = () => {
     const [pwdFocus, setPwdFocus] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
 
-
+    const [loading, setLoading] = useState(false);
     const [errMsg, setErrMsg] = useState("");
     const [success, setSuccess] = useState(false);
 
@@ -52,8 +52,8 @@ const LogInForm = () => {
     const user = useAuthStore((state) => state.user);
     const accessToken = useAuthStore((state) => state.accessToken);
     const refreshToken = useAuthStore((state) => state.refreshToken);
-    
-    const updateInfo=useUserStore((state)=>state.updateInfo);
+
+    const updateInfo = useUserStore((state) => state.updateInfo);
 
     useEffect(() => {
         emailRef.current?.focus();
@@ -83,6 +83,7 @@ const LogInForm = () => {
         }
 
         try {
+            setLoading(true);
             const response = await axios.post(`${API_URL}/signin`, {
                 "email": email.toLowerCase(),
                 "password": pwd,
@@ -111,8 +112,10 @@ const LogInForm = () => {
                 setCookie('skills', 'true', 365);
             }
 
+            setLoading(false);
             setSuccess(true);
         } catch (err) {
+            setLoading(false);
             const error = err as AxiosError;
             console.log(error)
             if (error?.response) {
@@ -223,11 +226,11 @@ const LogInForm = () => {
                                 <p className={styles.forgotPassword} onClick={() => router.push('/users/forgot-password')}>Forgot password?</p>
                             </div>
                             <button
-                                disabled={(!validEmail || !validPwd)}
+                                disabled={(!validEmail || !validPwd || loading)}
                                 className={styles.btnPrimary}
                                 type='submit'
                             >
-                                Log In
+                                {loading ? 'loading...' : 'Log In'}
                             </button>
                         </form>
                     </div>
