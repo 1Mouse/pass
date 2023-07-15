@@ -9,6 +9,7 @@ import useAuthStore from "@/lib/zustand/stores/useAuthStore";
 // import Modal from "@/components/common/Modal/Modal";
 // import BookModal from "@/components/common/BookModal/BookModal";
 import MuiModal from "@/components/common/MuiModal/MuiModal";
+import { useRouter } from "next/router";
 
 type Props = {
     userData: IUserBack | null;
@@ -18,6 +19,7 @@ const Card = (props: Props) => {
     // console.log("props in profile content");
     // console.log(props);
 
+    const router = useRouter();
     const [showModal, setShowModal] = useState(false);
 
     const [_id, accessToken] = useAuthStore(state => [state.user._id, state.accessToken]);
@@ -64,7 +66,11 @@ const Card = (props: Props) => {
                     <p className={styles.bio}>{props.userData!.info.bio}</p>
                     <div className={styles.bookNowContainer}>
                         <p className={styles.price}>{props.userData!.info.price}$ /hr</p>
-                        <button className={styles.bookNow} onClick={() => setShowModal(true)
+                        <button className={styles.bookNow} onClick={() => {
+                            if (accessToken==='') router.push('/login')
+                            else
+                                setShowModal(true)
+                        }
                         }>
                             Book</button>
                         {showModal &&

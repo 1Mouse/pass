@@ -17,6 +17,7 @@ import {useEffect,useState} from 'react';
 import FinishedInterviews from '@/components/myInterviews/FinishedInterviews/FinishedInterviews';
 import ThickLine from '@/components/common/ThickLine';
 import MuiModal from "@/components/common/MuiModal/MuiModal";
+import { useRouter } from "next/router";
 
 type Props = {
     userData?: IUserBack | null;
@@ -26,7 +27,7 @@ type Props = {
 const ProfileContent = (props: Props) => {
     console.log("props in profile content");
     console.log(props);
-
+    const router = useRouter();
     const username=useAuthStore(state=>state.user.username);
 
     const [firstRender, setFirstRender] = useState<boolean>(false);
@@ -79,7 +80,11 @@ const ProfileContent = (props: Props) => {
                     <p className={styles.bio}>{props.userData!.info.bio}</p>
                     <div className={styles.bookNowContainer}>
                         <p className={styles.price}>{props.userData!.info.price}$ /hr</p>
-                        {firstRender && props.userData!.role === 'interviewer' && (username === '' || username !== props.userData!.username) && <button className={styles.bookNow} onClick={() => setShowModal(true)
+                        {firstRender && props.userData!.role === 'interviewer' && (username === '' || username !== props.userData!.username) && <button className={styles.bookNow} onClick={() => {
+                            if(username === '') router.push('/login')
+                            else
+                            setShowModal(true)
+                        }
                         }>Book</button>}
                         {showModal &&
                             <MuiModal
