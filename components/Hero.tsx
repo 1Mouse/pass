@@ -21,6 +21,7 @@ const Hero = () => {
                             src="/assets/heroImage.svg"
                             alt=""
                             fill
+                            priority={true}
                             className={styles.image}
                         />
                     </div>
