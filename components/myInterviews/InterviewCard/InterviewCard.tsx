@@ -114,7 +114,7 @@ export default function InterviewCard({ interview, accessToken, filterAnIntervie
                 interview.status === "pending" &&
                 <>
                     <div className={styles.pendingButtonsContainer}>
-                        {role === 'interviewer' &&
+                        {interview.interviewer._id === authedId &&
                             <button className={styles.confirm} disabled={loading}
                                 onClick={handleConfirm}
                             >{loading ? 'loading...' : 'Confirm'}</button>}
