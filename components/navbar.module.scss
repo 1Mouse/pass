@@ -83,6 +83,27 @@
 
         }
     }
+
+    button.logIn {
+        border: none;
+        background: $color-primary;
+        display: block;
+        width: 100%;
+        margin: 0 auto;
+        border-radius: 8px;
+        padding: 0.7rem 2rem;
+        color: $color-bg-white;
+        cursor: pointer;
+        white-space: nowrap;
+        text-decoration: none;
+
+        &:hover {
+            box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25);
+            filter: brightness(120%);
+            transform: scale(1.05);
+
+        }
+    }
 }
 
 

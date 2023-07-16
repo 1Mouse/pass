@@ -11,9 +11,11 @@ import useAuthStore from "@/lib/zustand/stores/useAuthStore";
 import useUserStore from '@/lib/zustand/stores/useUserStore';
 import useHasMounted from "@/lib/hooks/useHasMounted";
 import { FRONT_URL } from "@/lib/utils/urls";
+import {useRouter} from 'next/router';
 
 const Navbar = () => {
     const hasMounted = useHasMounted();
+    const router=useRouter();
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const accessToken: string | undefined = useAuthStore((state) => state.accessToken);
     const username=useAuthStore(state=>state.user.username);
@@ -22,6 +24,7 @@ const Navbar = () => {
 
     const clearAuth=useAuthStore(state=>state.clearAuth)
     const clearInfo=useUserStore(state=>state.clearInfo)
+    const [loading,setLoading]=useState<boolean>(false);
 
     if (!hasMounted) return null;
 
@@ -29,12 +32,15 @@ const Navbar = () => {
         document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     }
     const logout=()=>{
+        setLoading(true);
         console.log('logout')
         clearAuth();
         clearInfo();
         deleteCookie('username')
         deleteCookie('info')
         deleteCookie('skills')
+        setLoading(false);
+        router.push(`${FRONT_URL}/login`)
     }
 
     return (
@@ -74,10 +80,10 @@ const Navbar = () => {
                             `${FRONT_URL}/login`
                     }>Settings</Link></li>
 
-                    {!isAuth && <li className={styles.navItem}><Link href={`${FRONT_URL}/login`} className={styles.logIn}>Log in</Link></li>}
-                    { isAuth && <li className={styles.navItem}><Link href={`${FRONT_URL}/login`} className={styles.logIn} onClick={
+                    {!isAuth&& !loading && <li className={styles.navItem}><Link  href={`${FRONT_URL}/login`} className={styles.logIn}>Log in</Link></li>}
+                    { isAuth && <li className={styles.navItem}><button disabled={loading} className={styles.logIn} onClick={
                         ()=>logout()
-                    }>Log out</Link></li>}
+                    }>Log out</button></li>}
                 </ul>
             </nav>
         </>

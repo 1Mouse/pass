@@ -114,7 +114,7 @@ const LogInForm = () => {
                 setCookie('skills', 'true', 365);
             }
 
-            await delay(1000);
+            await delay(1500);
             setLoading(false);
             setSuccess(true);
         } catch (err) {
