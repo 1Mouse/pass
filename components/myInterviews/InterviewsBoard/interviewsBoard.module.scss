@@ -11,67 +11,84 @@
     margin-top: 1rem;
     margin-right: 1rem;
 }
+.buttonRole.active{
+    border:4px solid black;
+    box-shadow: inset -5px -5px 9px rgba(255, 255, 255, 0.45), inset 5px 5px 9px rgba(94, 104, 121, 0.3);
+    
 
-.statusContainer{
-    display:flex;
+}
+
+.statusContainer {
+    display: flex;
     justify-content: center;
-    gap:1rem;
+    gap: 1rem;
     margin: 0 auto;
     margin-top: 1rem;
-    background:white;
-    border-radius:100px;
-    padding:0.5rem 0;
+    background: white;
+    border-radius: 100px;
+    padding: 0.5rem 0;
+
     @media only screen and (min-width:767.98px) {
         width: 70%;
     }
 
-    .buttonStatus{ 
-            display: block;
-            cursor: pointer;
-            border-radius:100px;
-            border:0;
-            outline:none;
-            &:disabled{
-                cursor:not-allowed;
-            }
-            @media only screen and (max-width:500px) {
-                font-size: 1.4rem;
-            }
+    .buttonStatus {
+        display: block;
+        cursor: pointer;
+        border-radius: 100px;
+        border: 0;
+        outline: none;
+
+        &:disabled {
+            cursor: not-allowed;
         }
-    
-    .red{
+
+        @media only screen and (max-width:500px) {
+            font-size: 1.4rem;
+        }
+    }
+
+    .red {
         background: lightcoral;
     }
-    .yellow{
-        background:yellow;
+
+    .yellow {
+        background: yellow;
     }
-    .green{
-        background:lightgreen;
+
+    .green {
+        background: lightgreen;
     }
-    .blue{
-        background:dodgerblue;
+
+    .blue {
+        background: dodgerblue;
+    }
+
+    .buttonStatus.active {
+        border: 3px solid black;
+        box-shadow: inset -5px -5px 9px rgba(255, 255, 255, 0.45), inset 5px 5px 9px rgba(94, 104, 121, 0.3);
     }
 }
 
-.cardsContainer{
-    display:grid;
+.cardsContainer {
+    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap:2rem;
+    gap: 2rem;
     margin-top: 1rem;
 
     @media only screen and (min-width:767.98px) {
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    }   
+    }
 }
 
-.caughtUp{
-    background:white;
-    display:flex;
-    justify-content:center; 
-    align-items:center;
-    text-align:center;
-    margin-top:10rem;
-    font-size:2.8rem;
-    min-height:50dvh;
-    border-radius:100px;
+.caughtUp {
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 10rem;
+    font-size: 2.8rem;
+    min-height: 50dvh;
+    border-radius: 100px;
 }
