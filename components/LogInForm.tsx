@@ -20,6 +20,7 @@ import useAuthStore from '../lib/zustand/stores/useAuthStore';
 import IUser from "@/lib/types/IUser";
 import omit from './../lib/utils/omit';
 import setCookie from './../lib/utils/setCookie';
+import getCookie from './../lib/utils/getCookie';
 import useUserStore from '@/lib/zustand/stores/useUserStore';
 import { EMAIL_REGEX, PWD_REGEX } from "@/lib/utils/regex";
 
@@ -132,8 +133,8 @@ const LogInForm = () => {
     }
 
     if (success) {
+        console.log('is cookie set',getCookie('username'))
         router.push('/users/polish');
-        return null;
     }
     else {
         return (
