@@ -54,6 +54,8 @@ const LogInForm = () => {
     const refreshToken = useAuthStore((state) => state.refreshToken);
 
     const updateInfo = useUserStore((state) => state.updateInfo);
+    
+    const delay = (ms:number) => new Promise(res => setTimeout(res, ms));
 
     useEffect(() => {
         emailRef.current?.focus();
@@ -112,6 +114,7 @@ const LogInForm = () => {
                 setCookie('skills', 'true', 365);
             }
 
+            await delay(1000);
             setLoading(false);
             setSuccess(true);
         } catch (err) {
