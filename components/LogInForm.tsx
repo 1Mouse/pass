@@ -135,6 +135,7 @@ const LogInForm = () => {
     if (success) {
         console.log('is cookie set',getCookie('username'))
         router.push('/users/polish');
+        return null;
     }
     else {
         return (
