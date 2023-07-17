@@ -36,6 +36,7 @@ This is my graduation project. It's a platform for junior software engineers to 
 
 ## Features
 - JWT authentication system with real-time email and password validation.
+- Email confirmation with magic link.
 - User can select from two roles (interviewer, interviewee).
 - User onboarding on first login only (polishing his mandatory info). 
 - Settings page to edit (image, password, username, skills, general info, availability timetable, price, social links).
@@ -47,6 +48,21 @@ This is my graduation project. It's a platform for junior software engineers to 
 - Review and rating for each finished interview.
 - Dynamic tags, title, and summary for each finished interview.
 - Awesome landing page with animations, blobs, and modern professional design.
+
+<br/>
+
+### some credentials if you don't use an email you own
+interviewer account: 
+- email: omarhosny102@gmail.com -----> pass: test@testA1
+- email: ahmedhosnyk@gmail.com  -----> pass: test@testA1
+interviewee account:
+- email: mahmoud.adel.abdelfattah238@gmail.com -----> pass: test@testA1
+
+onboarding interviewers (Paypal sandbox account)
+- sb-cdf7s15133632@business.example.com -----> pass: jgA{nC)5
+
+paying by interviewees (Paypal sandbox account)
+- sb-lrxjg25774043@personal.example.com -----> pass: Fk#2^XSR    
 
 <br/>
 
