@@ -51,10 +51,11 @@ This is my graduation project. It's a platform for junior software engineers to 
 
 <br/>
 
-### some credentials if you don't use an email you own
+### some credentials if you don't want to use an email you own
 interviewer account: 
 - email: omarhosny102@gmail.com -----> pass: test@testA1
-- email: ahmedhosnyk@gmail.com  -----> pass: test@testA1
+- email: ahmedhosnyk@gmail.com  -----> pass: test@testA1     
+
 interviewee account:
 - email: mahmoud.adel.abdelfattah238@gmail.com -----> pass: test@testA1
 
