@@ -4,8 +4,8 @@ This is my graduation project. It's a platform for junior software engineers to 
 <br/>
 
 ## 📺 Demo video ( interviewer on the left || interviewee on the right )
-<a href="https://www.youtube.com/watch?v=LVI-IXE5Ixw" target="_blank">
- <img src="http://img.youtube.com/vi/LVI-IXE5Ixw/mqdefault.jpg" alt="Watch the video" width="600" height="400" border="10" />
+<a href="https://www.youtube.com/watch?v=LVI-IXE5Ixw" target="_blank" rel="noopener">
+ <img src="http://img.youtube.com/vi/LVI-IXE5Ixw/maxresdefault.jpg" alt="Watch the video"/>
 </a>
 
 <br/>
@@ -50,8 +50,7 @@ This is my graduation project. It's a platform for junior software engineers to 
 
 <br/>
 
-## **_Visit now_** -->  <a href="https://pass-1mouse.vercel.app/" target="_blank">Let's Go🚀</a>
-
+## **_Visit now_** -->  <a href="https://pass-1mouse.vercel.app/" target="_blank" rel="noopener">Let's Go🚀</a>
 
 
 
