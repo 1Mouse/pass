@@ -53,11 +53,11 @@ This is my graduation project. It's a platform for junior software engineers to 
 
 ### some credentials if you don't want to use an email you own
 interviewer account: 
-- email: omarhosny102@gmail.com -----> pass: test@testA1
+- email: passinterviewstest@proton.me -----> pass: test@testA1
 - email: ahmedhosnyk@gmail.com  -----> pass: test@testA1     
 
 interviewee account:
-- email: mahmoud.adel.abdelfattah238@gmail.com -----> pass: test@testA1
+- email: intervieweeatpass@proton.me -----> pass: test@testA1
 
 onboarding interviewers (Paypal sandbox account)
 - sb-cdf7s15133632@business.example.com -----> pass: jgA{nC)5
