@@ -1,14 +1,18 @@
 # ☁ Pass
 This is my graduation project. It's a platform for junior software engineers to book mock interviews with Seniors and Techleads. 
 
-### demo video ( interviewer on the left || interviewee on the right )
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=nTQUwghvy5Q" target="_blank">
- <img src="http://img.youtube.com/vi/nTQUwghvy5Q/mqdefault.jpg" alt="Watch the video" width="240" height="180" border="10" />
+<br/>
+
+## demo video ( interviewer on the left || interviewee on the right )
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=LVI-IXE5Ixw" target="_blank">
+ <img src="http://img.youtube.com/vi/LVI-IXE5Ixw/mqdefault.jpg" alt="Watch the video" width="600" height="400" border="10" />
 </a>
 
-[![Watch the video](https://img.youtube.com/vi/nTQUwghvy5Q/default.jpg)](https://youtu.be/nTQUwghvy5Q)
+<br/>
+<br/>   
 
-### 👨‍💻Technologies used:
+
+## 👨‍💻Technologies used:
 - Nextjs
 - Typescript
 - Zustand for state management
