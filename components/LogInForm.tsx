@@ -116,6 +116,23 @@ const LogInForm = () => {
             }
 
             // await delay(1500);
+            let usernameCookie = getCookie('username');
+            console.log('is cookie set', usernameCookie)
+            let info = getCookie('info');
+            console.log('cookie info ', info)
+            let skills = getCookie('skills');
+            console.log('cookie skills ', skills)
+
+            if (info === true && skills === true) {
+                router.push(`/users/${usernameCookie}`)
+            }
+            else if (info === true && skills !== true) {
+                router.push('/users/polish-skills');
+            }
+            else if (info !== true && skills !== true) {
+                router.push('/users/polish');
+            }
+
             setLoading(false);
             setSuccess(true);
         } catch (err) {
@@ -132,12 +149,26 @@ const LogInForm = () => {
         }
     }
 
-    if (success) {
-        console.log('is cookie set',getCookie('username'))
-        router.push('/users/polish');
-        return null;
-    }
-    else {
+    // if (success) {
+    //     let usernameCookie=getCookie('username');
+    //     console.log('is cookie set', usernameCookie)
+    //     let info=getCookie('info');
+    //     console.log('cookie info ', info)
+    //     let skills=getCookie('skills');
+    //     console.log('cookie skills ', skills)
+
+    //     if(info===true&&skills===true){
+    //         router.push(`/users/${usernameCookie}`)
+    //     }
+    //     else if(info===true&&skills!==true){
+    //     router.push('/users/polish-skills');
+    //     }
+    //     else if(info!==true&&skills!==true){
+    //         router.push('/users/polish');
+    //     }
+    //     return null;
+    // }
+    // else {
         return (
             <div className={`grid grid--1x2 ${styles.pageNoScroll}`}>
                 <div className={styles.signupLeft}>
@@ -253,7 +284,7 @@ const LogInForm = () => {
                 </div>
             </div>
         );
-    }
+    // }
 };
 
 export default LogInForm;
