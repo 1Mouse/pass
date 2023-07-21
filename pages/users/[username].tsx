@@ -1,8 +1,5 @@
 import Head from "next/head";
-import Image from "next/image";
 import Navbar from "@/components/Navbar";
-import { useRouter } from "next/router";
-import { useState } from "react";
 // import styles from "@/styles/pages/pleaseConfirmEmail.module.scss";
 import styles from "@/styles/pages/profile.module.scss"
 
@@ -16,21 +13,15 @@ import {
 } from "next";
 import { ParsedUrlQuery } from "querystring";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faSquareCheck,
-    faSquareXmark,
-} from "@fortawesome/free-solid-svg-icons";
-
 // import IUser from '@/lib/types/IUser';
 import IUserBack from '@/lib/types/IUserBack';
 import ProfileContent from "@/components/ProfileContent";
-import omit from '@/lib/utils/omit';
-import FinishedInterviews from '@/components/myInterviews/FinishedInterviews/FinishedInterviews'
+// import omit from '@/lib/utils/omit';
+// import FinishedInterviews from '@/components/myInterviews/FinishedInterviews/FinishedInterviews'
 
 type Props = {
-    userData?: IUserBack |null
-    errorMsg: string
+    userData?: IUserBack |null;
+    errorMsg: string;
 };
 interface IParams extends ParsedUrlQuery {
     username: string;
@@ -39,8 +30,8 @@ interface IParams extends ParsedUrlQuery {
 export default function Profile(
     props: InferGetServerSidePropsType<typeof getServerSideProps>
 ) {
-    const router = useRouter();
-    const [msg, setMsg] = useState<string>("");
+    // const router = useRouter();
+    // const [msg, setMsg] = useState<string>("");
     // console.log('router here', router);
     // console.log('context here', props.first);
 
@@ -68,10 +59,11 @@ export default function Profile(
     );
 }
 
-//@ts-ignore
+
+
 export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
     const { username } = ctx.params as IParams;
-    let userData;
+    let userData:IUserBack|null=null;
     let errorMsg:string|null=null;
 
     try {
@@ -79,8 +71,9 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
             `${API_URL}/users/${username}`
         );
         console.log('user from back',JSON.stringify(response?.data));
-        userData = omit(['password'],response?.data);
-        userData= userData as IUserBack;
+        // userData = omit(['password'],response?.data);
+        // userData= userData as IUserBack;
+        userData=response?.data;
         console.log("userData", userData);
     } catch (err) {
         const e=err as AxiosError;

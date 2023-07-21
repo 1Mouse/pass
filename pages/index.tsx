@@ -11,11 +11,27 @@ import Hero4 from '@/components/landing/Hero4';
 import Hero5 from '@/components/landing/Hero5';
 import Hero6 from '@/components/landing/Hero6';
 import Footer from '@/components/landing/Footer';
+import { useEffect } from 'react';
 
+import useTrackStore from '@/lib/zustand/stores/useTrackStore';
 
 // const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const [visitedHomeAfterLogin, setVisitedHomeAfterLogin] = useTrackStore(state => [state.visitedHomeAfterLogin, state.setVisitedHomeAfterLogin])
+  
+  useEffect(()=>{
+    if(visitedHomeAfterLogin){
+      window.location.reload();
+      setVisitedHomeAfterLogin(false)
+    }
+  },[])
+  
+
+  if(visitedHomeAfterLogin){
+    return null
+  }
+
   return (
     <>
       <Head>

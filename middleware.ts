@@ -8,6 +8,7 @@ export default function middleware(req: NextRequest) {
     // let session = req.cookies.get("session");
     // let username = (session) ? JSON.parse(session.value).username : null;
     // let info = (session) ? JSON.parse(session.value).info : null;
+    
 
     let username=req.cookies.get('username')?.value;
     let info=req.cookies.get('info');
@@ -23,11 +24,11 @@ export default function middleware(req: NextRequest) {
         return NextResponse.redirect(profile);
     }
 
-    if (info && skills && (url === `${FRONT_URL}/users/polish` || url === `${FRONT_URL}/users/polish-skills`)) {
+    else if (info && skills && (url === `${FRONT_URL}/users/polish` || url === `${FRONT_URL}/users/polish-skills`)) {
         return NextResponse.redirect(profile);
     }
 
-    if(!username && (url === `${FRONT_URL}/users/polish` || url === `${FRONT_URL}/users/polish-skills`|| url===`${FRONT_URL}/users/settings`|| url===`${FRONT_URL}/manage-interviews`)){
+    else if(!username && (url === `${FRONT_URL}/users/polish` || url === `${FRONT_URL}/users/polish-skills`|| url===`${FRONT_URL}/users/settings`|| url===`${FRONT_URL}/manage-interviews`)){
         return NextResponse.redirect(`${FRONT_URL}/login`);
     }
 

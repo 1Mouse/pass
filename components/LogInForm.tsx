@@ -24,7 +24,10 @@ import getCookie from './../lib/utils/getCookie';
 import useUserStore from '@/lib/zustand/stores/useUserStore';
 import { EMAIL_REGEX, PWD_REGEX } from "@/lib/utils/regex";
 
+import useTrackStore from "@/lib/zustand/stores/useTrackStore";
+
 const LogInForm = () => {
+    const [setVisitedHomeAfterLogin] = useTrackStore(state => [state.setVisitedHomeAfterLogin]);
     const router = useRouter();
     const emailRef = useRef<HTMLInputElement>(null);
     const errRef = useRef<HTMLInputElement>(null);
@@ -116,23 +119,24 @@ const LogInForm = () => {
             }
 
             // await delay(1500);
-            let usernameCookie = getCookie('username');
-            console.log('is cookie set', usernameCookie)
-            let info = getCookie('info');
-            console.log('cookie info ', info)
-            let skills = getCookie('skills');
-            console.log('cookie skills ', skills)
+            // let usernameCookie = getCookie('username');
+            // console.log('is cookie set', usernameCookie)
+            // let info = getCookie('info');
+            // console.log('cookie info ', info)
+            // let skills = getCookie('skills');
+            // console.log('cookie skills ', skills)
 
-            if (info === true && skills === true) {
-                router.push(`/users/${usernameCookie}`)
-            }
-            else if (info === true && skills !== true) {
-                router.push('/users/polish-skills');
-            }
-            else if (info !== true && skills !== true) {
-                router.push('/users/polish');
-            }
-
+            // if (info === true && skills === true) {
+            //     router.push(`/users/${usernameCookie}`)
+            // }
+            // else if (info === true && skills !== true) {
+            //     router.push('/users/polish-skills');
+            // }
+            // else if (info !== true && skills !== true) {
+            //     router.push('/users/polish');
+            // }
+            
+            setVisitedHomeAfterLogin(true);
             setLoading(false);
             setSuccess(true);
         } catch (err) {
@@ -149,26 +153,11 @@ const LogInForm = () => {
         }
     }
 
-    // if (success) {
-    //     let usernameCookie=getCookie('username');
-    //     console.log('is cookie set', usernameCookie)
-    //     let info=getCookie('info');
-    //     console.log('cookie info ', info)
-    //     let skills=getCookie('skills');
-    //     console.log('cookie skills ', skills)
-
-    //     if(info===true&&skills===true){
-    //         router.push(`/users/${usernameCookie}`)
-    //     }
-    //     else if(info===true&&skills!==true){
-    //     router.push('/users/polish-skills');
-    //     }
-    //     else if(info!==true&&skills!==true){
-    //         router.push('/users/polish');
-    //     }
-    //     return null;
-    // }
-    // else {
+    if (success) {
+        router.push('/users/polish');
+        return null;
+    }
+    else {
         return (
             <div className={`grid grid--1x2 ${styles.pageNoScroll}`}>
                 <div className={styles.signupLeft}>
@@ -284,7 +273,7 @@ const LogInForm = () => {
                 </div>
             </div>
         );
-    // }
+    }
 };
 
 export default LogInForm;
