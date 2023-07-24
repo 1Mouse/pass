@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './hero5.module.scss';
+import styles from './howToStart.module.scss';
 
-const Hero5 = () => {
+const HowToStart = () => {
   return (
     <div className={styles.page}>
       <h1 className={styles.title}>How to start</h1>
@@ -43,4 +43,4 @@ const Hero5 = () => {
   );
 }
 
-export default Hero5;
+export default HowToStart;

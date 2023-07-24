@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './hero6.module.scss';
+import styles from './blueFilledCards.module.scss';
 
-const Hero6: React.FC = () => {
+const BlueFilledCards: React.FC = () => {
   return (
     <div className={styles.page}>
       <div className={styles.card}>
@@ -28,4 +28,4 @@ const Hero6: React.FC = () => {
   );
 };
 
-export default Hero6;
+export default BlueFilledCards;

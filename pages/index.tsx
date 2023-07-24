@@ -1,35 +1,36 @@
-import Navbar from '@/components/Navbar'
-import Head from 'next/head'
-import Image from 'next/image'
+import Navbar from "@/components/Navbar";
+import Head from "next/head";
+import Image from "next/image";
 // import { Inter } from '@next/font/google'
-import Hero from './../components/Hero';
+import Hero from "./../components/Hero";
 
-import Hero1 from '@/components/landing/Hero1';
-import Hero2 from '@/components/landing/Hero2';
-import Hero3 from '@/components/landing/Hero3';
-import Hero4 from '@/components/landing/Hero4';
-import Hero5 from '@/components/landing/Hero5';
-import Hero6 from '@/components/landing/Hero6';
-import Footer from '@/components/landing/Footer';
-import { useEffect } from 'react';
+import GlassBox from "@/components/landing/GlassBox";
+import BlueCards from "@/components/landing/BlueCards";
+import HowItWorks from "@/components/landing/HowItWorks";
+import JoinPassToday from "@/components/landing/JoinPassToday";
+import HowToStart from "@/components/landing/HowToStart";
+import BlueFilledCards from "@/components/landing/BlueFilledCards";
+import Footer from "@/components/landing/Footer";
+import { useEffect } from "react";
 
-import useTrackStore from '@/lib/zustand/stores/useTrackStore';
+import useTrackStore from "@/lib/zustand/stores/useTrackStore";
 
 // const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  const [visitedHomeAfterLogin, setVisitedHomeAfterLogin] = useTrackStore(state => [state.visitedHomeAfterLogin, state.setVisitedHomeAfterLogin])
-  
-  useEffect(()=>{
-    if(visitedHomeAfterLogin){
-      window.location.reload();
-      setVisitedHomeAfterLogin(false)
-    }
-  },[])
-  
+  const [visitedHomeAfterLogin, setVisitedHomeAfterLogin] = useTrackStore(
+    (state) => [state.visitedHomeAfterLogin, state.setVisitedHomeAfterLogin]
+  );
 
-  if(visitedHomeAfterLogin){
-    return null
+  useEffect(() => {
+    if (visitedHomeAfterLogin) {
+      window.location.reload();
+      setVisitedHomeAfterLogin(false);
+    }
+  }, []);
+
+  if (visitedHomeAfterLogin) {
+    return null;
   }
 
   return (
@@ -41,17 +42,17 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-          <Navbar/>
-          <Hero/>
-          
-          <Hero1/>
-         <Hero3/>
-         <Hero4/>
-         <Hero2/>
-         <Hero5/>
-         <Hero6/>
-         <Footer/>
+        <Navbar />
+        <Hero />
+
+        <GlassBox />
+        <HowItWorks />
+        <JoinPassToday />
+        <BlueCards />
+        <HowToStart />
+        <BlueFilledCards />
+        <Footer />
       </main>
     </>
-  )
+  );
 }

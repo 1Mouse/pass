@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import styles from './hero2.module.scss';
+import styles from './blueCards.module.scss';
 
-const Hero2: React.FC = () => {
+const BlueCards: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const element = document.getElementById('hero2');
+      const element = document.getElementById('blueCards');
       if (element) {
         const rect = element.getBoundingClientRect();
         setIsVisible(rect.top < window.innerHeight && rect.bottom >= 0);
@@ -22,7 +22,7 @@ const Hero2: React.FC = () => {
 
   return (
     <div className={styles.page}>
-    <div className={styles.container} id="hero2">
+    <div className={styles.container} id="blueCards">
       <div  className={styles.cards}>
 
       <div className={`${styles.square} ${styles.linkedin} ${isVisible ? styles.visible : ''}`}>
@@ -60,4 +60,4 @@ const Hero2: React.FC = () => {
   );
 };
 
-export default Hero2;
+export default BlueCards;

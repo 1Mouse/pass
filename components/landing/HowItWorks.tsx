@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from 'react';
-import Image from 'next/image';
-import styles from './hero3.module.scss';
+import React, { useEffect, useRef } from "react";
+import Image from "next/image";
+import styles from "./howItWorks.module.scss";
 
-const Hero3 = () => {
+const HowItWorks = () => {
   const sectionOneRef = useRef(null);
   const sectionTwoRef = useRef(null);
   const sectionThreeRef = useRef(null);
@@ -55,36 +55,83 @@ const Hero3 = () => {
           <h1 className={styles.title}>How it works</h1>
           {/* <p className={styles.subtitle}>This is the Hero3 component.</p> */}
         </div>
-        <div data-aos="fade-right" className={`${styles.section_one}`} ref={sectionOneRef}>
-          <h3 className={styles.sectionTitle}>Book Mock Interviews at Your Convenience:</h3>
+        <div
+          data-aos="fade-right"
+          className={`${styles.section_one}`}
+          ref={sectionOneRef}
+        >
+          <h3 className={styles.sectionTitle}>
+            Book Mock Interviews at Your Convenience:
+          </h3>
           {/* <p className={styles.sectionContent}>This is the content of the first section1.</p> */}
           <div className={styles.card}>
             <div className={styles.card_content_one}>
-              <Image src="/assets/undraw_booking_re_gw4j.svg" alt="Card Image 1" width={300} height={200} />
-              <p className={styles.cardText}>Schedule mock interviews at a time that suits your schedule and availability.
-  Choose from a variety of interview formats, such as coding interviews, system design interviews, or behavioral interviews.
-  Enjoy the flexibility of booking sessions whenever you like, allowing you to practice and prepare at your own pace.</p>
+              <Image
+                src="/assets/undraw_booking_re_gw4j.svg"
+                alt="Card Image 1"
+                width={300}
+                height={200}
+              />
+              <p className={styles.cardText}>
+                Schedule mock interviews at a time that suits your schedule and
+                availability. Choose from a variety of interview formats, such
+                as coding interviews, system design interviews, or behavioral
+                interviews. Enjoy the flexibility of booking sessions whenever
+                you like, allowing you to practice and prepare at your own pace.
+              </p>
             </div>
           </div>
         </div>
-        <div data-aos="fade-left" className={`${styles.section_two}`} ref={sectionTwoRef}>
-          <h3 className={styles.sectionTitle}>Connect with Senior Engineers from FAANG & Top Companies:</h3>
+        <div
+          data-aos="fade-left"
+          className={`${styles.section_two}`}
+          ref={sectionTwoRef}
+        >
+          <h3 className={styles.sectionTitle}>
+            Connect with Senior Engineers from FAANG & Top Companies:
+          </h3>
           <div className={styles.card}>
             <div className={styles.card_content_two}>
-              <Image src="/assets/undraw_conference_call_b0w6.svg" alt="Card Image 2" width={300} height={200} />
-              <p className={styles.cardText}>Engage in mock interviews conducted by experienced interviewers who are senior engineers from renowned companies, including FAANG and other top tech companies.
-  Benefit from the insights and expertise of these professionals, who have extensive knowledge of the interview process and expectations at leading companies.</p>
+              <Image
+                src="/assets/undraw_conference_call_b0w6.svg"
+                alt="Card Image 2"
+                width={300}
+                height={200}
+              />
+              <p className={styles.cardText}>
+                Engage in mock interviews conducted by experienced interviewers
+                who are senior engineers from renowned companies, including
+                FAANG and other top tech companies. Benefit from the insights
+                and expertise of these professionals, who have extensive
+                knowledge of the interview process and expectations at leading
+                companies.
+              </p>
             </div>
           </div>
         </div>
-        <div data-aos="fade-right" className={`${styles.section_three}`} ref={sectionThreeRef}>
-          <h3 className={styles.sectionTitle}>Work Towards Landing Your Dream Job:</h3>
+        <div
+          data-aos="fade-right"
+          className={`${styles.section_three}`}
+          ref={sectionThreeRef}
+        >
+          <h3 className={styles.sectionTitle}>
+            Work Towards Landing Your Dream Job:
+          </h3>
           <div className={styles.card}>
             <div className={styles.card_content_three}>
-              <Image src="/assets/undraw_investing_re_bov7.svg" alt="Card Image 3" width={300} height={200} />
-              <p className={styles.cardText}>Utilize the feedback received to focus on specific areas and make targeted improvements.
-  Continuously practice and refine your skills through repeated mock interviews.
-  Leverage the guidance provided by senior engineers to increase your chances of securing the job you deserve.</p>
+              <Image
+                src="/assets/undraw_investing_re_bov7.svg"
+                alt="Card Image 3"
+                width={300}
+                height={200}
+              />
+              <p className={styles.cardText}>
+                Utilize the feedback received to focus on specific areas and
+                make targeted improvements. Continuously practice and refine
+                your skills through repeated mock interviews. Leverage the
+                guidance provided by senior engineers to increase your chances
+                of securing the job you deserve.
+              </p>
             </div>
           </div>
         </div>
@@ -93,40 +140,7 @@ const Hero3 = () => {
   );
 };
 
-export default Hero3;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default HowItWorks;
 
 // const Hero3: React.FC = () => {
 //   const sectionRef = useRef<HTMLDivElement>(null);
@@ -225,7 +239,7 @@ export default Hero3;
 //       </section>
 //     </div>
 //   );
-  
+
 // };
 
 // export default Hero3;

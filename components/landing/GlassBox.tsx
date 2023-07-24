@@ -1,7 +1,7 @@
-import styles from './hero1.module.scss'
+import styles from './glassBox.module.scss'
 import {useRouter} from 'next/router';
 
-const Hero1 = () => {
+const GlassBox = () => {
   const router=useRouter();
     return (
         <div className={styles.container}>
@@ -16,4 +16,4 @@ const Hero1 = () => {
     )
 }
 
-export default Hero1;
+export default GlassBox;

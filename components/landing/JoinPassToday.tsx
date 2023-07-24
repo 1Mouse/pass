@@ -1,11 +1,11 @@
 import React, { useRef, useEffect } from 'react';
-import styles from './hero4.module.scss';
+import styles from './joinPassToday.module.scss';
 import { useRouter } from 'next/router';
 
 
 
 
-const Hero4 = () => {
+const JoinPassToday = () => {
   const router=useRouter();
   const cardRef = useRef(null);
 
@@ -88,4 +88,4 @@ const Hero4 = () => {
   
 };
 
-export default Hero4;
+export default JoinPassToday;
